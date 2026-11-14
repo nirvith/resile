@@ -2,6 +2,31 @@
 
 [ext_resource type="PackedScene" uid="uid://bpdy5oedjk5yx" path="res://player.tscn" id="1_wtcfe"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nw1ws"]
+size = Vector2(1152, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d6aes"]
+size = Vector2(20, 648)
+
 [node name="Node2D" type="Node2D" unique_id=1129358918]
 
 [node name="Player" parent="." unique_id=1333668081 instance=ExtResource("1_wtcfe")]
+position = Vector2(576, 324)
+
+[node name="Walls" type="StaticBody2D" parent="." unique_id=1396788841]
+
+[node name="Top" type="CollisionShape2D" parent="Walls" unique_id=463332144]
+position = Vector2(576, 10)
+shape = SubResource("RectangleShape2D_nw1ws")
+
+[node name="Bottom" type="CollisionShape2D" parent="Walls" unique_id=223285451]
+position = Vector2(576, 638)
+shape = SubResource("RectangleShape2D_nw1ws")
+
+[node name="Left" type="CollisionShape2D" parent="Walls" unique_id=519939586]
+position = Vector2(10, 324)
+shape = SubResource("RectangleShape2D_d6aes")
+
+[node name="Right" type="CollisionShape2D" parent="Walls" unique_id=97178683]
+position = Vector2(1142, 324)
+shape = SubResource("RectangleShape2D_d6aes")
