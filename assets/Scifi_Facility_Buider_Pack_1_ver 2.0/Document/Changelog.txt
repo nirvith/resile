@@ -1,0 +1,30 @@
+Sci-Fi Facility Builder — Pack 1: Foundation
+
+
+
+Version 2.0
+
+_ Added diagonal wall modules and matching diagonal floor
+_ Added stack wall modules for multi-layer architectural construction and matching floor
+_ Refined and expanded the modular wall and floor connection system
+_ Added end caps
+_ Updated documentation and improved the building workflow
+_ Added new room building preview and assembly guides
+
+|
+v
+
+Version 1.1
+
+_ Completely reworked Grated Floor
+_ Completely reworked Painted Wall & Sterile Wall
+_ Added Camera assets
+_ Added Hazard Stripes
+_ Revised asset naming and folder structure
+_ Updated documentation and user workflow
+_ Various asset refinements and improvements
+
+|
+v
+
+Version 1.0
