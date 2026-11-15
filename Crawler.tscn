@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://6x4yavgk6xos"]
+
+[ext_resource type="Script" uid="uid://de1hyj37exoyl" path="res://node_2d_1.gd" id="1_5sqno"]
+[ext_resource type="Texture2D" uid="uid://dls2rbobojlt4" path="res://assets/Monster_Creatures_Fantasy(Version 1.3)/Flying eye/Attack3.png" id="1_nau6d"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5sqno"]
+atlas = ExtResource("1_nau6d")
+region = Rect2(0, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pxdej"]
+atlas = ExtResource("1_nau6d")
+region = Rect2(150, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_127bl"]
+atlas = ExtResource("1_nau6d")
+region = Rect2(300, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jl02o"]
+atlas = ExtResource("1_nau6d")
+region = Rect2(450, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_euovq"]
+atlas = ExtResource("1_nau6d")
+region = Rect2(600, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8luv8"]
+atlas = ExtResource("1_nau6d")
+region = Rect2(750, 0, 150, 150)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ualut"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5sqno")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pxdej")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_127bl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jl02o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_euovq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8luv8")
+}],
+"loop": 1,
+"name": &"new_animation",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ualut"]
+radius = 14.142136
+
+[node name="Crawler" type="CharacterBody2D" unique_id=794723956]
+script = ExtResource("1_5sqno")
+
+[node name="Enemy" type="CharacterBody2D" parent="." unique_id=1870535256]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1867953091]
+position = Vector2(-3, -2)
+sprite_frames = SubResource("SpriteFrames_ualut")
+animation = &"new_animation"
+
+[node name="Area2D" type="Area2D" parent="." unique_id=117525166]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1961621255]
+position = Vector2(3, 2)
+shape = SubResource("CircleShape2D_ualut")
