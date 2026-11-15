@@ -48,7 +48,7 @@ func take_damage(amount):
 	amount = min(amount, cells)
 	cells -= amount
 	for i in amount:
-		throw_chunk().call_deferred()
+		throw_chunk.call_deferred()
 	Sfx.play(HURT_SOUND)
 	get_tree().call_group("camera", "shake", 8)
 	# Red hurt flash. self_modulate is separate from modulate, so it doesn't
