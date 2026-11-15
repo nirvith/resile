@@ -1,0 +1,71 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://message_box.gd" id="1_mb"]
+
+[sub_resource type="StyleBoxFlat" id="PanelStyle"]
+bg_color = Color(0.0706, 0.102, 0.149, 0.92)
+border_width_left = 2
+border_width_top = 4
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.361, 0.435, 0.51, 1)
+
+[node name="MessageBox" type="CanvasLayer"]
+layer = 3
+script = ExtResource("1_mb")
+
+[node name="Panel" type="Panel" parent="."]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 136.0
+offset_top = -112.0
+offset_right = -136.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("PanelStyle")
+
+[node name="Speaker" type="Label" parent="Panel"]
+offset_left = 16.0
+offset_top = 14.0
+offset_right = 96.0
+offset_bottom = 36.0
+theme_override_colors/font_color = Color(0.91, 0.933, 0.961, 1)
+theme_override_font_sizes/font_size = 14
+text = "BOSS"
+mouse_filter = 2
+
+[node name="Radio" type="Label" parent="Panel"]
+offset_left = 16.0
+offset_top = 38.0
+offset_right = 96.0
+offset_bottom = 58.0
+theme_override_colors/font_color = Color(1, 0.239, 0.353, 1)
+theme_override_font_sizes/font_size = 11
+text = "● RADIO"
+mouse_filter = 2
+
+[node name="Text" type="Label" parent="Panel"]
+offset_left = 104.0
+offset_top = 14.0
+offset_right = 864.0
+offset_bottom = 72.0
+theme_override_colors/font_color = Color(0.91, 0.933, 0.961, 1)
+theme_override_font_sizes/font_size = 18
+text = "..."
+autowrap_mode = 3
+mouse_filter = 2
+
+[node name="Hint" type="Label" parent="Panel"]
+offset_left = 740.0
+offset_top = 70.0
+offset_right = 868.0
+offset_bottom = 92.0
+theme_override_colors/font_color = Color(1, 0.788, 0.235, 1)
+theme_override_font_sizes/font_size = 12
+text = "SPACE ▼"
+horizontal_alignment = 2
+mouse_filter = 2

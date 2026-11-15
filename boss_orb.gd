@@ -1,75 +1,65 @@
 extends CharacterBody2D
-## Red boss shots ricochet around the room; a player bolt turns one gold and sends it home.
+## A red boss shot. Bounces around the room and hurts the blob.
+## Hit it with a live bolt and it turns gold and flies straight back into the boss.
 
-const MAX_LIFE := 6.0
-const MAX_BOUNCES := 5
-const REFLECTED_SPEED := 650.0
+const SPEED = 230.0
+const RETURN_SPEED = 650.0
+const MAX_BOUNCES = 4
+const LIFETIME = 8.0
+const RED = Color("ff3d5a")
+const GOLD = Color("ffc93c")
 
-var direction := Vector2.RIGHT
-var speed := 220.0
-var life_left := MAX_LIFE
-var bounces := 0
-var reflected := false
-var boss: Node2D
+var direction = Vector2.RIGHT
+var boss
+var bounces = 0
+var returning = false
+var life = LIFETIME
 
-@onready var sprite: Sprite2D = $Sprite2D
+func _ready():
+	add_to_group("enemies")    # player bolts only hit things in this group
+	add_to_group("boss_orbs")
+	$Sprite2D.modulate = RED
 
+func launch(dir, from_boss):
+	direction = dir
+	boss = from_boss
 
-func _ready() -> void:
-	add_to_group("enemies")
-	add_to_group("boss_projectiles")
-	$Hitbox.body_entered.connect(_on_hitbox_body_entered)
-
-
-func launch(initial_direction: Vector2, initial_speed: float) -> void:
-	direction = initial_direction.normalized()
-	speed = initial_speed
-
-
-func _physics_process(delta: float) -> void:
-	life_left -= delta
-	if life_left <= 0.0:
+func _physics_process(delta):
+	life -= delta
+	if life <= 0.0:
 		queue_free()
 		return
-	sprite.rotation += delta * (5.0 if reflected else 2.2)
-	var collision := move_and_collide(direction * speed * delta)
-	if collision == null:
+	if returning:
+		if not is_instance_valid(boss):
+			queue_free()
+			return
+		direction = global_position.direction_to(boss.global_position)   # homes in, so it always lands
+	var hit = move_and_collide(direction * (RETURN_SPEED if returning else SPEED) * delta)
+	if hit == null:
 		return
-	var body := collision.get_collider()
-	if reflected and body.is_in_group("bosses"):
-		body.take_damage(2)
-		get_tree().call_group("camera", "shake", 5)
-		queue_free()
+	var body = hit.get_collider()
+	if returning:
+		if body == boss:
+			boss.take_damage(3)
+			queue_free()
+		else:
+			add_collision_exception_with(body)   # passed through a crawler: ignore it
 		return
-	if not reflected and body.is_in_group("player"):
+	if body.is_in_group("player"):
 		body.take_damage(1)
 		queue_free()
 		return
-	direction = direction.bounce(collision.get_normal()).normalized()
+	direction = direction.bounce(hit.get_normal())
 	bounces += 1
-	if bounces >= MAX_BOUNCES:
+	if bounces > MAX_BOUNCES:
 		queue_free()
 
-
-func take_damage(_amount: int) -> void:
-	if reflected:
+# A live player bolt hit this orb: send it home.
+func take_damage(_amount):
+	if returning:
 		return
-	reflected = true
-	collision_mask = 4
-	life_left = 4.0
-	speed = REFLECTED_SPEED
-	var target := get_tree().get_first_node_in_group("bosses") as Node2D
-	if is_instance_valid(target):
-		boss = target
-		direction = global_position.direction_to(target.global_position)
-	else:
-		direction = -direction
-	sprite.modulate = Color("fff0aa")
-	$Hitbox.set_deferred("monitoring", false)
+	returning = true
+	life = 3.0
+	$Sprite2D.modulate = GOLD
+	set_deferred("collision_mask", 4)   # now it only collides with enemies (the boss)
 	get_tree().call_group("camera", "shake", 2)
-
-
-func _on_hitbox_body_entered(body: Node2D) -> void:
-	if body.is_in_group("player") and not reflected:
-		body.take_damage(1)
-		queue_free()

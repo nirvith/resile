@@ -19,8 +19,15 @@
 [ext_resource type="Texture2D" uid="uid://crlkopydxbq2f" path="res://assets/Scifi_Facility_Buider_Pack_1_ver 2.0/Props/Signs/Room_Label/room_label_ctrl.png" id="17_tex"]
 [ext_resource type="Texture2D" uid="uid://b4gk37a6pai5k" path="res://assets/Scifi_Facility_Buider_Pack_1_ver 2.0/Props/Utility/Alarm Light/alarm_light_on.png" id="18_tex"]
 [ext_resource type="Texture2D" uid="uid://6clfxnalm5cx" path="res://assets/Scifi_Facility_Buider_Pack_1_ver 2.0/Overlay/Light GLow/Alarm_light_on/alarm_light_on_l2.png" id="19_tex"]
-[ext_resource type="Texture2D" uid="uid://be4la7mbe846o" path="res://assets/Scifi_Facility_Buider_Pack_1_ver 2.0/Props/Furniture/bench_F_filled.png" id="20_tex"]
-[ext_resource type="Texture2D" uid="uid://chwo8m8vvyd0f" path="res://assets/Scifi_Facility_Buider_Pack_1_ver 2.0/Props/Furniture/bench_side.png" id="21_tex"]
+[ext_resource type="Texture2D" uid="uid://v4c3bn6dhp8l" path="res://assets/Scifi_Facility_Buider_Pack_1_ver 2.0/Props/Utility/Pipes/pipe_double_v2.png" id="20_tex"]
+[ext_resource type="Texture2D" uid="uid://dp5af7jrnitk3" path="res://assets/Scifi_Facility_Buider_Pack_1_ver 2.0/Props/Utility/Pipes/pipe_triple_v1.png" id="21_tex"]
+[ext_resource type="Texture2D" uid="uid://be4la7mbe846o" path="res://assets/Scifi_Facility_Buider_Pack_1_ver 2.0/Props/Furniture/bench_F_filled.png" id="22_tex"]
+[ext_resource type="Texture2D" uid="uid://chwo8m8vvyd0f" path="res://assets/Scifi_Facility_Buider_Pack_1_ver 2.0/Props/Furniture/bench_side.png" id="23_tex"]
+[ext_resource type="Texture2D" uid="uid://bfehvp00xbcit" path="res://assets/Scifi_Facility_Buider_Pack_1_ver 2.0/Props/Furniture/shelf_filled_v1.png" id="24_tex"]
+[ext_resource type="Texture2D" uid="uid://d3uct042fmjxa" path="res://assets/Scifi_Facility_Buider_Pack_1_ver 2.0/Props/Furniture/shelf_filled_v2.png" id="25_tex"]
+[ext_resource type="Texture2D" uid="uid://doej3boeepsm2" path="res://assets/Scifi_Facility_Buider_Pack_1_ver 2.0/Props/Small Props/plastic_crate_g1.png" id="26_tex"]
+[ext_resource type="Texture2D" uid="uid://br3mi8w08exhl" path="res://assets/Scifi_Facility_Buider_Pack_1_ver 2.0/Props/Small Props/plastic_crate_g2.png" id="27_tex"]
+[ext_resource type="Texture2D" uid="uid://dfiv8017wawb1" path="res://assets/Scifi_Facility_Buider_Pack_1_ver 2.0/Props/Small Props/plastic_storage_box.png" id="28_tex"]
 [ext_resource type="PackedScene" path="res://pinball_pad.tscn" id="pad_scene"]
 
 [sub_resource type="TileSetAtlasSource" id="Atlas_3"]
@@ -64,6 +71,21 @@ size = Vector2(64, 87.8)
 
 [sub_resource type="RectangleShape2D" id="Box_BenchEastWall"]
 size = Vector2(64, 87.8)
+
+[sub_resource type="RectangleShape2D" id="Box_ShelfWest"]
+size = Vector2(73.7, 56.7)
+
+[sub_resource type="RectangleShape2D" id="Box_ShelfEast"]
+size = Vector2(73.7, 48)
+
+[sub_resource type="RectangleShape2D" id="Box_CratesWestLane"]
+size = Vector2(86.7, 70.8)
+
+[sub_resource type="RectangleShape2D" id="Box_CratesEastLane"]
+size = Vector2(61.2, 46.1)
+
+[sub_resource type="RectangleShape2D" id="Box_StorageBoxes"]
+size = Vector2(50.4, 23.4)
 
 [node name="ControlDeck" type="Node2D"]
 metadata/tint = Color(1, 0.93, 0.84, 1)
@@ -218,6 +240,16 @@ modulate = Color(1, 1, 1, 0.75)
 position = Vector2(822, 14)
 scale = Vector2(0.9, 0.9)
 texture = ExtResource("19_tex")
+
+[node name="PipesWest" type="Sprite2D" parent="WallDecor"]
+position = Vector2(380, 24)
+scale = Vector2(0.26, 0.26)
+texture = ExtResource("20_tex")
+
+[node name="PipesEast" type="Sprite2D" parent="WallDecor"]
+position = Vector2(772, 24)
+scale = Vector2(0.26, 0.26)
+texture = ExtResource("21_tex")
 
 [node name="Walls" type="StaticBody2D" parent="."]
 
@@ -394,7 +426,7 @@ position = Vector2(576, 128)
 
 [node name="Sprite2D" type="Sprite2D" parent="Furniture/BossDesk"]
 scale = Vector2(1, 1)
-texture = ExtResource("20_tex")
+texture = ExtResource("22_tex")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Furniture/BossDesk"]
 position = Vector2(0, 15.6)
@@ -405,7 +437,7 @@ position = Vector2(50, 324)
 
 [node name="Sprite2D" type="Sprite2D" parent="Furniture/BenchWestWall"]
 scale = Vector2(0.9, 0.9)
-texture = ExtResource("21_tex")
+texture = ExtResource("23_tex")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Furniture/BenchWestWall"]
 position = Vector2(0, 20.2)
@@ -416,11 +448,66 @@ position = Vector2(1102, 324)
 
 [node name="Sprite2D" type="Sprite2D" parent="Furniture/BenchEastWall"]
 scale = Vector2(0.9, 0.9)
-texture = ExtResource("21_tex")
+texture = ExtResource("23_tex")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Furniture/BenchEastWall"]
 position = Vector2(0, 20.2)
 shape = SubResource("Box_BenchEastWall")
+
+[node name="ShelfWest" type="StaticBody2D" parent="Furniture"]
+position = Vector2(230, 95)
+
+[node name="Sprite2D" type="Sprite2D" parent="Furniture/ShelfWest"]
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("24_tex")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Furniture/ShelfWest"]
+position = Vector2(0, 13.1)
+shape = SubResource("Box_ShelfWest")
+
+[node name="ShelfEast" type="StaticBody2D" parent="Furniture"]
+position = Vector2(922, 95)
+
+[node name="Sprite2D" type="Sprite2D" parent="Furniture/ShelfEast"]
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("25_tex")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Furniture/ShelfEast"]
+position = Vector2(0, 11.1)
+shape = SubResource("Box_ShelfEast")
+
+[node name="CratesWestLane" type="StaticBody2D" parent="Furniture"]
+position = Vector2(180, 330)
+
+[node name="Sprite2D" type="Sprite2D" parent="Furniture/CratesWestLane"]
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("26_tex")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Furniture/CratesWestLane"]
+position = Vector2(0, 16.3)
+shape = SubResource("Box_CratesWestLane")
+
+[node name="CratesEastLane" type="StaticBody2D" parent="Furniture"]
+position = Vector2(975, 330)
+
+[node name="Sprite2D" type="Sprite2D" parent="Furniture/CratesEastLane"]
+scale = Vector2(1, 1)
+texture = ExtResource("27_tex")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Furniture/CratesEastLane"]
+position = Vector2(0, 10.7)
+shape = SubResource("Box_CratesEastLane")
+
+[node name="StorageBoxes" type="StaticBody2D" parent="Furniture"]
+position = Vector2(576, 575)
+
+[node name="Sprite2D" type="Sprite2D" parent="Furniture/StorageBoxes"]
+scale = Vector2(2, 2)
+texture = ExtResource("28_tex")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Furniture/StorageBoxes"]
+position = Vector2(0, 5.4)
+shape = SubResource("Box_StorageBoxes")
 
 [node name="PinballPads" type="Node2D" parent="."]
 

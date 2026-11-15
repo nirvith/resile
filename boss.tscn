@@ -64,12 +64,24 @@ animations = [{
 [sub_resource type="CircleShape2D" id="BodyShape"]
 radius = 72.0
 
+[sub_resource type="StyleBoxFlat" id="BarBack"]
+bg_color = Color(0.118, 0.169, 0.102, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.055, 0.082, 0.125, 1)
+
+[sub_resource type="StyleBoxFlat" id="BarFill"]
+bg_color = Color(0.549, 1, 0.353, 1)
+
 [node name="Foreman" type="CharacterBody2D"]
 collision_layer = 4
-collision_mask = 5
+collision_mask = 1
+motion_mode = 1
 script = ExtResource("1_script")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
 material = SubResource("BossMaterial")
 position = Vector2(-26, -20)
 scale = Vector2(2, 2)
@@ -79,52 +91,28 @@ sprite_frames = SubResource("BossFrames")
 shape = SubResource("BodyShape")
 
 [node name="BossUI" type="CanvasLayer" parent="."]
-layer = 3
+layer = 2
 
 [node name="Name" type="Label" parent="BossUI"]
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -250.0
-offset_top = -78.0
-offset_right = 250.0
-offset_bottom = -52.0
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+offset_left = 336.0
+offset_top = 48.0
+offset_right = 816.0
+offset_bottom = 70.0
+theme_override_colors/font_color = Color(0.549, 1, 0.353, 1)
+theme_override_colors/font_outline_color = Color(0.055, 0.082, 0.125, 1)
 theme_override_constants/outline_size = 6
-theme_override_font_sizes/font_size = 18
-text = "THE FOREMAN  •  REBOUND CHAMBER"
+theme_override_font_sizes/font_size = 16
+text = "THE FOREMAN"
 horizontal_alignment = 1
 
 [node name="HealthBar" type="ProgressBar" parent="BossUI"]
-unique_name_in_owner = true
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -250.0
-offset_top = -48.0
-offset_right = 250.0
-offset_bottom = -24.0
-max_value = 40.0
-value = 40.0
+offset_left = 336.0
+offset_top = 72.0
+offset_right = 816.0
+offset_bottom = 88.0
+mouse_filter = 2
+theme_override_styles/background = SubResource("BarBack")
+theme_override_styles/fill = SubResource("BarFill")
+max_value = 30.0
+value = 30.0
 show_percentage = false
-
-[node name="Line" type="Label" parent="BossUI"]
-unique_name_in_owner = true
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -450.0
-offset_top = -124.0
-offset_right = 450.0
-offset_bottom = -88.0
-theme_override_colors/font_color = Color(1, 0.79, 0.24, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 8
-theme_override_font_sizes/font_size = 24
-horizontal_alignment = 1

@@ -21,7 +21,7 @@ var levels = [
 		{"line": "Those floors are imported. Stop bouncing on them.", "enemies": {"crawler": 7, "glutton": 3}},
 		{"line": "Stop. Seriously. You're scratching everything.", "enemies": {"crawler": 8, "glutton": 4}},
 	]},
-	{"map": "res://boss_arena.tscn", "waves": [
+	{"map": "res://pod_bay.tscn", "waves": [
 		{"line": "Fine. I'm sending the Foreman.", "enemies": {"boss": 1}},
 	]},
 ]
@@ -108,8 +108,8 @@ func start_wave(with_line):
 func spawn_enemy(enemy_name):
 	var enemy = ENEMIES[enemy_name].instantiate()
 	get_parent().add_child(enemy)
-	if enemy_name == "boss" and map and map.has_node("Spawn"):
-		enemy.global_position = map.get_node("Spawn").global_position + Vector2(210, 0)
+	if enemy_name == "boss" and map and map.has_node("BossSpawn"):
+		enemy.global_position = map.get_node("BossSpawn").global_position
 	else:
 		enemy.global_position = spawn_point()
 
@@ -147,6 +147,7 @@ func _on_player_died():
 	start_wave.call_deferred(false)
 
 func finish_game():
+	await say("Okay. Please save my ship. I'll give you a raise.")
 	if ResourceLoader.exists(ending):
 		get_tree().change_scene_to_file(ending)
 	else:
