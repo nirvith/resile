@@ -121,70 +121,67 @@ size = Vector2(50.4, 23.4)
 [sub_resource type="RectangleShape2D" id="Box_CratesBottom"]
 size = Vector2(81, 28.1)
 
-[node name="CargoHold" type="Node2D"]
+[node name="CargoHold" type="Node2D" unique_id=392823983]
 metadata/tint = Color(0.88, 0.93, 1, 1)
 
-[node name="Tiles" type="TileMapLayer" parent="."]
+[node name="Tiles" type="TileMapLayer" parent="." unique_id=405305727]
 scale = Vector2(0.25, 0.25)
 tile_map_data = PackedByteArray("AAAAAAAABAAAAAAAAAABAAAABAAAAAAAAAACAAAABAAAAAAAAAADAAAABAAAAAAAAAAEAAAABAAAAAAAAAAFAAAABAAAAAAAAAAGAAAABAAAAAAAAAAHAAAABAAAAAAAAAAIAAAABAAAAAAAAAAJAAAABAAAAAAAAAAKAAAABAAAAAAAAAALAAAABAAAAAAAAAAMAAAABAAAAAAAAAANAAAABAAAAAAAAAAOAAAABAAAAAAAAAAPAAAABAAAAAAAAAAQAAAABAAAAAAAAAARAAAABAAAAAAAAAAAAAEABAAAAAAAAAABAAEAAwAAAAAAAAACAAEAAwAAAAAAAAADAAEAAwAAAAAAAAAEAAEAAwAAAAAAAAAFAAEAAwAAAAAAAAAGAAEAAwAAAAAAAAAHAAEAAwAAAAAAAAAIAAEAAwAAAAAAAAAJAAEAAwAAAAAAAAAKAAEAAwAAAAAAAAALAAEAAwAAAAAAAAAMAAEAAwAAAAAAAAANAAEAAwAAAAAAAAAOAAEAAwAAAAAAAAAPAAEAAwAAAAAAAAAQAAEAAwAAAAAAAAARAAEABAAAAAAAAAAAAAIABAAAAAAAAAABAAIAAwAAAAAAAAACAAIAAwAAAAAAAAADAAIAAwAAAAAAAAAEAAIABQAAAAAAAAAFAAIAAwAAAAAAAAAGAAIAAwAAAAAAAAAHAAIAAwAAAAAAAAAIAAIAAwAAAAAAAAAJAAIAAwAAAAAAAAAKAAIAAwAAAAAAAAALAAIAAwAAAAAAAAAMAAIAAwAAAAAAAAANAAIABgAAAAAAAAAOAAIAAwAAAAAAAAAPAAIAAwAAAAAAAAAQAAIAAwAAAAAAAAARAAIABAAAAAAAAAAAAAMABAAAAAAAAAABAAMAAwAAAAAAAAACAAMAAwAAAAAAAAADAAMAAwAAAAAAAAAEAAMAAwAAAAAAAAAFAAMAAwAAAAAAAAAGAAMAAwAAAAAAAAAHAAMAAwAAAAAAAAAIAAMAAwAAAAAAAAAJAAMAAwAAAAAAAAAKAAMAAwAAAAAAAAALAAMAAwAAAAAAAAAMAAMAAwAAAAAAAAANAAMAAwAAAAAAAAAOAAMAAwAAAAAAAAAPAAMAAwAAAAAAAAAQAAMAAwAAAAAAAAARAAMABAAAAAAAAAAAAAQABAAAAAAAAAABAAQAAwAAAAAAAAACAAQAAwAAAAAAAAADAAQAAwAAAAAAAAAEAAQAAwAAAAAAAAAFAAQAAwAAAAAAAAAGAAQAAwAAAAAAAAAHAAQAAwAAAAAAAAAIAAQAAwAAAAAAAAAJAAQAAwAAAAAAAAAKAAQAAwAAAAAAAAALAAQAAwAAAAAAAAAMAAQAAwAAAAAAAAANAAQAAwAAAAAAAAAOAAQAAwAAAAAAAAAPAAQAAwAAAAAAAAAQAAQAAwAAAAAAAAARAAQABAAAAAAAAAAAAAUABAAAAAAAAAABAAUAAwAAAAAAAAACAAUAAwAAAAAAAAADAAUAAwAAAAAAAAAEAAUAAwAAAAAAAAAFAAUAAwAAAAAAAAAGAAUAAwAAAAAAAAAHAAUAAwAAAAAAAAAIAAUAAwAAAAAAAAAJAAUAAwAAAAAAAAAKAAUAAwAAAAAAAAALAAUAAwAAAAAAAAAMAAUAAwAAAAAAAAANAAUAAwAAAAAAAAAOAAUAAwAAAAAAAAAPAAUAAwAAAAAAAAAQAAUAAwAAAAAAAAARAAUABAAAAAAAAAAAAAYABAAAAAAAAAABAAYAAwAAAAAAAAACAAYAAwAAAAAAAAADAAYAAwAAAAAAAAAEAAYAAwAAAAAAAAAFAAYAAwAAAAAAAAAGAAYAAwAAAAAAAAAHAAYAAwAAAAAAAAAIAAYAAwAAAAAAAAAJAAYAAwAAAAAAAAAKAAYAAwAAAAAAAAALAAYAAwAAAAAAAAAMAAYAAwAAAAAAAAANAAYAAwAAAAAAAAAOAAYAAwAAAAAAAAAPAAYAAwAAAAAAAAAQAAYAAwAAAAAAAAARAAYABAAAAAAAAAAAAAcABAAAAAAAAAABAAcAAwAAAAAAAAACAAcAAwAAAAAAAAADAAcAAwAAAAAAAAAEAAcABgAAAAAAAAAFAAcAAwAAAAAAAAAGAAcAAwAAAAAAAAAHAAcAAwAAAAAAAAAIAAcAAwAAAAAAAAAJAAcAAwAAAAAAAAAKAAcAAwAAAAAAAAALAAcAAwAAAAAAAAAMAAcAAwAAAAAAAAANAAcABQAAAAAAAAAOAAcAAwAAAAAAAAAPAAcAAwAAAAAAAAAQAAcAAwAAAAAAAAARAAcABAAAAAAAAAAAAAgABAAAAAAAAAABAAgAAwAAAAAAAAACAAgAAwAAAAAAAAADAAgAAwAAAAAAAAAEAAgAAwAAAAAAAAAFAAgAAwAAAAAAAAAGAAgAAwAAAAAAAAAHAAgAAwAAAAAAAAAIAAgAAwAAAAAAAAAJAAgAAwAAAAAAAAAKAAgAAwAAAAAAAAALAAgAAwAAAAAAAAAMAAgAAwAAAAAAAAANAAgAAwAAAAAAAAAOAAgAAwAAAAAAAAAPAAgAAwAAAAAAAAAQAAgAAwAAAAAAAAARAAgABAAAAAAAAAAAAAkABAAAAAAAAAABAAkABAAAAAAAAAACAAkABAAAAAAAAAADAAkABAAAAAAAAAAEAAkABAAAAAAAAAAFAAkABAAAAAAAAAAGAAkABAAAAAAAAAAHAAkABAAAAAAAAAAIAAkABAAAAAAAAAAJAAkABAAAAAAAAAAKAAkABAAAAAAAAAALAAkABAAAAAAAAAAMAAkABAAAAAAAAAANAAkABAAAAAAAAAAOAAkABAAAAAAAAAAPAAkABAAAAAAAAAAQAAkABAAAAAAAAAARAAkABAAAAAAAAAAAAAoABAAAAAAAAAABAAoAAwAAAAAAAAACAAoAAwAAAAAAAAADAAoAAwAAAAAAAAAEAAoAAwAAAAAAAAAFAAoAAwAAAAAAAAAGAAoAAwAAAAAAAAAHAAoAAwAAAAAAAAAIAAoAAwAAAAAAAAAJAAoAAwAAAAAAAAAKAAoAAwAAAAAAAAALAAoAAwAAAAAAAAAMAAoAAwAAAAAAAAANAAoAAwAAAAAAAAAOAAoAAwAAAAAAAAAPAAoAAwAAAAAAAAAQAAoAAwAAAAAAAAARAAoABAAAAAAAAAA=")
 tile_set = SubResource("TileSet_floor")
 
-[node name="FloorDecor" type="Node2D" parent="."]
+[node name="FloorDecor" type="Node2D" parent="." unique_id=99014205]
 
-[node name="Grime1" type="Sprite2D" parent="FloorDecor"]
+[node name="Grime1" type="Sprite2D" parent="FloorDecor" unique_id=1248757126]
 modulate = Color(1, 1, 1, 0.8)
 position = Vector2(205, 385)
 scale = Vector2(1.2, 1.2)
 texture = ExtResource("5_tex")
 
-[node name="Grime2" type="Sprite2D" parent="FloorDecor"]
+[node name="Grime2" type="Sprite2D" parent="FloorDecor" unique_id=187180723]
 modulate = Color(1, 1, 1, 0.8)
 position = Vector2(705, 525)
 scale = Vector2(1.2, 1.2)
 texture = ExtResource("6_tex")
 
-[node name="Dirt1" type="Sprite2D" parent="FloorDecor"]
+[node name="Dirt1" type="Sprite2D" parent="FloorDecor" unique_id=175715670]
 modulate = Color(1, 1, 1, 0.8)
 position = Vector2(930, 300)
 scale = Vector2(1.2, 1.2)
 texture = ExtResource("7_tex")
 
-[node name="Dirt2" type="Sprite2D" parent="FloorDecor"]
+[node name="Dirt2" type="Sprite2D" parent="FloorDecor" unique_id=270125570]
 modulate = Color(1, 1, 1, 0.8)
 position = Vector2(380, 165)
 scale = Vector2(1.2, 1.2)
 texture = ExtResource("8_tex")
 
-[node name="Rust1" type="Sprite2D" parent="FloorDecor"]
+[node name="Rust1" type="Sprite2D" parent="FloorDecor" unique_id=1772507524]
 modulate = Color(1, 1, 1, 0.8)
 position = Vector2(1010, 505)
-scale = Vector2(1, 1)
 texture = ExtResource("9_tex")
 
-[node name="DoorMarking" type="Sprite2D" parent="FloorDecor"]
+[node name="DoorMarking" type="Sprite2D" parent="FloorDecor" unique_id=1089470856]
 position = Vector2(576, 622)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("10_tex")
 
-[node name="Grime3" type="Sprite2D" parent="FloorDecor"]
+[node name="Grime3" type="Sprite2D" parent="FloorDecor" unique_id=2014602152]
 modulate = Color(1, 1, 1, 0.7)
 position = Vector2(1000, 600)
-scale = Vector2(1, 1)
 texture = ExtResource("5_tex")
 
-[node name="Dirt3" type="Sprite2D" parent="FloorDecor"]
+[node name="Dirt3" type="Sprite2D" parent="FloorDecor" unique_id=1035419654]
 modulate = Color(1, 1, 1, 0.7)
 position = Vector2(140, 600)
-scale = Vector2(1, 1)
 texture = ExtResource("7_tex")
 
-[node name="ArrowsToDoor" type="Sprite2D" parent="FloorDecor"]
+[node name="ArrowsToDoor" type="Sprite2D" parent="FloorDecor" unique_id=305764252]
 modulate = Color(1, 1, 1, 0.7)
 position = Vector2(576, 470)
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("11_tex")
 
-[node name="HazardTop" type="Sprite2D" parent="FloorDecor"]
+[node name="HazardTop" type="Sprite2D" parent="FloorDecor" unique_id=1285673219]
 texture_repeat = 2
 position = Vector2(426, 230)
 scale = Vector2(0.5, 0.5)
@@ -193,7 +190,7 @@ centered = false
 region_enabled = true
 region_rect = Rect2(0, 0, 600, 8)
 
-[node name="HazardBottom" type="Sprite2D" parent="FloorDecor"]
+[node name="HazardBottom" type="Sprite2D" parent="FloorDecor" unique_id=1807133980]
 texture_repeat = 2
 position = Vector2(426, 416)
 scale = Vector2(0.5, 0.5)
@@ -202,7 +199,7 @@ centered = false
 region_enabled = true
 region_rect = Rect2(0, 0, 600, 8)
 
-[node name="HazardLeft" type="Sprite2D" parent="FloorDecor"]
+[node name="HazardLeft" type="Sprite2D" parent="FloorDecor" unique_id=1585104833]
 texture_repeat = 2
 position = Vector2(426, 230)
 scale = Vector2(0.5, 0.5)
@@ -211,7 +208,7 @@ centered = false
 region_enabled = true
 region_rect = Rect2(0, 0, 8, 380)
 
-[node name="HazardRight" type="Sprite2D" parent="FloorDecor"]
+[node name="HazardRight" type="Sprite2D" parent="FloorDecor" unique_id=140108124]
 texture_repeat = 2
 position = Vector2(722, 230)
 scale = Vector2(0.5, 0.5)
@@ -220,11 +217,11 @@ centered = false
 region_enabled = true
 region_rect = Rect2(0, 0, 8, 380)
 
-[node name="TopWallShadow" type="Polygon2D" parent="."]
+[node name="TopWallShadow" type="Polygon2D" parent="." unique_id=1828195711]
 color = Color(0, 0, 0, 0.27)
 polygon = PackedVector2Array(0, 48, 1152, 48, 1152, 64, 0, 64)
 
-[node name="TopWall" type="Sprite2D" parent="."]
+[node name="TopWall" type="Sprite2D" parent="." unique_id=488850480]
 texture_repeat = 2
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("14_tex")
@@ -232,7 +229,7 @@ centered = false
 region_enabled = true
 region_rect = Rect2(0, 0, 4608, 192)
 
-[node name="BottomWall" type="Sprite2D" parent="."]
+[node name="BottomWall" type="Sprite2D" parent="." unique_id=1653891628]
 texture_repeat = 2
 position = Vector2(0, 637)
 scale = Vector2(0.25, 0.25)
@@ -241,7 +238,7 @@ centered = false
 region_enabled = true
 region_rect = Rect2(0, 0, 4608, 43)
 
-[node name="LeftWall" type="Sprite2D" parent="."]
+[node name="LeftWall" type="Sprite2D" parent="." unique_id=21304099]
 texture_repeat = 2
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("16_tex")
@@ -249,7 +246,7 @@ centered = false
 region_enabled = true
 region_rect = Rect2(0, 0, 43, 2592)
 
-[node name="RightWall" type="Sprite2D" parent="."]
+[node name="RightWall" type="Sprite2D" parent="." unique_id=618021729]
 texture_repeat = 2
 position = Vector2(1141, 0)
 scale = Vector2(0.25, 0.25)
@@ -258,302 +255,298 @@ centered = false
 region_enabled = true
 region_rect = Rect2(0, 0, 43, 2592)
 
-[node name="WallDecor" type="Node2D" parent="."]
+[node name="WallDecor" type="Node2D" parent="." unique_id=695058895]
 
-[node name="ElectricalBox" type="Sprite2D" parent="WallDecor"]
+[node name="ElectricalBox" type="Sprite2D" parent="WallDecor" unique_id=989375098]
 position = Vector2(140, 24)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("18_tex")
 
-[node name="Vent1" type="Sprite2D" parent="WallDecor"]
+[node name="Vent1" type="Sprite2D" parent="WallDecor" unique_id=325083366]
 position = Vector2(440, 24)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("19_tex")
 
-[node name="StorageLabel" type="Sprite2D" parent="WallDecor"]
+[node name="StorageLabel" type="Sprite2D" parent="WallDecor" unique_id=1272589724]
 position = Vector2(576, 22)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("20_tex")
 
-[node name="Vent2" type="Sprite2D" parent="WallDecor"]
+[node name="Vent2" type="Sprite2D" parent="WallDecor" unique_id=1769976973]
 position = Vector2(1000, 24)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("19_tex")
 
-[node name="CautionSign" type="Sprite2D" parent="WallDecor"]
+[node name="CautionSign" type="Sprite2D" parent="WallDecor" unique_id=315615514]
 position = Vector2(1075, 22)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("21_tex")
 
-[node name="AlarmLeft" type="Sprite2D" parent="WallDecor"]
+[node name="AlarmLeft" type="Sprite2D" parent="WallDecor" unique_id=611368429]
 position = Vector2(330, 10)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("22_tex")
 
-[node name="AlarmLeftGlow" type="Sprite2D" parent="WallDecor"]
+[node name="AlarmLeftGlow" type="Sprite2D" parent="WallDecor" unique_id=522173184]
 modulate = Color(1, 1, 1, 0.75)
 position = Vector2(330, 14)
 scale = Vector2(0.9, 0.9)
 texture = ExtResource("23_tex")
 
-[node name="AlarmRight" type="Sprite2D" parent="WallDecor"]
+[node name="AlarmRight" type="Sprite2D" parent="WallDecor" unique_id=468438486]
 position = Vector2(800, 10)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("22_tex")
 
-[node name="AlarmRightGlow" type="Sprite2D" parent="WallDecor"]
+[node name="AlarmRightGlow" type="Sprite2D" parent="WallDecor" unique_id=2038383462]
 modulate = Color(1, 1, 1, 0.75)
 position = Vector2(800, 14)
 scale = Vector2(0.9, 0.9)
 texture = ExtResource("23_tex")
 
-[node name="PipesLeft" type="Sprite2D" parent="WallDecor"]
+[node name="PipesLeft" type="Sprite2D" parent="WallDecor" unique_id=613375702]
 position = Vector2(215, 24)
 scale = Vector2(0.26, 0.26)
 texture = ExtResource("24_tex")
 
-[node name="PipesMid" type="Sprite2D" parent="WallDecor"]
+[node name="PipesMid" type="Sprite2D" parent="WallDecor" unique_id=1972520629]
 position = Vector2(690, 24)
 scale = Vector2(0.26, 0.26)
 texture = ExtResource("25_tex")
 
-[node name="PipesRight" type="Sprite2D" parent="WallDecor"]
+[node name="PipesRight" type="Sprite2D" parent="WallDecor" unique_id=916452769]
 position = Vector2(900, 24)
 scale = Vector2(0.26, 0.26)
 texture = ExtResource("26_tex")
 
-[node name="Valve" type="Sprite2D" parent="WallDecor"]
+[node name="Valve" type="Sprite2D" parent="WallDecor" unique_id=13031606]
 position = Vector2(760, 30)
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("27_tex")
 
-[node name="Walls" type="StaticBody2D" parent="."]
+[node name="Walls" type="StaticBody2D" parent="." unique_id=1721636995]
 
-[node name="Top" type="CollisionShape2D" parent="Walls"]
+[node name="Top" type="CollisionShape2D" parent="Walls" unique_id=1174921416]
 position = Vector2(576, 24)
 shape = SubResource("WallTop")
 
-[node name="Bottom" type="CollisionShape2D" parent="Walls"]
+[node name="Bottom" type="CollisionShape2D" parent="Walls" unique_id=1717323201]
 position = Vector2(576, 642.5)
 shape = SubResource("WallBottom")
 
-[node name="Left" type="CollisionShape2D" parent="Walls"]
+[node name="Left" type="CollisionShape2D" parent="Walls" unique_id=331618420]
 position = Vector2(5.5, 324)
 shape = SubResource("WallSide")
 
-[node name="Right" type="CollisionShape2D" parent="Walls"]
+[node name="Right" type="CollisionShape2D" parent="Walls" unique_id=1109368895]
 position = Vector2(1146.5, 324)
 shape = SubResource("WallSide")
 
-[node name="Furniture" type="Node2D" parent="."]
+[node name="Furniture" type="Node2D" parent="." unique_id=2057155853]
 
-[node name="ShelfLeft" type="StaticBody2D" parent="Furniture"]
+[node name="ShelfLeft" type="StaticBody2D" parent="Furniture" unique_id=1851779587]
 position = Vector2(262, 95)
 
-[node name="Sprite2D" type="Sprite2D" parent="Furniture/ShelfLeft"]
+[node name="Sprite2D" type="Sprite2D" parent="Furniture/ShelfLeft" unique_id=701505782]
 scale = Vector2(0.9, 0.9)
 texture = ExtResource("28_tex")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Furniture/ShelfLeft"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Furniture/ShelfLeft" unique_id=1609804142]
 position = Vector2(0, 13.1)
 shape = SubResource("Box_ShelfLeft")
 
-[node name="ShelfRight" type="StaticBody2D" parent="Furniture"]
+[node name="ShelfRight" type="StaticBody2D" parent="Furniture" unique_id=1863700590]
 position = Vector2(880, 90)
 
-[node name="Sprite2D" type="Sprite2D" parent="Furniture/ShelfRight"]
+[node name="Sprite2D" type="Sprite2D" parent="Furniture/ShelfRight" unique_id=1086044544]
 scale = Vector2(0.9, 0.9)
 texture = ExtResource("29_tex")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Furniture/ShelfRight"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Furniture/ShelfRight" unique_id=1645134571]
 position = Vector2(0, 11.1)
 shape = SubResource("Box_ShelfRight")
 
-[node name="BenchLeft" type="StaticBody2D" parent="Furniture"]
+[node name="BenchLeft" type="StaticBody2D" parent="Furniture" unique_id=553858374]
 position = Vector2(330, 588)
 
-[node name="Sprite2D" type="Sprite2D" parent="Furniture/BenchLeft"]
+[node name="Sprite2D" type="Sprite2D" parent="Furniture/BenchLeft" unique_id=741912373]
 scale = Vector2(0.9, 0.9)
 texture = ExtResource("30_tex")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Furniture/BenchLeft"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Furniture/BenchLeft" unique_id=627840335]
 position = Vector2(0, 14)
 shape = SubResource("Box_BenchLeft")
 
-[node name="BenchRight" type="StaticBody2D" parent="Furniture"]
-position = Vector2(840, 588)
+[node name="BenchRight" type="StaticBody2D" parent="Furniture" unique_id=311363692]
+position = Vector2(438, 112)
 
-[node name="Sprite2D" type="Sprite2D" parent="Furniture/BenchRight"]
+[node name="Sprite2D" type="Sprite2D" parent="Furniture/BenchRight" unique_id=1669070392]
 scale = Vector2(0.9, 0.9)
 texture = ExtResource("31_tex")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Furniture/BenchRight"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Furniture/BenchRight" unique_id=1049008491]
 position = Vector2(0, 14)
 shape = SubResource("Box_BenchRight")
 
-[node name="BenchSide" type="StaticBody2D" parent="Furniture"]
+[node name="BenchSide" type="StaticBody2D" parent="Furniture" unique_id=794396857]
 position = Vector2(50, 452)
 
-[node name="Sprite2D" type="Sprite2D" parent="Furniture/BenchSide"]
+[node name="Sprite2D" type="Sprite2D" parent="Furniture/BenchSide" unique_id=805416317]
 scale = Vector2(0.9, 0.9)
 texture = ExtResource("32_tex")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Furniture/BenchSide"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Furniture/BenchSide" unique_id=2132193435]
 position = Vector2(0, 20.2)
 shape = SubResource("Box_BenchSide")
 
-[node name="CratesLeft" type="StaticBody2D" parent="Furniture"]
+[node name="CratesLeft" type="StaticBody2D" parent="Furniture" unique_id=1035591920]
 position = Vector2(60, 205)
 
-[node name="Sprite2D" type="Sprite2D" parent="Furniture/CratesLeft"]
+[node name="Sprite2D" type="Sprite2D" parent="Furniture/CratesLeft" unique_id=190433075]
 scale = Vector2(0.9, 0.9)
 texture = ExtResource("33_tex")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Furniture/CratesLeft"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Furniture/CratesLeft" unique_id=1416970870]
 position = Vector2(0, 16.3)
 shape = SubResource("Box_CratesLeft")
 
-[node name="CratesRight" type="StaticBody2D" parent="Furniture"]
+[node name="CratesRight" type="StaticBody2D" parent="Furniture" unique_id=1856358626]
 position = Vector2(1108, 440)
 
-[node name="Sprite2D" type="Sprite2D" parent="Furniture/CratesRight"]
+[node name="Sprite2D" type="Sprite2D" parent="Furniture/CratesRight" unique_id=1707540554]
 scale = Vector2(0.9, 0.9)
 texture = ExtResource("34_tex")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Furniture/CratesRight"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Furniture/CratesRight" unique_id=269157721]
 position = Vector2(0, 9.6)
 shape = SubResource("Box_CratesRight")
 
-[node name="CratesRight2" type="StaticBody2D" parent="Furniture"]
+[node name="CratesRight2" type="StaticBody2D" parent="Furniture" unique_id=1270534726]
 position = Vector2(1092, 225)
 
-[node name="Sprite2D" type="Sprite2D" parent="Furniture/CratesRight2"]
+[node name="Sprite2D" type="Sprite2D" parent="Furniture/CratesRight2" unique_id=1654200420]
 scale = Vector2(0.9, 0.9)
 texture = ExtResource("35_tex")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Furniture/CratesRight2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Furniture/CratesRight2" unique_id=1436160535]
 position = Vector2(0, 6.5)
 shape = SubResource("Box_CratesRight2")
 
-[node name="CoverLeft" type="StaticBody2D" parent="Furniture"]
+[node name="CoverLeft" type="StaticBody2D" parent="Furniture" unique_id=1002767083]
 position = Vector2(330, 330)
 
-[node name="Sprite2D" type="Sprite2D" parent="Furniture/CoverLeft"]
-scale = Vector2(1, 1)
+[node name="Sprite2D" type="Sprite2D" parent="Furniture/CoverLeft" unique_id=355217390]
 texture = ExtResource("36_tex")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Furniture/CoverLeft"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Furniture/CoverLeft" unique_id=1407345746]
 position = Vector2(0, 9.2)
 shape = SubResource("Box_CoverLeft")
 
-[node name="CoverRight" type="StaticBody2D" parent="Furniture"]
+[node name="CoverRight" type="StaticBody2D" parent="Furniture" unique_id=369009354]
 position = Vector2(822, 330)
 
-[node name="Sprite2D" type="Sprite2D" parent="Furniture/CoverRight"]
+[node name="Sprite2D" type="Sprite2D" parent="Furniture/CoverRight" unique_id=923103208]
 scale = Vector2(1.1, 1.1)
 texture = ExtResource("37_tex")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Furniture/CoverRight"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Furniture/CoverRight" unique_id=1004496473]
 position = Vector2(0, 7.6)
 shape = SubResource("Box_CoverRight")
 
-[node name="CoverStackTop" type="StaticBody2D" parent="Furniture"]
+[node name="CoverStackTop" type="StaticBody2D" parent="Furniture" unique_id=646965406]
 position = Vector2(700, 120)
 
-[node name="Sprite2D" type="Sprite2D" parent="Furniture/CoverStackTop"]
-scale = Vector2(1, 1)
+[node name="Sprite2D" type="Sprite2D" parent="Furniture/CoverStackTop" unique_id=1064894050]
 texture = ExtResource("35_tex")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Furniture/CoverStackTop"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Furniture/CoverStackTop" unique_id=2076138465]
 position = Vector2(0, 7.2)
 shape = SubResource("Box_CoverStackTop")
 
-[node name="CoverMidLeft" type="StaticBody2D" parent="Furniture"]
+[node name="CoverMidLeft" type="StaticBody2D" parent="Furniture" unique_id=1624039426]
 position = Vector2(200, 300)
 
-[node name="Sprite2D" type="Sprite2D" parent="Furniture/CoverMidLeft"]
-scale = Vector2(1, 1)
+[node name="Sprite2D" type="Sprite2D" parent="Furniture/CoverMidLeft" unique_id=110261532]
 texture = ExtResource("34_tex")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Furniture/CoverMidLeft"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Furniture/CoverMidLeft" unique_id=738826414]
 position = Vector2(0, 10.7)
 shape = SubResource("Box_CoverMidLeft")
 
-[node name="CoverMidRight" type="StaticBody2D" parent="Furniture"]
+[node name="CoverMidRight" type="StaticBody2D" parent="Furniture" unique_id=664215586]
 position = Vector2(960, 440)
 
-[node name="Sprite2D" type="Sprite2D" parent="Furniture/CoverMidRight"]
-scale = Vector2(1, 1)
+[node name="Sprite2D" type="Sprite2D" parent="Furniture/CoverMidRight" unique_id=1073154121]
 texture = ExtResource("34_tex")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Furniture/CoverMidRight"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Furniture/CoverMidRight" unique_id=278753952]
 position = Vector2(0, 10.7)
 shape = SubResource("Box_CoverMidRight")
 
-[node name="StorageBoxes" type="StaticBody2D" parent="Furniture"]
+[node name="StorageBoxes" type="StaticBody2D" parent="Furniture" unique_id=1492170909]
 position = Vector2(470, 555)
 
-[node name="Sprite2D" type="Sprite2D" parent="Furniture/StorageBoxes"]
+[node name="Sprite2D" type="Sprite2D" parent="Furniture/StorageBoxes" unique_id=330484627]
 scale = Vector2(2, 2)
 texture = ExtResource("38_tex")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Furniture/StorageBoxes"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Furniture/StorageBoxes" unique_id=830464609]
 position = Vector2(0, 5.4)
 shape = SubResource("Box_StorageBoxes")
 
-[node name="CratesBottom" type="StaticBody2D" parent="Furniture"]
+[node name="CratesBottom" type="StaticBody2D" parent="Furniture" unique_id=397626640]
 position = Vector2(700, 560)
 
-[node name="Sprite2D" type="Sprite2D" parent="Furniture/CratesBottom"]
+[node name="Sprite2D" type="Sprite2D" parent="Furniture/CratesBottom" unique_id=1453843327]
 scale = Vector2(0.9, 0.9)
 texture = ExtResource("35_tex")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Furniture/CratesBottom"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Furniture/CratesBottom" unique_id=203459336]
 position = Vector2(0, 6.5)
 shape = SubResource("Box_CratesBottom")
 
-[node name="PinballPads" type="Node2D" parent="."]
+[node name="PinballPads" type="Node2D" parent="." unique_id=434478219]
 
-[node name="PadTopLeft" parent="PinballPads" instance=ExtResource("pad_scene")]
+[node name="PadTopLeft" parent="PinballPads" unique_id=342038409 instance=ExtResource("pad_scene")]
 position = Vector2(11, 48)
 
-[node name="PadTopRight" parent="PinballPads" instance=ExtResource("pad_scene")]
+[node name="PadTopRight" parent="PinballPads" unique_id=348764721 instance=ExtResource("pad_scene")]
 position = Vector2(1141, 48)
 rotation = 1.570796
 
-[node name="PadBottomRight" parent="PinballPads" instance=ExtResource("pad_scene")]
+[node name="PadBottomRight" parent="PinballPads" unique_id=1044731502 instance=ExtResource("pad_scene")]
 position = Vector2(1141, 637)
 rotation = 3.141593
 
-[node name="PadBottomLeft" parent="PinballPads" instance=ExtResource("pad_scene")]
+[node name="PadBottomLeft" parent="PinballPads" unique_id=1394293304 instance=ExtResource("pad_scene")]
 position = Vector2(11, 637)
 rotation = 4.712389
 
-[node name="Spawn" type="Marker2D" parent="."]
+[node name="Spawn" type="Marker2D" parent="." unique_id=48150296]
 position = Vector2(576, 324)
 
-[node name="SpawnPoints" type="Node2D" parent="."]
+[node name="SpawnPoints" type="Node2D" parent="." unique_id=2122593680]
 
-[node name="Enemy1" type="Marker2D" parent="SpawnPoints" groups=["enemy_spawn"]]
-position = Vector2(170, 135)
+[node name="Enemy1" type="Marker2D" parent="SpawnPoints" unique_id=156368906 groups=["enemy_spawn"]]
+position = Vector2(190, 205)
 
-[node name="Enemy2" type="Marker2D" parent="SpawnPoints" groups=["enemy_spawn"]]
+[node name="Enemy2" type="Marker2D" parent="SpawnPoints" unique_id=1388293763 groups=["enemy_spawn"]]
 position = Vector2(576, 110)
 
-[node name="Enemy3" type="Marker2D" parent="SpawnPoints" groups=["enemy_spawn"]]
+[node name="Enemy3" type="Marker2D" parent="SpawnPoints" unique_id=1488548098 groups=["enemy_spawn"]]
 position = Vector2(980, 135)
 
-[node name="Enemy4" type="Marker2D" parent="SpawnPoints" groups=["enemy_spawn"]]
+[node name="Enemy4" type="Marker2D" parent="SpawnPoints" unique_id=1657011653 groups=["enemy_spawn"]]
 position = Vector2(1060, 330)
 
-[node name="Enemy5" type="Marker2D" parent="SpawnPoints" groups=["enemy_spawn"]]
+[node name="Enemy5" type="Marker2D" parent="SpawnPoints" unique_id=291705335 groups=["enemy_spawn"]]
 position = Vector2(980, 540)
 
-[node name="Enemy6" type="Marker2D" parent="SpawnPoints" groups=["enemy_spawn"]]
+[node name="Enemy6" type="Marker2D" parent="SpawnPoints" unique_id=1724387803 groups=["enemy_spawn"]]
 position = Vector2(576, 560)
 
-[node name="Enemy7" type="Marker2D" parent="SpawnPoints" groups=["enemy_spawn"]]
+[node name="Enemy7" type="Marker2D" parent="SpawnPoints" unique_id=2080747585 groups=["enemy_spawn"]]
 position = Vector2(170, 540)
 
-[node name="Enemy8" type="Marker2D" parent="SpawnPoints" groups=["enemy_spawn"]]
-position = Vector2(110, 330)
+[node name="Enemy8" type="Marker2D" parent="SpawnPoints" unique_id=572939370 groups=["enemy_spawn"]]
+position = Vector2(90, 340)

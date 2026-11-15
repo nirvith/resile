@@ -6,6 +6,12 @@ const ENEMIES = {
 	"boss": preload("res://boss.tscn"),
 }
 
+const death_lines = [
+	"Get up. I'm not paying for a new janitor",
+	"That's coming out of your paycheck too.",
+	"Oh good, you're still here.",
+]
+
 const Message_box = "res://message_box.tscn"
 const ending = "res://ending.tscn"
 const SPAWN_GAP = 0.3   # seconds between each enemy appearing
@@ -142,7 +148,10 @@ func _on_player_died():
 			node.queue_free()
 	player.cells = player.max_cells
 	player.update_look()
-	player.global_position = map.get_node("Spawn").global_position
+	var spawn = map.get_node("Spawn").global_position
+	player.global_position = spawn + Vector2(0, -150)
+	create_tween().tween_property(player, "global_position", spawn, 0.8).set_trans(Tween.TRANS_BOUNCE).set_ease(Tween.EASE_OUT)
+	heckle()
 	player.invulnerable_left = 1.5
 	start_wave.call_deferred(false)
 
@@ -158,3 +167,10 @@ func _unhandled_input(event):
 	if event.is_action_pressed("ui_cancel"):
 		Engine.time_scale = 1.0
 		get_tree().change_scene_to_file("res://title.tscn")
+		
+		
+func heckle():
+	var box = load(Message_box).instantiate()
+	add_child(box)
+	box.show_line(death_lines.pick_random(), 2.5)
+	box.finished.connect(box.queue_free)

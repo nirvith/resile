@@ -34,6 +34,13 @@ func _physics_process(delta: float) -> void:
 	# using a deleted node crashes the game.
 
 	var dir := global_position.direction_to(player.global_position)
+	
+	if get_slide_collision_count() > 0:
+		var normal := get_slide_collision(0).get_normal()
+		var around := Vector2(-normal.y, normal.x)
+		if around.dot(dir) < 0:
+			around = -around
+		dir = (dir + around * 1.5).normalized()
 	# Unit vector (length 1) pointing from the enemy to the player.
 	# global_position = position in world space, not relative to the parent.
 	velocity = dir * speed

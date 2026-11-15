@@ -542,7 +542,7 @@ position = Vector2(576, 190)
 [node name="SpawnPoints" type="Node2D" parent="."]
 
 [node name="Enemy1" type="Marker2D" parent="SpawnPoints" groups=["enemy_spawn"]]
-position = Vector2(150, 300)
+position = Vector2(170, 380)
 
 [node name="Enemy2" type="Marker2D" parent="SpawnPoints" groups=["enemy_spawn"]]
 position = Vector2(1002, 300)
