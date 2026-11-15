@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bqqreg1m3tm6v" path="res://assets/Scifi_Facility_Buider_Pack_1_ver 2.0/Architecture/Walls/W1_Painted_Metal_Wall/W1_base/W1_divider_V.png" id="4_pkg7o"]
 [ext_resource type="PackedScene" uid="uid://bpdy5oedjk5yx" path="res://player.tscn" id="5_dwbse"]
 [ext_resource type="PackedScene" uid="uid://6x4yavgk6xos" path="res://Crawler.tscn" id="6_pkg7o"]
+[ext_resource type="PackedScene" uid="uid://detekufaqappo" path="res://Glutton.tscn" id="7_pkg7o"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gbfbk"]
 texture = ExtResource("1_aqk2v")
@@ -44,4 +45,7 @@ tile_set = SubResource("TileSet_ualut")
 position = Vector2(33, 26)
 
 [node name="Crawler" parent="." unique_id=1218361481 instance=ExtResource("6_pkg7o")]
-position = Vector2(69, 89)
+position = Vector2(448, 259)
+
+[node name="Crawler2" parent="." unique_id=794723956 instance=ExtResource("7_pkg7o")]
+position = Vector2(770, 215)

@@ -56,10 +56,11 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_ualut"]
 radius = 14.142136
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_ahshk"]
+radius = 4.1231055
+
 [node name="Crawler" type="CharacterBody2D" unique_id=794723956]
 script = ExtResource("1_5sqno")
-
-[node name="Enemy" type="CharacterBody2D" parent="." unique_id=1870535256]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1867953091]
 position = Vector2(-3, -2)
@@ -67,7 +68,12 @@ sprite_frames = SubResource("SpriteFrames_ualut")
 animation = &"new_animation"
 
 [node name="Area2D" type="Area2D" parent="." unique_id=117525166]
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1961621255]
 position = Vector2(3, 2)
 shape = SubResource("CircleShape2D_ualut")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=428752788]
+position = Vector2(6, -4)
+shape = SubResource("CircleShape2D_ahshk")
