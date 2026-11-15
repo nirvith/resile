@@ -54,17 +54,18 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ualut"]
-radius = 14.142136
+radius = 24.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ahshk"]
-radius = 4.1231055
+radius = 18.0
 
 [node name="Crawler" type="CharacterBody2D" unique_id=794723956]
 collision_layer = 4
 script = ExtResource("1_5sqno")
+max_health = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1867953091]
-position = Vector2(-3, -2)
+position = Vector2(-6, -4)
 sprite_frames = SubResource("SpriteFrames_ualut")
 animation = &"new_animation"
 
@@ -76,5 +77,5 @@ position = Vector2(3, 2)
 shape = SubResource("CircleShape2D_ualut")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=428752788]
-position = Vector2(6, -4)
+position = Vector2(1, 2)
 shape = SubResource("CircleShape2D_ahshk")

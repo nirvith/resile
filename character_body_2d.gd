@@ -1,4 +1,5 @@
 extends CharacterBody2D
+signal died
 
 const Bolt = preload("res://bolt.tscn")
 const fire_rate_cooldown = .35
@@ -43,7 +44,7 @@ func take_damage(amount):
 	invulnerable_left = invulnerable_time
 	update_look()
 	if cells <= 0:
-		get_tree().reload_current_scene.call_deferred()
+		died.emit()
 		
 func gain_cell():
 	cells = min(cells + 1, max_cells)

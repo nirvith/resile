@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://4ys0tfxuooy3"]
 
 [ext_resource type="PackedScene" uid="uid://bpdy5oedjk5yx" path="res://player.tscn" id="1_wtcfe"]
-[ext_resource type="PackedScene" uid="uid://6x4yavgk6xos" path="res://Crawler.tscn" id="2_0e48y"]
+[ext_resource type="Script" uid="uid://bhighbkp4puh1" path="res://waves.gd" id="2_0e48y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nw1ws"]
 size = Vector2(1152, 20)
@@ -33,8 +33,5 @@ shape = SubResource("RectangleShape2D_d6aes")
 position = Vector2(1142, 324)
 shape = SubResource("RectangleShape2D_d6aes")
 
-[node name="Crawler" parent="." unique_id=794723956 instance=ExtResource("2_0e48y")]
-position = Vector2(1040, 560)
-
-[node name="Crawler2" parent="." unique_id=696809496 instance=ExtResource("2_0e48y")]
-position = Vector2(93, 97)
+[node name="Waves" type="Node" parent="." unique_id=784540875]
+script = ExtResource("2_0e48y")
