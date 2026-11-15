@@ -8,6 +8,7 @@ var bounces = 0
 var live = false
 
 func _ready():
+	add_to_group("bolts")
 	modulate.a = 0.4
 	
 func _physics_process(delta):
