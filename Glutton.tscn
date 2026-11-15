@@ -89,20 +89,22 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s3hw3"]
-size = Vector2(27, 39)
+size = Vector2(70, 96)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vcul4"]
-size = Vector2(20, 36)
+size = Vector2(40, 72)
 
 [node name="Crawler" unique_id=794723956 instance=ExtResource("1_uteek")]
+speed = 90.0
+max_health = 2
 
 [node name="AnimatedSprite2D" parent="." index="0" unique_id=1867953091]
 sprite_frames = SubResource("SpriteFrames_6ygt1")
 
 [node name="CollisionShape2D" parent="Area2D" parent_id_path=PackedInt32Array(117525166) index="0" unique_id=1961621255]
-position = Vector2(-3.5, 5.5)
+position = Vector2(-9, 8)
 shape = SubResource("RectangleShape2D_s3hw3")
 
 [node name="CollisionShape2D" parent="." index="2" unique_id=428752788]
-position = Vector2(-4, 5)
+position = Vector2(-9, 8)
 shape = SubResource("RectangleShape2D_vcul4")

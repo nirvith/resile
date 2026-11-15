@@ -4,10 +4,10 @@
 [ext_resource type="Script" uid="uid://du45kva7rquu4" path="res://bolt.gd" id="1_v78vr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ibe4h"]
-radius = 6.0
+radius = 9.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nw1ws"]
-radius = 6.0
+radius = 9.0
 
 [node name="Bolt" type="CharacterBody2D" unique_id=680512115]
 collision_layer = 0
@@ -15,7 +15,7 @@ motion_mode = 1
 script = ExtResource("1_v78vr")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=919942839]
-scale = Vector2(0.1, 0.1)
+scale = Vector2(0.15, 0.15)
 texture = ExtResource("1_bewd0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1218298536]

@@ -15,6 +15,7 @@ var attack_timer: = 0.0
 
 func _ready() -> void:
 	health = max_health
+	speed *= randf_range(0.8, 1.2)   # so a group spreads out instead of moving as one
 	add_to_group("enemies")
 	player = get_tree().get_first_node_in_group("player")
 	print("Enemy found player: ", player)
@@ -57,6 +58,8 @@ func take_damage(amount: int) -> void:
 	# Public function; the player's weapon will call enemy.take_damage(1).
 	health -= amount
 	if health <= 0:
+		Sfx.hit_stop()
+		get_tree().call_group("camera", "shake", 4)
 		queue_free()
 		# Delete this enemy at the end of the frame. Safer than deleting
 		# immediately, which could crash code still using it this frame.

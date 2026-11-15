@@ -1,0 +1,113 @@
+[gd_scene format=4 uid="uid://bky21smgqhccm"]
+
+[ext_resource type="Texture2D" uid="uid://domc1f4d3cu4f" path="res://assets/Scifi_Facility_Buider_Pack_1_ver 2.0/Architecture/Floor/F1_Floor_Painted/F1.png" id="1_wipva"]
+[ext_resource type="Texture2D" uid="uid://bn6dcrulm2vfw" path="res://assets/Scifi_Facility_Buider_Pack_1_ver 2.0/Architecture/Walls/W1_Painted_Metal_Wall/W1_base/W1_T.png" id="2_top"]
+[ext_resource type="Texture2D" uid="uid://wfutf64thq0d" path="res://assets/Scifi_Facility_Buider_Pack_1_ver 2.0/Architecture/Walls/W1_Painted_Metal_Wall/W1_base/W1_F.png" id="3_bottom"]
+[ext_resource type="Texture2D" uid="uid://c1wjcekbk088" path="res://assets/Scifi_Facility_Buider_Pack_1_ver 2.0/Architecture/Walls/W1_Painted_Metal_Wall/W1_base/W1_L.png" id="4_left"]
+[ext_resource type="Texture2D" uid="uid://dntal4dlmasvp" path="res://assets/Scifi_Facility_Buider_Pack_1_ver 2.0/Architecture/Walls/W1_Painted_Metal_Wall/W1_base/W1_R.png" id="5_right"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_aojxy"]
+texture = ExtResource("1_wipva")
+texture_region_size = Vector2i(256, 256)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_ibe4h"]
+tile_size = Vector2i(256, 256)
+sources/3 = SubResource("TileSetAtlasSource_aojxy")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_top"]
+size = Vector2(1152, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bottom"]
+size = Vector2(1152, 11)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_side"]
+size = Vector2(11, 648)
+
+[node name="CargoHold" type="Node2D"]
+
+[node name="Tiles" type="TileMapLayer" parent="."]
+scale = Vector2(0.25, 0.25)
+tile_map_data = PackedByteArray("AAABAAAAAwAAAAAAAAAAAAAAAwAAAAAAAAABAAEAAwAAAAAAAAACAAEAAwAAAAAAAAADAAIAAwAAAAAAAAAEAAMAAwAAAAAAAAAFAAMAAwAAAAAAAAAFAAQAAwAAAAAAAAAGAAQAAwAAAAAAAAAHAAUAAwAAAAAAAAAIAAUAAwAAAAAAAAAIAAYAAwAAAAAAAAAJAAYAAwAAAAAAAAAKAAcAAwAAAAAAAAALAAcAAwAAAAAAAAALAAgAAwAAAAAAAAAMAAgAAwAAAAAAAAANAAgAAwAAAAAAAAANAAkAAwAAAAAAAAAOAAkAAwAAAAAAAAACAAAAAwAAAAAAAAADAAAAAwAAAAAAAAAEAAAAAwAAAAAAAAAFAAAAAwAAAAAAAAAGAAAAAwAAAAAAAAAHAAAAAwAAAAAAAAAIAAAAAwAAAAAAAAAJAAAAAwAAAAAAAAAKAAEAAwAAAAAAAAALAAEAAwAAAAAAAAAMAAEAAwAAAAAAAAAMAAAAAwAAAAAAAAALAAAAAwAAAAAAAAAKAAAAAwAAAAAAAAANAAAAAwAAAAAAAAAOAAAAAwAAAAAAAAAPAAAAAwAAAAAAAAAQAAAAAwAAAAAAAAARAAAAAwAAAAAAAAARAAEAAwAAAAAAAAARAAIAAwAAAAAAAAAQAAEAAwAAAAAAAAAPAAEAAwAAAAAAAAAOAAEAAwAAAAAAAAANAAEAAwAAAAAAAAAJAAEAAwAAAAAAAAAIAAEAAwAAAAAAAAAHAAEAAwAAAAAAAAAEAAEAAwAAAAAAAAADAAEAAwAAAAAAAAAFAAEAAwAAAAAAAAAGAAEAAwAAAAAAAAAGAAIAAwAAAAAAAAAFAAIAAwAAAAAAAAAEAAIAAwAAAAAAAAAHAAIAAwAAAAAAAAAIAAIAAwAAAAAAAAAJAAIAAwAAAAAAAAAKAAIAAwAAAAAAAAALAAIAAwAAAAAAAAAMAAIAAwAAAAAAAAANAAIAAwAAAAAAAAAOAAIAAwAAAAAAAAAPAAIAAwAAAAAAAAAQAAIAAwAAAAAAAAARAAMAAwAAAAAAAAAQAAMAAwAAAAAAAAAPAAMAAwAAAAAAAAAOAAMAAwAAAAAAAAANAAMAAwAAAAAAAAAMAAMAAwAAAAAAAAALAAMAAwAAAAAAAAAKAAMAAwAAAAAAAAAJAAMAAwAAAAAAAAAIAAMAAwAAAAAAAAAHAAMAAwAAAAAAAAAGAAMAAwAAAAAAAAAHAAQAAwAAAAAAAAAIAAQAAwAAAAAAAAAJAAQAAwAAAAAAAAAKAAQAAwAAAAAAAAALAAQAAwAAAAAAAAAMAAQAAwAAAAAAAAANAAQAAwAAAAAAAAAOAAQAAwAAAAAAAAAPAAQAAwAAAAAAAAAQAAQAAwAAAAAAAAARAAQAAwAAAAAAAAARAAUAAwAAAAAAAAAQAAUAAwAAAAAAAAAPAAUAAwAAAAAAAAAOAAUAAwAAAAAAAAANAAUAAwAAAAAAAAAMAAUAAwAAAAAAAAALAAUAAwAAAAAAAAAKAAUAAwAAAAAAAAAJAAUAAwAAAAAAAAAKAAYAAwAAAAAAAAALAAYAAwAAAAAAAAAMAAYAAwAAAAAAAAANAAYAAwAAAAAAAAAOAAYAAwAAAAAAAAAPAAYAAwAAAAAAAAAQAAYAAwAAAAAAAAARAAYAAwAAAAAAAAARAAcAAwAAAAAAAAAQAAcAAwAAAAAAAAAPAAcAAwAAAAAAAAAOAAcAAwAAAAAAAAANAAcAAwAAAAAAAAAMAAcAAwAAAAAAAAAOAAgAAwAAAAAAAAAPAAgAAwAAAAAAAAAQAAgAAwAAAAAAAAARAAgAAwAAAAAAAAARAAkAAwAAAAAAAAAQAAkAAwAAAAAAAAAPAAkAAwAAAAAAAAAMAAkAAwAAAAAAAAALAAkAAwAAAAAAAAAKAAkAAwAAAAAAAAAJAAkAAwAAAAAAAAAIAAkAAwAAAAAAAAAHAAkAAwAAAAAAAAAGAAkAAwAAAAAAAAAFAAkAAwAAAAAAAAAEAAkAAwAAAAAAAAADAAkAAwAAAAAAAAACAAkAAwAAAAAAAAABAAkAAwAAAAAAAAAAAAkAAwAAAAAAAAAAAAgAAwAAAAAAAAAAAAcAAwAAAAAAAAAAAAYAAwAAAAAAAAAAAAUAAwAAAAAAAAAAAAQAAwAAAAAAAAAAAAMAAwAAAAAAAAAAAAIAAwAAAAAAAAAAAAEAAwAAAAAAAAABAAIAAwAAAAAAAAACAAIAAwAAAAAAAAADAAMAAwAAAAAAAAACAAMAAwAAAAAAAAABAAMAAwAAAAAAAAABAAQAAwAAAAAAAAACAAQAAwAAAAAAAAADAAQAAwAAAAAAAAAEAAQAAwAAAAAAAAAFAAUAAwAAAAAAAAAGAAUAAwAAAAAAAAAEAAUAAwAAAAAAAAADAAUAAwAAAAAAAAACAAUAAwAAAAAAAAABAAUAAwAAAAAAAAABAAYAAwAAAAAAAAACAAYAAwAAAAAAAAADAAYAAwAAAAAAAAAEAAYAAwAAAAAAAAAGAAYAAwAAAAAAAAAHAAYAAwAAAAAAAAAJAAcAAwAAAAAAAAAIAAcAAwAAAAAAAAAHAAcAAwAAAAAAAAAGAAcAAwAAAAAAAAAFAAcAAwAAAAAAAAAEAAcAAwAAAAAAAAADAAcAAwAAAAAAAAACAAcAAwAAAAAAAAABAAcAAwAAAAAAAAABAAgAAwAAAAAAAAACAAgAAwAAAAAAAAADAAgAAwAAAAAAAAAEAAgAAwAAAAAAAAAFAAgAAwAAAAAAAAAGAAgAAwAAAAAAAAAHAAgAAwAAAAAAAAAIAAgAAwAAAAAAAAAJAAgAAwAAAAAAAAAKAAgAAwAAAAAAAAAFAAYAAwAAAAAAAAA=")
+tile_set = SubResource("TileSet_ibe4h")
+
+[node name="TopWall" type="Sprite2D" parent="."]
+texture_repeat = 2
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_top")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 4608, 192)
+
+[node name="BottomWall" type="Sprite2D" parent="."]
+texture_repeat = 2
+position = Vector2(0, 637)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("3_bottom")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 4608, 43)
+
+[node name="LeftWall" type="Sprite2D" parent="."]
+texture_repeat = 2
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("4_left")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 43, 2592)
+
+[node name="RightWall" type="Sprite2D" parent="."]
+texture_repeat = 2
+position = Vector2(1141, 0)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("5_right")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 43, 2592)
+
+[node name="Walls" type="StaticBody2D" parent="."]
+
+[node name="Top" type="CollisionShape2D" parent="Walls"]
+position = Vector2(576, 24)
+shape = SubResource("RectangleShape2D_top")
+
+[node name="Bottom" type="CollisionShape2D" parent="Walls"]
+position = Vector2(576, 642.5)
+shape = SubResource("RectangleShape2D_bottom")
+
+[node name="Left" type="CollisionShape2D" parent="Walls"]
+position = Vector2(5.5, 324)
+shape = SubResource("RectangleShape2D_side")
+
+[node name="Right" type="CollisionShape2D" parent="Walls"]
+position = Vector2(1146.5, 324)
+shape = SubResource("RectangleShape2D_side")
+
+[node name="Spawn" type="Marker2D" parent="."]
+position = Vector2(576, 324)
+
+[node name="SpawnPoints" type="Node2D" parent="."]
+
+[node name="Enemy1" type="Marker2D" parent="SpawnPoints" groups=["enemy_spawn"]]
+position = Vector2(150, 120)
+
+[node name="Enemy2" type="Marker2D" parent="SpawnPoints" groups=["enemy_spawn"]]
+position = Vector2(576, 110)
+
+[node name="Enemy3" type="Marker2D" parent="SpawnPoints" groups=["enemy_spawn"]]
+position = Vector2(1000, 120)
+
+[node name="Enemy4" type="Marker2D" parent="SpawnPoints" groups=["enemy_spawn"]]
+position = Vector2(1060, 324)
+
+[node name="Enemy5" type="Marker2D" parent="SpawnPoints" groups=["enemy_spawn"]]
+position = Vector2(1000, 560)
+
+[node name="Enemy6" type="Marker2D" parent="SpawnPoints" groups=["enemy_spawn"]]
+position = Vector2(576, 575)
+
+[node name="Enemy7" type="Marker2D" parent="SpawnPoints" groups=["enemy_spawn"]]
+position = Vector2(150, 560)
+
+[node name="Enemy8" type="Marker2D" parent="SpawnPoints" groups=["enemy_spawn"]]
+position = Vector2(95, 324)
