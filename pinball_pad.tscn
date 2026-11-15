@@ -6,21 +6,21 @@
 script = ExtResource("1_script")
 
 [node name="Glow" type="Polygon2D" parent="."]
-color = Color(1, 0.24, 0.75, 0.35)
+color = Color(1, 0.79, 0.24, 0.35)
 polygon = PackedVector2Array(0, 0, 112, 0, 0, 112)
 
 [node name="Pad" type="Polygon2D" parent="."]
-color = Color(0.9, 0.16, 0.67, 1)
+color = Color(1, 0.79, 0.24, 1)
 polygon = PackedVector2Array(0, 0, 90, 0, 0, 90)
 
 [node name="Highlight" type="Polygon2D" parent="."]
-color = Color(1, 0.67, 0.9, 1)
+color = Color(1, 0.94, 0.67, 1)
 polygon = PackedVector2Array(6, 6, 55, 6, 6, 55)
 
 [node name="Edge" type="Line2D" parent="."]
 points = PackedVector2Array(90, 0, 0, 90)
 width = 4.0
-default_color = Color(1, 0.94, 0.47, 1)
+default_color = Color(1, 1, 1, 1)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(0, 0, 90, 0, 0, 90)

@@ -11,6 +11,7 @@ const max_bolts = 3
 const max_cells = 8
 const invulnerable_time = 0.5
 const throw_speed = 400
+const ALARM_RED = Color("ff3d5a")   # palette red = damage
 
 
 var speed = 200
@@ -47,9 +48,13 @@ func take_damage(amount):
 	amount = min(amount, cells)
 	cells -= amount
 	for i in amount:
-		throw_chunk()
+		throw_chunk().call_deferred()
 	Sfx.play(HURT_SOUND)
 	get_tree().call_group("camera", "shake", 8)
+	# Red hurt flash. self_modulate is separate from modulate, so it doesn't
+	# fight with the invulnerability blink, which changes modulate's alpha.
+	$Sprite.self_modulate = ALARM_RED
+	create_tween().tween_property($Sprite, "self_modulate", Color.WHITE, 0.25)
 	invulnerable_left = invulnerable_time
 	update_look()
 	if cells <= 0:
@@ -71,7 +76,7 @@ func shatter(keep):
 	var lost = cells - keep
 	cells = keep
 	for i in lost:
-		throw_chunk(900)
+		throw_chunk.call_deferred(900)
 	get_tree().call_group("camera", "shake", 20)
 	update_look()
 

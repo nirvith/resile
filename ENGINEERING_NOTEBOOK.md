@@ -29,7 +29,7 @@ This notebook records what we built, what we decided, and **why**, so either of 
 | Bolt power-up | each bounce +15% speed and size; pierces enemies after 2 bounces | `SPEED_UP`, `PIERCE_AFTER` |
 | Fire rate | one shot per 0.35 s, at most 3 bolts in the air ("the barrel") | `fire_rate_cooldown`, `max_bolts` |
 | Live bolts | hurt enemies **and** the blob | `_on_hitbox_body_entered` |
-| Pinball pad | bolt goes gold: speed ×1.6, 10 bounces, always pierces, cannot hurt the blob | `start_pinball` |
+| Pinball pad | bolt turns hot gold: speed ×1.6, 10 bounces, always pierces, cannot hurt the blob | `start_pinball` |
 | Death | the current wave restarts | `waves.gd` |
 
 ---
@@ -73,6 +73,24 @@ These are the rules both of us code against. Breaking one of them is the most li
 | Nik | Agastya |
 |---|---|
 | `node_2d.tscn` (game scene), `player.tscn`, `character_body_2d.gd`, `bolt.*`, `chunk.*`, `waves.gd`, `camera.gd`, `sfx.gd` | `Crawler.tscn`, `Glutton.tscn`, `node_2d_1.gd` (enemy script), maps (`cargo_hold.tscn`, future levels), `pinball_pad.*`, title / intro / message box / ending scenes, `world.tscn` (scratch) |
+
+---
+
+## 2b. Visual style guide
+
+Every colour has one meaning. If something new doesn't fit one of these roles, it should be slate.
+
+| Colour | Hex | Meaning | Used on |
+|---|---|---|---|
+| Slate | `#2B3A4A` / `#5C6F82` | The ship | Walls, floor, furniture (the sci-fi pack's own colours) |
+| Cyan | `#4FD6E6` | You | The blob, chunks, faint bolts, the player's HUD |
+| Gold | `#FFC93C` (hot gold `#FFF0AA`) | Power / reward | Live bolts, pinball pads and pinball bolts, pickups, hazard stripes |
+| Alien green | `#8CFF5A` (shader tint `0.55, 1, 0.35`) | Enemies | Every alien, via `art/alien.gdshader` |
+| Alarm red | `#FF3D5A` | Danger / damage | Hurt flashes (blob and enemies), alarm lights, boss attacks |
+
+**Text:** one pixel font everywhere (to be chosen by Agastya, set once in a Godot Theme); off-white on dark navy panels; gold for anything important.
+
+**Screen layers:** the game world is on the default canvas, under a `CanvasModulate` colour grade. The vignette is a `CanvasLayer` on layer 1. **All UI (HUD, message box, menus) must use CanvasLayer layer 2 or higher**, so the vignette never darkens it and the colour grade never tints it.
 
 ---
 
@@ -161,9 +179,32 @@ Why: the room was flat and empty. Added: a grated maintenance border and hatch /
 Props are drawn at 0.9–1.1× instead of the walls' 0.25× so they read next to the 96 px blob; this is a deliberate size mismatch for readability.
 
 **D23. Pinball pads.** *(~5 am)* See section 5 for line-by-line code.
-A glowing pink triangle in each corner. A bolt that hits one turns gold: speed ×1.6, 10 bounces, always pierces, **cannot hurt the blob**, leaves a trail. Only the first pad hit triggers it, so a bolt can't live forever by bouncing between pads.
+A glowing triangle in each corner (built pink, recoloured gold in D24). A bolt that hits one turns hot gold: speed ×1.6, 10 bounces, always pierces, **cannot hurt the blob**, leaves a trail. Only the first pad hit triggers it, so a bolt can't live forever by bouncing between pads.
 Why: corners are hard to hit on purpose, so a pad hit is a skill shot with a big payoff: "bounce back stronger".
 Balance risk: a pinball bolt can clear a wave alone. It still occupies one of the 3 barrel slots for its whole life. If it's too strong, lower `PINBALL_BOUNCES` to 6.
+
+**D24. Visual cohesion pass: a five-colour palette where colour = meaning.** *(~5:35 am)*
+Problem: the game looked "thrown together". Causes found: the bolt was the Godot logo (a placeholder); the enemies come from a fantasy art pack (an eyeball and a mushroom on a spaceship); objects are drawn at different pixel sizes; colours were picked one at a time and meant nothing.
+Decision: the palette in section 2b, applied by role. Done in this pass:
+- **Bolt** is now a 16×16 pixel orb (`art/bolt_orb.png`, white so code can tint it): cyan while faint, gold when live, hot gold in pinball mode.
+- **All aliens** are recoloured to one green by a shader, so both art packs read as one species. Their hit flash is now palette red through the same shader.
+- **Pinball pads** are gold (a reward), matching the pinball bolt.
+- **The blob** flashes alarm red when hurt.
+- **Colour grade + vignette:** a slight cool `CanvasModulate` over the world and a dark vignette around the screen edges. This is the standard jam trick for making art from different sources sit together.
+Not done here (Agastya): one font and a Theme; using the palette for the comic, title, HUD and message box.
+Considered: finding new art packs or redrawing enemies. Rejected: hours of work for the same effect the palette gives in one.
+Known limit: the pixel-size mismatch between the blob, props and walls is reduced, not removed, without new art.
+
+**D25. Level 2 map: the Control Deck (the boss's office).** *(~6 am)* See section 5.6 for how it is built.
+Why this room: level 2's job (D21) is "obstacles and more enemies". Making it the boss's own office lets the map tell part of the story: it uses the pack's clean sterile set (F2 floor, W2 walls), because it's the floor he told you not to scratch. His desk sits in front of his office door with a "do not enter" sign.
+What's in it:
+- **Four wall islands** (192×48 each, solid on layer 1) around the start zone. Bolts bank off them exactly like walls, so the room becomes lanes and corner shots instead of one open box. This is what makes level 2 play differently from level 1.
+- The boss's desk at the top, two benches on the side walls, the same four gold pinball pads in the corners, and the same hazard-striped start zone.
+- Eight enemy spawn markers, placed so none is inside an obstacle.
+- **Level tint stored in the map:** each map's root node carries `metadata/tint` (cargo hold `0.88, 0.93, 1` cool blue; control deck `1, 0.93, 0.84` warm amber). The level system can do `ColourGrade.color = map.get_meta("tint")` when it loads a map, so the colour lives with the map.
+- **`level2_test.tscn`:** a copy of the game scene with the control deck in place of the cargo hold and the amber grade, so level 2 can be played now without touching `node_2d.tscn`. Delete it once the level system loads maps.
+Known risk: enemies walk straight at the blob and slide along walls. An enemy directly behind an island can get stuck for a moment. If playtesting shows it's a problem, the cheap fix is to make flying Crawlers ignore the islands (a separate collision layer).
+Considered: furniture-only obstacles (like level 1's crates). Rejected: furniture collision is only the lower part of each prop, so bank shots feel inconsistent. Islands are whole solid rectangles, so the angles are predictable.
 
 ---
 
@@ -177,7 +218,7 @@ Balance risk: a pinball bolt can clear a wave alone. It still occupies one of th
 
 **`waves.gd`.** Holds the waves as a list of dictionaries (`line` + `enemies`). `start_wave` makes the boss speak (`await say(...)`), then spawns that wave's enemies one at a time. `_physics_process` starts the next wave when a wave is running and no `enemies` are left; `running` stops this from triggering while the boss is still talking. `say` uses Agastya's message box if `res://message_box.tscn` exists, otherwise prints and waits 1.5 s. `spawn_point` picks a shuffled marker more than 250 px from the blob. `_on_player_died` clears enemies, bolts and chunks, resets the blob, and restarts the same wave without the line.
 
-**`node_2d_1.gd` (enemy script, Agastya's).** Finds the blob by group, walks towards it (`direction_to`, `move_and_slide`), bites once per second while its `Area2D` overlaps the blob. Health comes from `max_health`; each spawn gets a random 80–120% speed so groups spread out. On death: hit-stop, small shake, `queue_free()`. On a non-lethal hit it flashes red with a tween.
+**`node_2d_1.gd` (enemy script, Agastya's).** Finds the blob by group, walks towards it (`direction_to`, `move_and_slide`), bites once per second while its `Area2D` overlaps the blob. Health comes from `max_health`; each spawn gets a random 80–120% speed so groups spread out. On death: hit-stop, small shake, `queue_free()`. On a non-lethal hit it flashes red: `set_flash` drives the alien shader's `flash` value from 1 to 0 with a tween.
 
 **`camera.gd`.** Follows the blob each frame with smoothing, limited to the room, zoom 1.15. `shake(amount)` sets a strength that drains at 40 per second; each frame the view is offset randomly by up to that strength.
 
@@ -200,7 +241,7 @@ Godot draws children from top to bottom, so the order of nodes is the drawing or
 | `WallDecor` | Sprites on the top wall, no collision | Electrical box, vents, "STOR" label, caution sign, two alarm lights with red glow sprites on top. |
 | `Walls` | StaticBody2D with four rectangles: top 1152×48, bottom 1152×11, sides 11×648 | The real wall collision, matching the sprites exactly. Unscaled, because scaled physics bodies misbehave. |
 | `Furniture` | One StaticBody2D per piece, each with a Sprite2D and a rectangle | Obstacles. The rectangle covers 90% of the width and the lower 65% of the height, because the art is drawn at a 3/4 angle: the top of a shelf is "behind" its base. |
-| `PinballPads` | Four instances of `pinball_pad.tscn` | One per corner. They're the same scene rotated 0°, 90°, 180°, 270°. |
+| `PinballPads` | Four instances of `pinball_pad.tscn` (gold) | One per corner. They're the same scene rotated 0°, 90°, 180°, 270°. |
 | `Spawn` | Marker2D at the centre | Where the blob starts (for future level loading). |
 | `SpawnPoints` | Eight Marker2Ds in group `enemy_spawn` | Where enemies enter, all away from furniture and pads. |
 
@@ -210,10 +251,10 @@ The scene was generated from a layout list (positions and scales for every piece
 
 ```
 PinballPad (StaticBody2D, layer 1)   ← counts as a wall
-├─ Glow (Polygon2D)          a bigger, see-through pink triangle that pulses
-├─ Pad (Polygon2D)           the solid pink triangle, 90×90 px
+├─ Glow (Polygon2D)          a bigger, see-through gold triangle that pulses
+├─ Pad (Polygon2D)           the solid gold triangle, 90×90 px
 ├─ Highlight (Polygon2D)     a lighter inner triangle, for a 3D look
-├─ Edge (Line2D)             a yellow line along the long edge, where bolts hit
+├─ Edge (Line2D)             a white line along the long edge, where bolts hit
 └─ CollisionPolygon2D        the same triangle as Pad: the physical shape
 ```
 The triangle's right angle sits in the room's corner, so a bolt that flies into a corner hits the long edge at 45° and bounces back out into the room instead of getting stuck.
@@ -226,10 +267,10 @@ extends StaticBody2D
 The pad is a StaticBody2D: a solid object that never moves. On layer 1, it behaves like a wall for everything.
 
 ```gdscript
-const BASE_COLOR = Color(0.9, 0.16, 0.67)
+const BASE_COLOR = Color("ffc93c")
 const FLASH_TIME = 0.3
 ```
-The pad's normal pink, and how long a hit flash lasts in seconds. Constants so they're easy to tune.
+The pad's normal palette gold, and how long a hit flash lasts in seconds. Constants so they're easy to tune.
 
 ```gdscript
 var time = 0.0
@@ -258,7 +299,7 @@ The glow's opacity. `sin(time * 4.0)` swings between −1 and 1 about every 1.5 
 ```gdscript
 	$Pad.color = BASE_COLOR.lerp(Color.WHITE, flash_left / FLASH_TIME)
 ```
-`lerp` blends two colours: 0 gives pink, 1 gives white. Right after a hit `flash_left / FLASH_TIME` is 1 (white), then it fades back to pink over 0.3 s.
+`lerp` blends two colours: 0 gives gold, 1 gives white. Right after a hit `flash_left / FLASH_TIME` is 1 (white), then it fades back to gold over 0.3 s.
 
 ```gdscript
 func flash():
@@ -275,7 +316,6 @@ const SPEED_UP = 1.15
 const MAX_SPEED = 1500.0
 const PINBALL_BOOST = 1.6
 const PINBALL_BOUNCES = 10
-const PINBALL_COLOR = Color(1.0, 0.85, 0.2)
 ```
 Tuning numbers. `MAX_SPEED` is new: without a cap, a pinball bolt speeding up 15% per bounce for 10 bounces would reach about 4,000 px/s, too fast to see.
 
@@ -300,9 +340,10 @@ var trail
 ```gdscript
 func _ready():
 	add_to_group("bolts")
-	modulate.a = 0.4
+	$Sprite2D.modulate = CYAN
+	modulate.a = 0.5
 ```
-Tag for the barrel count; start faint (harmless).
+Tag for the barrel count; start cyan and half see-through: faint and harmless (colours explained in 5.5).
 
 ```gdscript
 func _physics_process(delta):
@@ -345,10 +386,10 @@ Reflect off the surface (the normal is the direction the surface faces) and coun
 
 ```gdscript
 		speed = min(speed * SPEED_UP, MAX_SPEED)
-		if $Sprite2D.scale.x < 0.3:
+		if $Sprite2D.scale.x < MAX_ORB_SCALE:
 			$Sprite2D.scale *= SPEED_UP
 ```
-15% faster per bounce, never above the cap. The picture grows too, until it reaches 0.3 scale, so a 10-bounce bolt doesn't become huge.
+15% faster per bounce, never above the cap. The orb grows too, until it's twice its starting size, so a 10-bounce bolt doesn't become huge.
 
 ```gdscript
 		Sfx.play(BOUNCE_SOUND, -8.0, 1.0 + min(bounces, 8) * 0.12)
@@ -359,8 +400,9 @@ Bounce sound, quieter than the rest (−8 dB), with pitch rising 12% per bounce 
 		if not live:
 			live = true
 			modulate.a = 1.0
+			$Sprite2D.modulate = GOLD
 ```
-First bounce makes the bolt dangerous and fully visible.
+First bounce makes the bolt dangerous, fully visible, and gold.
 
 ```gdscript
 func start_pinball(pad):
@@ -373,9 +415,9 @@ Switch on pinball mode, make sure it's live, and give it a fresh count of 10 bou
 
 ```gdscript
 	speed = min(speed * PINBALL_BOOST, MAX_SPEED)
-	modulate = PINBALL_COLOR
+	$Sprite2D.modulate = PINBALL_COLOR
 ```
-The dramatic speed jump, and turn the bolt gold so the player sees it happened.
+The dramatic speed jump, and turn the orb hot gold so the player sees it happened.
 
 ```gdscript
 	pad.flash()
@@ -388,7 +430,7 @@ Feedback: the pad flashes white, the jingle plays at normal pitch, and the scree
 	trail = Line2D.new()
 	trail.top_level = true
 	trail.width = 6.0
-	trail.default_color = Color(1.0, 0.85, 0.2, 0.5)
+	trail.default_color = Color(GOLD, 0.5)
 	add_child(trail)
 ```
 Create the trail line in code. `top_level = true` means its points are in room coordinates instead of moving with the bolt; otherwise the whole trail would travel along with the bolt instead of staying behind it. It's added as a child so it's deleted together with the bolt.
@@ -415,12 +457,127 @@ Hit an enemy: sound, 1 damage. The bolt disappears unless it has bounced at leas
 ```
 Live bolts hurt the blob too (that's the risk in the design), **except** pinball bolts, which are safe, so a gold bolt is pure reward.
 
+### 5.5 Visual cohesion pass (D24), line by line
+
+**`bolt.gd`: colour by state.** New constants:
+```gdscript
+const CYAN = Color("4fd6e6")
+const GOLD = Color("ffc93c")
+const PINBALL_COLOR = Color("fff0aa")
+const MAX_ORB_SCALE = 3.0
+```
+`Color("4fd6e6")` builds a colour from a hex code, so the code uses exactly the palette's values. `MAX_ORB_SCALE` replaces the old 0.3 cap, because the new orb's starting scale is 1.5 (16 px × 1.5 = 24 px).
+
+```gdscript
+	$Sprite2D.modulate = CYAN
+	modulate.a = 0.5
+```
+In `_ready`: the orb is tinted cyan (the picture is white, so the tint is exactly its colour), and the whole bolt is half see-through: faint and harmless.
+
+```gdscript
+			$Sprite2D.modulate = GOLD
+```
+On the first bounce, next to `live = true`: the orb turns gold, the "power" colour.
+
+```gdscript
+	$Sprite2D.modulate = PINBALL_COLOR
+	...
+	trail.default_color = Color(GOLD, 0.5)
+```
+In `start_pinball`: hot gold, and a half-transparent gold trail. Only the sprite is tinted now (before, `modulate` tinted the whole bolt including the trail). `Color(GOLD, 0.5)` means "gold with 50% opacity".
+
+**`art/alien.gdshader`: one species.**
+```glsl
+shader_type canvas_item;
+```
+A shader for 2D drawing. It runs for every pixel of the sprite it's attached to.
+```glsl
+uniform vec4 tint : source_color = vec4(0.55, 1.0, 0.35, 1.0);
+uniform vec4 flash_color : source_color = vec4(1.0, 0.24, 0.35, 1.0);
+uniform float flash : hint_range(0.0, 1.0) = 0.0;
+```
+Settings that can be changed from the editor or code: the alien green, the flash red, and how much flash to show (0 to 1).
+```glsl
+	vec4 tex = texture(TEXTURE, UV);
+	float brightness = dot(tex.rgb, vec3(0.299, 0.587, 0.114));
+```
+Read this pixel's original colour, and turn it into a single brightness value. The three numbers are the standard weights for how bright the eye sees red, green and blue.
+```glsl
+	vec3 alien = clamp(0.12 + brightness * 1.8, 0.0, 1.0) * tint.rgb;
+```
+Repaint the pixel in green, keeping its light and dark detail: bright parts become bright green, dark parts dark green. `+ 0.12` and `* 1.8` brighten it, because the flying eye's original art is very dark; `clamp` keeps the value between 0 and 1.
+```glsl
+	vec3 final_colour = mix(alien, flash_color.rgb, flash);
+	COLOR = vec4(final_colour, tex.a) * COLOR;
+```
+Blend towards red by the `flash` amount, keep the original transparency, and multiply by `COLOR` so normal node tinting still works.
+
+**`Crawler.tscn`:** the `AnimatedSprite2D` uses a `ShaderMaterial` with this shader and **`resource_local_to_scene = true`**. That setting gives every spawned enemy its own copy of the material; without it, all enemies share one, and hitting one would flash every enemy on screen. The Glutton is built from the Crawler scene, so it inherits all of this.
+
+**`node_2d_1.gd`: the hit flash.**
+```gdscript
+	set_flash(1.0)
+	create_tween().tween_method(set_flash, 1.0, 0.0, 0.15)
+```
+Flash fully red, then let a tween call `set_flash` with values sliding from 1 to 0 over 0.15 s. The old version set `modulate` to red and back to white, which would have wiped out the green.
+```gdscript
+func set_flash(amount: float) -> void:
+	sprite.material.set_shader_parameter("flash", amount)
+```
+Passes the value into the shader's `flash` setting.
+
+**`character_body_2d.gd`: the blob's hurt flash.**
+```gdscript
+const ALARM_RED = Color("ff3d5a")
+...
+	$Sprite.self_modulate = ALARM_RED
+	create_tween().tween_property($Sprite, "self_modulate", Color.WHITE, 0.25)
+```
+On a hit, the blob turns red and fades back over 0.25 s. It uses `self_modulate` rather than `modulate` because the invulnerability blink already changes `modulate`'s transparency every frame; two separate properties don't fight each other.
+
+**`node_2d.tscn`: colour grade and vignette.**
+- `ColourGrade` (CanvasModulate, colour `0.88, 0.93, 1`): multiplies every colour in the world slightly towards cool blue. It pulls art from different packs into one lighting mood. Later, each level can change this colour for its tint.
+- `ScreenEffects` (CanvasLayer, layer 1) → `Vignette` (TextureRect filling the screen, ignoring the mouse): shows a `GradientTexture2D` with a radial fill, see-through in the middle and 55% dark navy at the edges. Being on a CanvasLayer, it stays fixed to the screen while the camera moves.
+
+**`pinball_pad.tscn` / `.gd`:** colours changed to gold (`ffc93c` pad, `fff0aa` highlight, white edge, gold glow). The flash code is unchanged: it still blends the pad to white when hit.
+
+---
+
+### 5.6 How the level 2 map (`control_deck.tscn`) is put together (D25)
+
+It was generated by the same kind of script as the cargo hold (`gen_level2.py`, outside the repo), so the scene and a preview image come from one set of numbers. In the editor it's ordinary nodes; change anything by hand.
+
+| Node | What it is | Why |
+|---|---|---|
+| `ControlDeck` (root, Node2D) | Has `metadata/tint = Color(1, 0.93, 0.84, 1)` | The level's colour grade travels with the map (see D25). Read it with `get_meta("tint")`. |
+| `Tiles` | TileMapLayer, scale 0.25, sources 3 = F2 floor, 4 = F2 access panel at (3,3) and (14,7), 5 = F2 drain at (14,3) and (3,7) | Same 18×11 grid of 64 px cells as the cargo hold. Clean floor: no grates, no grime. |
+| `FloorDecor` | An arrow pointing at the boss's desk, the door marking at the bottom, the four hazard-stripe sprites around the start zone (426,230, 300×190) | The start zone looks the same in every level so the player always knows where they begin. |
+| `TopWallShadow` | Black 27% strip under the top wall | Same depth trick as level 1. |
+| `TopWall`, `BottomWall`, `LeftWall`, `RightWall` | W2 sterile wall pieces, *Region* + *Texture Repeat*, scale 0.25 | Same method as level 1 (D14), just the lighter wall set. |
+| `WallDecor` | Office door, OFC and CTRL labels, do-not-enter sign, two security cameras, a vent, two red alarm lights with glow | The door and sign say "this is the boss's office" without any text box. |
+| `Walls` (StaticBody2D) | The same four collision rectangles as level 1 | Room size and edges are identical, so the camera limits and pads work unchanged. |
+| `Obstacles/IslandTopLeft` … `IslandBottomRight` | Each a StaticBody2D at (256,200), (896,200), (256,448), (896,448) | Layer 1 like every wall, so bolts, the blob and enemies all collide with it. |
+| └ `Shadow` | Polygon2D, 16 px dark strip under the island | Makes it read as a raised block, not a painting on the floor. |
+| └ `Face` | W2 top wall piece repeated 3 times (`Rect2(0, 0, 768, 192)` at 0.25 = 192×48) | The light top edge plus the wall face. |
+| └ `EdgeLeft`, `EdgeRight` | W2 side pieces cropped to 48 px tall | Gives the island ends instead of a cut-off strip. |
+| └ `CollisionShape2D` | One rectangle 192×48, centred | The whole visible block is solid, so bank angles are exactly what you see. |
+| `Furniture/BossDesk` | `bench_F_filled` at (576,128), scale 1.0 | Cover at the top, and the story prop. Collision is the lower 65%, like all furniture. |
+| `Furniture/BenchWestWall`, `BenchEastWall` | `bench_side` at (50,324) and (1102,324) | Break up the long side walls. |
+| `PinballPads` | Four `pinball_pad.tscn` instances, same corners and rotations as level 1 | Pads are a rule of every level (D21). |
+| `Spawn` | Marker2D at (576,324) | Blob start. |
+| `SpawnPoints/Enemy1–8` | Marker2D in group `enemy_spawn` at (100,140), (440,110), (712,110), (1052,140), (1060,520), (712,560), (440,560), (100,520) | Moved from level 1's spots so none is inside an island or the desk. `waves.gd` already uses this group. |
+
+**`level2_test.tscn`:** `node_2d.tscn` copied with three changes: the map instance points to `control_deck.tscn`, the root is renamed `Level2Test`, and `ColourGrade` is amber. Open it and press F6 (Run Current Scene) to play level 2.
+
+**`cargo_hold.tscn`:** one line added to the root, `metadata/tint = Color(0.88, 0.93, 1, 1)`, so both maps work the same way.
+
 ---
 
 ## 6. Open items
 
 - **Pending decision:** power-up pickups instead of bribes (recommended), or both.
 - **Nik:** tutorial; level system (3 × 3 with tints); boss fight with rock bottom; HUD wiring; pickups.
-- **Agastya:** message box (`show_line` / `finished`) first; ending; title → intro → game flow; level 2 and 3 maps (with obstacles and pinball pads); HUD layout; comic art; music; export templates; submission page and credits.
+- **Agastya:** message box (`show_line` / `finished`, on CanvasLayer layer 2+) first; one pixel font and a Theme; palette for comic, title, HUD and message box; ending; title → intro → game flow; level 2 map built (D25), needs a playtest; level 3 (boss) map; HUD layout; comic art; music; export templates; submission page and credits.
+- **Level system (Nik):** when loading a map, set `ColourGrade.color = map.get_meta("tint")`; then delete `level2_test.tscn`.
 - **Tuning to check in playtests:** pinball strength, wave sizes, Glutton health, fire rate, camera zoom.
 - **Title** still undecided (two words max). Shortlist: Overtime, Unglued, Rage Quit, Clocked Out, Out of Office.

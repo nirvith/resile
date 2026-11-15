@@ -64,8 +64,14 @@ func take_damage(amount: int) -> void:
 		# Delete this enemy at the end of the frame. Safer than deleting
 		# immediately, which could crash code still using it this frame.
 		return
-	sprite.modulate = Color.RED
-	# modulate tints the sprite; setting it to red is the hit flash.
-	create_tween().tween_property(sprite, "modulate", Color.WHITE, 0.15)
-	# A tween animates a property over time: fade from red back to white
-	# over 0.15s. It belongs to this node, so it stops if the enemy dies.
+	set_flash(1.0)
+	# The alien shader (art/alien.gdshader) has a "flash" setting: 1 = red, 0 = normal green.
+	create_tween().tween_method(set_flash, 1.0, 0.0, 0.15)
+	# A tween animates a value over time: here the flash goes from red back
+	# to green over 0.15s. It belongs to this node, so it stops if the enemy dies.
+
+
+func set_flash(amount: float) -> void:
+	# Each enemy has its own copy of the material (resource_local_to_scene),
+	# so flashing one enemy doesn't flash all of them.
+	sprite.material.set_shader_parameter("flash", amount)

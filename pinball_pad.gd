@@ -5,7 +5,7 @@ extends StaticBody2D
 # What makes a bolt go into pinball mode is in bolt.gd; this script only
 # makes the pad look alive: a slow glow pulse, and a white flash when hit.
 
-const BASE_COLOR = Color(0.9, 0.16, 0.67)   # the pad's normal pink
+const BASE_COLOR = Color("ffc93c")   # palette gold: pads are a reward
 const FLASH_TIME = 0.3                       # seconds a hit flash lasts
 
 var time = 0.0          # seconds since the pad appeared, drives the pulse

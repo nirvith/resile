@@ -2,6 +2,14 @@
 
 [ext_resource type="Script" uid="uid://de1hyj37exoyl" path="res://node_2d_1.gd" id="1_5sqno"]
 [ext_resource type="Texture2D" uid="uid://dls2rbobojlt4" path="res://assets/Monster_Creatures_Fantasy(Version 1.3)/Flying eye/Attack3.png" id="1_nau6d"]
+[ext_resource type="Shader" uid="uid://cy3iywxhc0ewu" path="res://art/alien.gdshader" id="alien_shader"]
+
+[sub_resource type="ShaderMaterial" id="AlienMaterial"]
+resource_local_to_scene = true
+shader = ExtResource("alien_shader")
+shader_parameter/tint = Color(0.55, 1, 0.35, 1)
+shader_parameter/flash_color = Color(1, 0.24, 0.35, 1)
+shader_parameter/flash = 0.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5sqno"]
 atlas = ExtResource("1_nau6d")
@@ -67,6 +75,7 @@ script = ExtResource("1_5sqno")
 max_health = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1867953091]
+material = SubResource("AlienMaterial")
 position = Vector2(-13, -10)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_ualut")

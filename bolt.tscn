@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://xksbdsvb4nv6"]
 
-[ext_resource type="Texture2D" uid="uid://5pt037dw7kmj" path="res://icon.svg" id="1_bewd0"]
+[ext_resource type="Texture2D" uid="uid://bn1unsoueb6gb" path="res://art/bolt_orb.png" id="1_bewd0"]
 [ext_resource type="Script" uid="uid://du45kva7rquu4" path="res://bolt.gd" id="1_v78vr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ibe4h"]
@@ -15,7 +15,7 @@ motion_mode = 1
 script = ExtResource("1_v78vr")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=919942839]
-scale = Vector2(0.15, 0.15)
+scale = Vector2(1.5, 1.5)
 texture = ExtResource("1_bewd0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1218298536]

@@ -1,0 +1,469 @@
+[gd_scene format=4]
+
+[ext_resource type="Texture2D" uid="uid://babfs8btwqjmy" path="res://assets/Scifi_Facility_Buider_Pack_1_ver 2.0/Architecture/Floor/F2_Floor_Sterile/F2.png" id="1_tex"]
+[ext_resource type="Texture2D" uid="uid://7fkmfgagtbb2" path="res://assets/Scifi_Facility_Buider_Pack_1_ver 2.0/Architecture/Floor/F2_Floor_Sterile/F2_access_panel.png" id="2_tex"]
+[ext_resource type="Texture2D" uid="uid://ddj48x2ygqm13" path="res://assets/Scifi_Facility_Buider_Pack_1_ver 2.0/Architecture/Floor/F2_Floor_Sterile/F2_drain.png" id="3_tex"]
+[ext_resource type="Texture2D" uid="uid://cngua27n4mdk0" path="res://assets/Scifi_Facility_Buider_Pack_1_ver 2.0/Markings/direction_arrow_up.png" id="4_tex"]
+[ext_resource type="Texture2D" uid="uid://0u1xynamto0v" path="res://assets/Scifi_Facility_Buider_Pack_1_ver 2.0/Markings/door_floor_marking.png" id="5_tex"]
+[ext_resource type="Texture2D" uid="uid://dcu3fhnsdw8w7" path="res://assets/Scifi_Facility_Buider_Pack_1_ver 2.0/Markings/hazard_stripe_H.png" id="6_tex"]
+[ext_resource type="Texture2D" uid="uid://cq4u7b461fmrw" path="res://assets/Scifi_Facility_Buider_Pack_1_ver 2.0/Markings/hazard_stripe_V.png" id="7_tex"]
+[ext_resource type="Texture2D" uid="uid://bqb855oauhh8l" path="res://assets/Scifi_Facility_Buider_Pack_1_ver 2.0/Architecture/Walls/W2_Sterile_Wall/W2_base/W2_T.png" id="8_tex"]
+[ext_resource type="Texture2D" uid="uid://knneaen8y3aj" path="res://assets/Scifi_Facility_Buider_Pack_1_ver 2.0/Architecture/Walls/W2_Sterile_Wall/W2_base/W2_F.png" id="9_tex"]
+[ext_resource type="Texture2D" uid="uid://cenep7ea2ubwq" path="res://assets/Scifi_Facility_Buider_Pack_1_ver 2.0/Architecture/Walls/W2_Sterile_Wall/W2_base/W2_L.png" id="10_tex"]
+[ext_resource type="Texture2D" uid="uid://db2ouwpelrdkf" path="res://assets/Scifi_Facility_Buider_Pack_1_ver 2.0/Architecture/Walls/W2_Sterile_Wall/W2_base/W2_R.png" id="11_tex"]
+[ext_resource type="Texture2D" uid="uid://tqlbfpkxr37f" path="res://assets/Scifi_Facility_Buider_Pack_1_ver 2.0/Architecture/Door/D1_Door_Standard_Sliding/D1_closed.png" id="12_tex"]
+[ext_resource type="Texture2D" uid="uid://c8qwkmiwirjce" path="res://assets/Scifi_Facility_Buider_Pack_1_ver 2.0/Props/Signs/Room_Label/room_label_office.png" id="13_tex"]
+[ext_resource type="Texture2D" uid="uid://c777ip2wt4r04" path="res://assets/Scifi_Facility_Buider_Pack_1_ver 2.0/Props/Signs/Warning_Sign/sign_do_not_enter.png" id="14_tex"]
+[ext_resource type="Texture2D" uid="uid://cmnl3eo1tyyjw" path="res://assets/Scifi_Facility_Buider_Pack_1_ver 2.0/Props/Utility/Security Camera/security_camera_T.png" id="15_tex"]
+[ext_resource type="Texture2D" uid="uid://c51ea33j5uq8j" path="res://assets/Scifi_Facility_Buider_Pack_1_ver 2.0/Props/Utility/Wall Modules/wall_vent_v2.png" id="16_tex"]
+[ext_resource type="Texture2D" uid="uid://crlkopydxbq2f" path="res://assets/Scifi_Facility_Buider_Pack_1_ver 2.0/Props/Signs/Room_Label/room_label_ctrl.png" id="17_tex"]
+[ext_resource type="Texture2D" uid="uid://b4gk37a6pai5k" path="res://assets/Scifi_Facility_Buider_Pack_1_ver 2.0/Props/Utility/Alarm Light/alarm_light_on.png" id="18_tex"]
+[ext_resource type="Texture2D" uid="uid://6clfxnalm5cx" path="res://assets/Scifi_Facility_Buider_Pack_1_ver 2.0/Overlay/Light GLow/Alarm_light_on/alarm_light_on_l2.png" id="19_tex"]
+[ext_resource type="Texture2D" uid="uid://be4la7mbe846o" path="res://assets/Scifi_Facility_Buider_Pack_1_ver 2.0/Props/Furniture/bench_F_filled.png" id="20_tex"]
+[ext_resource type="Texture2D" uid="uid://chwo8m8vvyd0f" path="res://assets/Scifi_Facility_Buider_Pack_1_ver 2.0/Props/Furniture/bench_side.png" id="21_tex"]
+[ext_resource type="PackedScene" path="res://pinball_pad.tscn" id="pad_scene"]
+
+[sub_resource type="TileSetAtlasSource" id="Atlas_3"]
+texture = ExtResource("1_tex")
+texture_region_size = Vector2i(256, 256)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="Atlas_4"]
+texture = ExtResource("2_tex")
+texture_region_size = Vector2i(256, 256)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="Atlas_5"]
+texture = ExtResource("3_tex")
+texture_region_size = Vector2i(256, 256)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_floor"]
+tile_size = Vector2i(256, 256)
+sources/3 = SubResource("Atlas_3")
+sources/4 = SubResource("Atlas_4")
+sources/5 = SubResource("Atlas_5")
+
+[sub_resource type="RectangleShape2D" id="WallTop"]
+size = Vector2(1152, 48)
+
+[sub_resource type="RectangleShape2D" id="WallBottom"]
+size = Vector2(1152, 11)
+
+[sub_resource type="RectangleShape2D" id="WallSide"]
+size = Vector2(11, 648)
+
+[sub_resource type="RectangleShape2D" id="IslandBox"]
+size = Vector2(192, 48)
+
+[sub_resource type="RectangleShape2D" id="Box_BossDesk"]
+size = Vector2(126, 67.6)
+
+[sub_resource type="RectangleShape2D" id="Box_BenchWestWall"]
+size = Vector2(64, 87.8)
+
+[sub_resource type="RectangleShape2D" id="Box_BenchEastWall"]
+size = Vector2(64, 87.8)
+
+[node name="ControlDeck" type="Node2D"]
+metadata/tint = Color(1, 0.93, 0.84, 1)
+
+[node name="Tiles" type="TileMapLayer" parent="."]
+scale = Vector2(0.25, 0.25)
+tile_map_data = PackedByteArray("AAAAAAAAAwAAAAAAAAABAAAAAwAAAAAAAAACAAAAAwAAAAAAAAADAAAAAwAAAAAAAAAEAAAAAwAAAAAAAAAFAAAAAwAAAAAAAAAGAAAAAwAAAAAAAAAHAAAAAwAAAAAAAAAIAAAAAwAAAAAAAAAJAAAAAwAAAAAAAAAKAAAAAwAAAAAAAAALAAAAAwAAAAAAAAAMAAAAAwAAAAAAAAANAAAAAwAAAAAAAAAOAAAAAwAAAAAAAAAPAAAAAwAAAAAAAAAQAAAAAwAAAAAAAAARAAAAAwAAAAAAAAAAAAEAAwAAAAAAAAABAAEAAwAAAAAAAAACAAEAAwAAAAAAAAADAAEAAwAAAAAAAAAEAAEAAwAAAAAAAAAFAAEAAwAAAAAAAAAGAAEAAwAAAAAAAAAHAAEAAwAAAAAAAAAIAAEAAwAAAAAAAAAJAAEAAwAAAAAAAAAKAAEAAwAAAAAAAAALAAEAAwAAAAAAAAAMAAEAAwAAAAAAAAANAAEAAwAAAAAAAAAOAAEAAwAAAAAAAAAPAAEAAwAAAAAAAAAQAAEAAwAAAAAAAAARAAEAAwAAAAAAAAAAAAIAAwAAAAAAAAABAAIAAwAAAAAAAAACAAIAAwAAAAAAAAADAAIAAwAAAAAAAAAEAAIAAwAAAAAAAAAFAAIAAwAAAAAAAAAGAAIAAwAAAAAAAAAHAAIAAwAAAAAAAAAIAAIAAwAAAAAAAAAJAAIAAwAAAAAAAAAKAAIAAwAAAAAAAAALAAIAAwAAAAAAAAAMAAIAAwAAAAAAAAANAAIAAwAAAAAAAAAOAAIAAwAAAAAAAAAPAAIAAwAAAAAAAAAQAAIAAwAAAAAAAAARAAIAAwAAAAAAAAAAAAMAAwAAAAAAAAABAAMAAwAAAAAAAAACAAMAAwAAAAAAAAADAAMABAAAAAAAAAAEAAMAAwAAAAAAAAAFAAMAAwAAAAAAAAAGAAMAAwAAAAAAAAAHAAMAAwAAAAAAAAAIAAMAAwAAAAAAAAAJAAMAAwAAAAAAAAAKAAMAAwAAAAAAAAALAAMAAwAAAAAAAAAMAAMAAwAAAAAAAAANAAMAAwAAAAAAAAAOAAMABQAAAAAAAAAPAAMAAwAAAAAAAAAQAAMAAwAAAAAAAAARAAMAAwAAAAAAAAAAAAQAAwAAAAAAAAABAAQAAwAAAAAAAAACAAQAAwAAAAAAAAADAAQAAwAAAAAAAAAEAAQAAwAAAAAAAAAFAAQAAwAAAAAAAAAGAAQAAwAAAAAAAAAHAAQAAwAAAAAAAAAIAAQAAwAAAAAAAAAJAAQAAwAAAAAAAAAKAAQAAwAAAAAAAAALAAQAAwAAAAAAAAAMAAQAAwAAAAAAAAANAAQAAwAAAAAAAAAOAAQAAwAAAAAAAAAPAAQAAwAAAAAAAAAQAAQAAwAAAAAAAAARAAQAAwAAAAAAAAAAAAUAAwAAAAAAAAABAAUAAwAAAAAAAAACAAUAAwAAAAAAAAADAAUAAwAAAAAAAAAEAAUAAwAAAAAAAAAFAAUAAwAAAAAAAAAGAAUAAwAAAAAAAAAHAAUAAwAAAAAAAAAIAAUAAwAAAAAAAAAJAAUAAwAAAAAAAAAKAAUAAwAAAAAAAAALAAUAAwAAAAAAAAAMAAUAAwAAAAAAAAANAAUAAwAAAAAAAAAOAAUAAwAAAAAAAAAPAAUAAwAAAAAAAAAQAAUAAwAAAAAAAAARAAUAAwAAAAAAAAAAAAYAAwAAAAAAAAABAAYAAwAAAAAAAAACAAYAAwAAAAAAAAADAAYAAwAAAAAAAAAEAAYAAwAAAAAAAAAFAAYAAwAAAAAAAAAGAAYAAwAAAAAAAAAHAAYAAwAAAAAAAAAIAAYAAwAAAAAAAAAJAAYAAwAAAAAAAAAKAAYAAwAAAAAAAAALAAYAAwAAAAAAAAAMAAYAAwAAAAAAAAANAAYAAwAAAAAAAAAOAAYAAwAAAAAAAAAPAAYAAwAAAAAAAAAQAAYAAwAAAAAAAAARAAYAAwAAAAAAAAAAAAcAAwAAAAAAAAABAAcAAwAAAAAAAAACAAcAAwAAAAAAAAADAAcABQAAAAAAAAAEAAcAAwAAAAAAAAAFAAcAAwAAAAAAAAAGAAcAAwAAAAAAAAAHAAcAAwAAAAAAAAAIAAcAAwAAAAAAAAAJAAcAAwAAAAAAAAAKAAcAAwAAAAAAAAALAAcAAwAAAAAAAAAMAAcAAwAAAAAAAAANAAcAAwAAAAAAAAAOAAcABAAAAAAAAAAPAAcAAwAAAAAAAAAQAAcAAwAAAAAAAAARAAcAAwAAAAAAAAAAAAgAAwAAAAAAAAABAAgAAwAAAAAAAAACAAgAAwAAAAAAAAADAAgAAwAAAAAAAAAEAAgAAwAAAAAAAAAFAAgAAwAAAAAAAAAGAAgAAwAAAAAAAAAHAAgAAwAAAAAAAAAIAAgAAwAAAAAAAAAJAAgAAwAAAAAAAAAKAAgAAwAAAAAAAAALAAgAAwAAAAAAAAAMAAgAAwAAAAAAAAANAAgAAwAAAAAAAAAOAAgAAwAAAAAAAAAPAAgAAwAAAAAAAAAQAAgAAwAAAAAAAAARAAgAAwAAAAAAAAAAAAkAAwAAAAAAAAABAAkAAwAAAAAAAAACAAkAAwAAAAAAAAADAAkAAwAAAAAAAAAEAAkAAwAAAAAAAAAFAAkAAwAAAAAAAAAGAAkAAwAAAAAAAAAHAAkAAwAAAAAAAAAIAAkAAwAAAAAAAAAJAAkAAwAAAAAAAAAKAAkAAwAAAAAAAAALAAkAAwAAAAAAAAAMAAkAAwAAAAAAAAANAAkAAwAAAAAAAAAOAAkAAwAAAAAAAAAPAAkAAwAAAAAAAAAQAAkAAwAAAAAAAAARAAkAAwAAAAAAAAAAAAoAAwAAAAAAAAABAAoAAwAAAAAAAAACAAoAAwAAAAAAAAADAAoAAwAAAAAAAAAEAAoAAwAAAAAAAAAFAAoAAwAAAAAAAAAGAAoAAwAAAAAAAAAHAAoAAwAAAAAAAAAIAAoAAwAAAAAAAAAJAAoAAwAAAAAAAAAKAAoAAwAAAAAAAAALAAoAAwAAAAAAAAAMAAoAAwAAAAAAAAANAAoAAwAAAAAAAAAOAAoAAwAAAAAAAAAPAAoAAwAAAAAAAAAQAAoAAwAAAAAAAAARAAoAAwAAAAAAAAA=")
+tile_set = SubResource("TileSet_floor")
+
+[node name="FloorDecor" type="Node2D" parent="."]
+
+[node name="ArrowToDoor" type="Sprite2D" parent="FloorDecor"]
+modulate = Color(1, 1, 1, 0.8)
+position = Vector2(576, 205)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("4_tex")
+
+[node name="DoorMarking" type="Sprite2D" parent="FloorDecor"]
+position = Vector2(576, 622)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("5_tex")
+
+[node name="HazardTop" type="Sprite2D" parent="FloorDecor"]
+texture_repeat = 2
+position = Vector2(426, 230)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_tex")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 600, 8)
+
+[node name="HazardBottom" type="Sprite2D" parent="FloorDecor"]
+texture_repeat = 2
+position = Vector2(426, 416)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_tex")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 600, 8)
+
+[node name="HazardLeft" type="Sprite2D" parent="FloorDecor"]
+texture_repeat = 2
+position = Vector2(426, 230)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_tex")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 8, 380)
+
+[node name="HazardRight" type="Sprite2D" parent="FloorDecor"]
+texture_repeat = 2
+position = Vector2(722, 230)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_tex")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 8, 380)
+
+[node name="TopWallShadow" type="Polygon2D" parent="."]
+color = Color(0, 0, 0, 0.27)
+polygon = PackedVector2Array(0, 48, 1152, 48, 1152, 64, 0, 64)
+
+[node name="TopWall" type="Sprite2D" parent="."]
+texture_repeat = 2
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("8_tex")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 4608, 192)
+
+[node name="BottomWall" type="Sprite2D" parent="."]
+texture_repeat = 2
+position = Vector2(0, 637)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("9_tex")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 4608, 43)
+
+[node name="LeftWall" type="Sprite2D" parent="."]
+texture_repeat = 2
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("10_tex")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 43, 2592)
+
+[node name="RightWall" type="Sprite2D" parent="."]
+texture_repeat = 2
+position = Vector2(1141, 0)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("11_tex")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 43, 2592)
+
+[node name="WallDecor" type="Node2D" parent="."]
+
+[node name="Door" type="Sprite2D" parent="WallDecor"]
+position = Vector2(576, 26)
+scale = Vector2(0.42, 0.42)
+texture = ExtResource("12_tex")
+
+[node name="OfficeLabel" type="Sprite2D" parent="WallDecor"]
+position = Vector2(470, 22)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("13_tex")
+
+[node name="DoNotEnter" type="Sprite2D" parent="WallDecor"]
+position = Vector2(682, 22)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("14_tex")
+
+[node name="CameraLeft" type="Sprite2D" parent="WallDecor"]
+position = Vector2(160, 30)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("15_tex")
+
+[node name="CameraRight" type="Sprite2D" parent="WallDecor"]
+position = Vector2(992, 30)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("15_tex")
+
+[node name="Vent" type="Sprite2D" parent="WallDecor"]
+position = Vector2(1060, 24)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("16_tex")
+
+[node name="ControlLabel" type="Sprite2D" parent="WallDecor"]
+position = Vector2(90, 22)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("17_tex")
+
+[node name="AlarmLeft" type="Sprite2D" parent="WallDecor"]
+position = Vector2(330, 10)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("18_tex")
+
+[node name="AlarmLeftGlow" type="Sprite2D" parent="WallDecor"]
+modulate = Color(1, 1, 1, 0.75)
+position = Vector2(330, 14)
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("19_tex")
+
+[node name="AlarmRight" type="Sprite2D" parent="WallDecor"]
+position = Vector2(822, 10)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("18_tex")
+
+[node name="AlarmRightGlow" type="Sprite2D" parent="WallDecor"]
+modulate = Color(1, 1, 1, 0.75)
+position = Vector2(822, 14)
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("19_tex")
+
+[node name="Walls" type="StaticBody2D" parent="."]
+
+[node name="Top" type="CollisionShape2D" parent="Walls"]
+position = Vector2(576, 24)
+shape = SubResource("WallTop")
+
+[node name="Bottom" type="CollisionShape2D" parent="Walls"]
+position = Vector2(576, 642.5)
+shape = SubResource("WallBottom")
+
+[node name="Left" type="CollisionShape2D" parent="Walls"]
+position = Vector2(5.5, 324)
+shape = SubResource("WallSide")
+
+[node name="Right" type="CollisionShape2D" parent="Walls"]
+position = Vector2(1146.5, 324)
+shape = SubResource("WallSide")
+
+[node name="Obstacles" type="Node2D" parent="."]
+
+[node name="IslandTopLeft" type="StaticBody2D" parent="Obstacles"]
+position = Vector2(256, 200)
+
+[node name="Shadow" type="Polygon2D" parent="Obstacles/IslandTopLeft"]
+color = Color(0, 0, 0, 0.27)
+polygon = PackedVector2Array(-96, 24, 96, 24, 96, 40, -96, 40)
+
+[node name="Face" type="Sprite2D" parent="Obstacles/IslandTopLeft"]
+texture_repeat = 2
+position = Vector2(-96, -24)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("8_tex")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 768, 192)
+
+[node name="EdgeLeft" type="Sprite2D" parent="Obstacles/IslandTopLeft"]
+texture_repeat = 2
+position = Vector2(-96, -24)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("10_tex")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 43, 192)
+
+[node name="EdgeRight" type="Sprite2D" parent="Obstacles/IslandTopLeft"]
+texture_repeat = 2
+position = Vector2(85, -24)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("11_tex")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 43, 192)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacles/IslandTopLeft"]
+shape = SubResource("IslandBox")
+
+[node name="IslandTopRight" type="StaticBody2D" parent="Obstacles"]
+position = Vector2(896, 200)
+
+[node name="Shadow" type="Polygon2D" parent="Obstacles/IslandTopRight"]
+color = Color(0, 0, 0, 0.27)
+polygon = PackedVector2Array(-96, 24, 96, 24, 96, 40, -96, 40)
+
+[node name="Face" type="Sprite2D" parent="Obstacles/IslandTopRight"]
+texture_repeat = 2
+position = Vector2(-96, -24)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("8_tex")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 768, 192)
+
+[node name="EdgeLeft" type="Sprite2D" parent="Obstacles/IslandTopRight"]
+texture_repeat = 2
+position = Vector2(-96, -24)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("10_tex")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 43, 192)
+
+[node name="EdgeRight" type="Sprite2D" parent="Obstacles/IslandTopRight"]
+texture_repeat = 2
+position = Vector2(85, -24)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("11_tex")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 43, 192)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacles/IslandTopRight"]
+shape = SubResource("IslandBox")
+
+[node name="IslandBottomLeft" type="StaticBody2D" parent="Obstacles"]
+position = Vector2(256, 448)
+
+[node name="Shadow" type="Polygon2D" parent="Obstacles/IslandBottomLeft"]
+color = Color(0, 0, 0, 0.27)
+polygon = PackedVector2Array(-96, 24, 96, 24, 96, 40, -96, 40)
+
+[node name="Face" type="Sprite2D" parent="Obstacles/IslandBottomLeft"]
+texture_repeat = 2
+position = Vector2(-96, -24)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("8_tex")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 768, 192)
+
+[node name="EdgeLeft" type="Sprite2D" parent="Obstacles/IslandBottomLeft"]
+texture_repeat = 2
+position = Vector2(-96, -24)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("10_tex")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 43, 192)
+
+[node name="EdgeRight" type="Sprite2D" parent="Obstacles/IslandBottomLeft"]
+texture_repeat = 2
+position = Vector2(85, -24)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("11_tex")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 43, 192)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacles/IslandBottomLeft"]
+shape = SubResource("IslandBox")
+
+[node name="IslandBottomRight" type="StaticBody2D" parent="Obstacles"]
+position = Vector2(896, 448)
+
+[node name="Shadow" type="Polygon2D" parent="Obstacles/IslandBottomRight"]
+color = Color(0, 0, 0, 0.27)
+polygon = PackedVector2Array(-96, 24, 96, 24, 96, 40, -96, 40)
+
+[node name="Face" type="Sprite2D" parent="Obstacles/IslandBottomRight"]
+texture_repeat = 2
+position = Vector2(-96, -24)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("8_tex")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 768, 192)
+
+[node name="EdgeLeft" type="Sprite2D" parent="Obstacles/IslandBottomRight"]
+texture_repeat = 2
+position = Vector2(-96, -24)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("10_tex")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 43, 192)
+
+[node name="EdgeRight" type="Sprite2D" parent="Obstacles/IslandBottomRight"]
+texture_repeat = 2
+position = Vector2(85, -24)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("11_tex")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 43, 192)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacles/IslandBottomRight"]
+shape = SubResource("IslandBox")
+
+[node name="Furniture" type="Node2D" parent="."]
+
+[node name="BossDesk" type="StaticBody2D" parent="Furniture"]
+position = Vector2(576, 128)
+
+[node name="Sprite2D" type="Sprite2D" parent="Furniture/BossDesk"]
+scale = Vector2(1, 1)
+texture = ExtResource("20_tex")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Furniture/BossDesk"]
+position = Vector2(0, 15.6)
+shape = SubResource("Box_BossDesk")
+
+[node name="BenchWestWall" type="StaticBody2D" parent="Furniture"]
+position = Vector2(50, 324)
+
+[node name="Sprite2D" type="Sprite2D" parent="Furniture/BenchWestWall"]
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("21_tex")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Furniture/BenchWestWall"]
+position = Vector2(0, 20.2)
+shape = SubResource("Box_BenchWestWall")
+
+[node name="BenchEastWall" type="StaticBody2D" parent="Furniture"]
+position = Vector2(1102, 324)
+
+[node name="Sprite2D" type="Sprite2D" parent="Furniture/BenchEastWall"]
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("21_tex")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Furniture/BenchEastWall"]
+position = Vector2(0, 20.2)
+shape = SubResource("Box_BenchEastWall")
+
+[node name="PinballPads" type="Node2D" parent="."]
+
+[node name="PadTopLeft" parent="PinballPads" instance=ExtResource("pad_scene")]
+position = Vector2(11, 48)
+
+[node name="PadTopRight" parent="PinballPads" instance=ExtResource("pad_scene")]
+position = Vector2(1141, 48)
+rotation = 1.570796
+
+[node name="PadBottomRight" parent="PinballPads" instance=ExtResource("pad_scene")]
+position = Vector2(1141, 637)
+rotation = 3.141593
+
+[node name="PadBottomLeft" parent="PinballPads" instance=ExtResource("pad_scene")]
+position = Vector2(11, 637)
+rotation = 4.712389
+
+[node name="Spawn" type="Marker2D" parent="."]
+position = Vector2(576, 324)
+
+[node name="SpawnPoints" type="Node2D" parent="."]
+
+[node name="Enemy1" type="Marker2D" parent="SpawnPoints" groups=["enemy_spawn"]]
+position = Vector2(100, 140)
+
+[node name="Enemy2" type="Marker2D" parent="SpawnPoints" groups=["enemy_spawn"]]
+position = Vector2(440, 110)
+
+[node name="Enemy3" type="Marker2D" parent="SpawnPoints" groups=["enemy_spawn"]]
+position = Vector2(712, 110)
+
+[node name="Enemy4" type="Marker2D" parent="SpawnPoints" groups=["enemy_spawn"]]
+position = Vector2(1052, 140)
+
+[node name="Enemy5" type="Marker2D" parent="SpawnPoints" groups=["enemy_spawn"]]
+position = Vector2(1060, 520)
+
+[node name="Enemy6" type="Marker2D" parent="SpawnPoints" groups=["enemy_spawn"]]
+position = Vector2(712, 560)
+
+[node name="Enemy7" type="Marker2D" parent="SpawnPoints" groups=["enemy_spawn"]]
+position = Vector2(440, 560)
+
+[node name="Enemy8" type="Marker2D" parent="SpawnPoints" groups=["enemy_spawn"]]
+position = Vector2(100, 520)
