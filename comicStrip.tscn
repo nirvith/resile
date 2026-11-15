@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://c3lk5v2q84od5"]
 
 [ext_resource type="Texture2D" uid="uid://c0mex6uvgw1hu" path="res://assets/Screenshot 2026-11-15 140029.png" id="1_glwkv"]
+[ext_resource type="Script" uid="uid://cu6b2s5i2s7ic" path="res://comic_strip.gd" id="1_uquj3"]
 [ext_resource type="Texture2D" uid="uid://dvva8qsrrlhmr" path="res://assets/Screenshot 2026-11-15 074015.png" id="2_uquj3"]
 
 [node name="Control" type="Control" unique_id=1233967062]
@@ -10,6 +11,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_uquj3")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1255497964]
 layout_mode = 0

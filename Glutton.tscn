@@ -2,6 +2,14 @@
 
 [ext_resource type="PackedScene" uid="uid://6x4yavgk6xos" path="res://Crawler.tscn" id="1_uteek"]
 [ext_resource type="Texture2D" uid="uid://bdg3o5w5u36bt" path="res://assets/Monster_Creatures_Fantasy(Version 1.3)/Mushroom/Attack3.png" id="2_6ygt1"]
+[ext_resource type="Shader" uid="uid://cy3iywxhc0ewu" path="res://art/alien.gdshader" id="2_s3hw3"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vcul4"]
+resource_local_to_scene = true
+shader = ExtResource("2_s3hw3")
+shader_parameter/tint = Color(0.55, 1, 0.35, 1)
+shader_parameter/flash_color = Color(1, 0.24, 0.35, 1)
+shader_parameter/flash = 0.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s3hw3"]
 atlas = ExtResource("2_6ygt1")
@@ -99,6 +107,7 @@ speed = 90.0
 max_health = 2
 
 [node name="AnimatedSprite2D" parent="." index="0" unique_id=1867953091]
+material = SubResource("ShaderMaterial_vcul4")
 sprite_frames = SubResource("SpriteFrames_6ygt1")
 
 [node name="CollisionShape2D" parent="Area2D" parent_id_path=PackedInt32Array(117525166) index="0" unique_id=1961621255]
@@ -108,3 +117,9 @@ shape = SubResource("RectangleShape2D_s3hw3")
 [node name="CollisionShape2D" parent="." index="2" unique_id=428752788]
 position = Vector2(-9, 8)
 shape = SubResource("RectangleShape2D_vcul4")
+
+[node name="HealthBar" parent="." index="3"]
+offset_left = -44.0
+offset_top = -45.0
+offset_right = 40.0
+offset_bottom = -40.0

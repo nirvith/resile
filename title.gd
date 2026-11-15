@@ -1,7 +1,7 @@
 extends Node2D
 
 
-const GAME = "res://node_2d.tscn"
+const GAME = "res://comicStrip.tscn"
 const TUTORIAL = "res://tutorial.tscn"
 const BOLT_SPEED = 420.0
 const TRAIL_POINTS = 22

@@ -69,11 +69,11 @@ radius = 36.0
 
 [sub_resource type="StyleBoxFlat" id="HealthBarTrack"]
 bg_color = Color(0.035, 0.055, 0.075, 0.94)
-border_color = Color(0.01, 0.025, 0.04, 1)
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
 border_width_bottom = 1
+border_color = Color(0.01, 0.025, 0.04, 1)
 corner_radius_top_left = 3
 corner_radius_top_right = 3
 corner_radius_bottom_right = 3
@@ -111,10 +111,12 @@ shape = SubResource("CircleShape2D_ualut")
 position = Vector2(1, 2)
 shape = SubResource("CircleShape2D_ahshk")
 
-[node name="HealthBar" type="ProgressBar" parent="."]
+[node name="HealthBar" type="ProgressBar" parent="." unique_id=520017605]
 z_index = 5
-position = Vector2(-42, -174)
-size = Vector2(84, 8)
+offset_left = -37.0
+offset_top = -44.0
+offset_right = 48.0
+offset_bottom = -38.0
 mouse_filter = 2
 theme_override_styles/background = SubResource("HealthBarTrack")
 theme_override_styles/fill = SubResource("HealthBarFill")
