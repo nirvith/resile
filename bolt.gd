@@ -24,3 +24,7 @@ func _physics_process(delta):
 			modulate.a = 1.0
 
  
+
+
+func _on_hitbox_body_entered(body: Node2D) -> void:
+	pass # Replace with function body.
