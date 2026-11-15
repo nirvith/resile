@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://be26siv65xlqe" path="res://character_body_2d.gd" id="1_onrkg"]
 [ext_resource type="Texture2D" uid="uid://m16f0jo5sstj" path="res://Blue Idle - no slime.png" id="2_i3pqv"]
+[ext_resource type="PackedScene" uid="uid://6x4yavgk6xos" path="res://Crawler.tscn" id="3_i3pqv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0e48y"]
 atlas = ExtResource("2_i3pqv")
@@ -74,3 +75,9 @@ sprite_frames = SubResource("SpriteFrames_ualut")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2110325946]
 position = Vector2(-1, 7)
 shape = SubResource("CircleShape2D_ibe4h")
+
+[node name="Crawler" parent="." unique_id=794723956 instance=ExtResource("3_i3pqv")]
+position = Vector2(543, 395)
+
+[node name="Crawler2" parent="." unique_id=824162829 instance=ExtResource("3_i3pqv")]
+position = Vector2(623, 212)
