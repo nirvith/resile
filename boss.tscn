@@ -116,3 +116,26 @@ theme_override_styles/fill = SubResource("BarFill")
 max_value = 30.0
 value = 30.0
 show_percentage = false
+
+[node name="Banner" type="VBoxContainer" parent="BossUI"]
+visible = false
+offset_top = 250.0
+offset_right = 1152.0
+offset_bottom = 360.0
+mouse_filter = 2
+
+[node name="Title" type="Label" parent="BossUI/Banner"]
+theme_override_colors/font_color = Color(1, 0.239, 0.353, 1)
+theme_override_colors/font_outline_color = Color(0.055, 0.082, 0.125, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 56
+text = "ROCK BOTTOM"
+horizontal_alignment = 1
+
+[node name="Hint" type="Label" parent="BossUI/Banner"]
+theme_override_colors/font_color = Color(0.91, 0.933, 0.961, 1)
+theme_override_colors/font_outline_color = Color(0.055, 0.082, 0.125, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 20
+text = "GRAB YOUR PIECES"
+horizontal_alignment = 1

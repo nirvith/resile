@@ -152,3 +152,9 @@ func finish_game():
 		get_tree().change_scene_to_file(ending)
 	else:
 		print("Game finished: no ending.tscn yet")
+		
+		
+func _unhandled_input(event):
+	if event.is_action_pressed("ui_cancel"):
+		Engine.time_scale = 1.0
+		get_tree().change_scene_to_file("res://title.tscn")

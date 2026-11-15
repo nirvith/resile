@@ -19,7 +19,10 @@ const WINDUP = 0.8            # red warning glow before each volley
 const TOUCH_RANGE = 95.0      # how close counts as touching the blob
 const RECOVER_CELLS = 5       # rock bottom ends when you're back to this many cells...
 const ROCK_BOTTOM_MAX = 12.0  # ...or after this many seconds
-const ORB_START = 95.0        # orbs appear this far out, outside his body
+const ORB_START = 30.0        # orbs start near his centre, so they never spawn inside a wall
+const SAFE_TIME = 2.0         # seconds of safety for the blob right after the shatter
+const MINIONS = 2             # crawlers sent in during rock bottom
+const GREY = Color(0.72, 0.72, 0.78)   # rock bottom wash: grey, not dark
 
 var health = MAX_HEALTH
 var state = State.FIGHT
@@ -32,6 +35,7 @@ var minions = []
 var grade
 var grade_color = Color.WHITE
 var radio_box
+var rock_started = false   # true once the shatter has actually happened
 
 func _ready():
 	add_to_group("enemies")
@@ -50,6 +54,8 @@ func _physics_process(delta):
 		return
 	touch_cooldown -= delta
 	if state == State.ROCK_BOTTOM:
+		if not rock_started:   # the shatter runs a moment later (deferred); don't judge recovery before it
+			return
 		rock_time += delta
 		if player.cells >= RECOVER_CELLS or rock_time >= ROCK_BOTTOM_MAX:
 			start_comeback()
@@ -111,17 +117,25 @@ func take_damage(amount):
 		start_rock_bottom.call_deferred()  # deferred: this can run inside a physics callback
 
 func start_rock_bottom():
+	rock_started = true
 	rock_time = 0.0
 	windup_left = 0.0
 	set_flash(0.0)
 	velocity = Vector2.ZERO
 	clear_orbs()
+	# Refill first, so there are always 7 pieces to collect, however hurt you were.
+	player.cells = player.max_cells
 	player.shatter(1)
+	player.invulnerable_left = SAFE_TIME
 	dim(true)
+	show_banner()
 	radio("It's over. Nobody gets back up from something like that.", 3.5)
-	for i in 3:
+	# Crawlers come in on the far side of the room from the blob, not on top of him.
+	var away = player.global_position.direction_to(global_position)
+	for i in MINIONS:
 		var crawler = CRAWLER.instantiate()
-		crawler.position = global_position + Vector2.RIGHT.rotated(TAU * i / 3.0) * 170.0
+		var spot = global_position + away.rotated((i - 0.5) * 1.2) * 150.0
+		crawler.position = spot.clamp(Vector2(80, 100), Vector2(1072, 580))   # never inside a wall
 		get_parent().add_child(crawler)
 		minions.append(crawler)
 
@@ -154,7 +168,18 @@ func set_flash(amount):
 
 func dim(on):
 	if grade:
-		create_tween().tween_property(grade, "color", grade_color.darkened(0.6) if on else grade_color, 0.5)
+		var target = grade_color.lerp(GREY, 0.7) if on else grade_color
+		create_tween().tween_property(grade, "color", target, 0.5)
+
+# "ROCK BOTTOM / GRAB YOUR PIECES" in the middle of the screen, then it fades away.
+func show_banner():
+	var banner = $BossUI/Banner
+	banner.modulate.a = 1.0
+	banner.show()
+	var t = create_tween()
+	t.tween_interval(2.0)
+	t.tween_property(banner, "modulate:a", 0.0, 0.6)
+	t.tween_callback(banner.hide)
 
 # The boss on the radio: the same message box as between waves, but it closes itself.
 func radio(text, seconds = 3.0):
