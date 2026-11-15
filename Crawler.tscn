@@ -67,6 +67,25 @@ radius = 48.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_ahshk"]
 radius = 36.0
 
+[sub_resource type="StyleBoxFlat" id="HealthBarTrack"]
+bg_color = Color(0.035, 0.055, 0.075, 0.94)
+border_color = Color(0.01, 0.025, 0.04, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="HealthBarFill"]
+bg_color = Color(0.32, 0.94, 0.37, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
 [node name="Crawler" type="CharacterBody2D" unique_id=794723956]
 position = Vector2(1, 0)
 collision_layer = 4
@@ -91,3 +110,14 @@ shape = SubResource("CircleShape2D_ualut")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=428752788]
 position = Vector2(1, 2)
 shape = SubResource("CircleShape2D_ahshk")
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+z_index = 5
+position = Vector2(-42, -174)
+size = Vector2(84, 8)
+mouse_filter = 2
+theme_override_styles/background = SubResource("HealthBarTrack")
+theme_override_styles/fill = SubResource("HealthBarFill")
+max_value = 1.0
+value = 1.0
+show_percentage = false

@@ -3,6 +3,7 @@ extends Node
 const ENEMIES = {
 	"crawler": preload("res://Crawler.tscn"),
 	"glutton": preload("res://Glutton.tscn"),
+	"boss": preload("res://boss.tscn"),
 }
 
 const Message_box = "res://message_box.tscn"
@@ -19,6 +20,9 @@ var levels = [
 		{"line": "Why are you in my office? Don't touch anything.", "enemies": {"crawler": 6, "glutton": 2}},
 		{"line": "Those floors are imported. Stop bouncing on them.", "enemies": {"crawler": 7, "glutton": 3}},
 		{"line": "Stop. Seriously. You're scratching everything.", "enemies": {"crawler": 8, "glutton": 4}},
+	]},
+	{"map": "res://boss_arena.tscn", "waves": [
+		{"line": "Fine. I'm sending the Foreman.", "enemies": {"boss": 1}},
 	]},
 ]
 
@@ -48,7 +52,13 @@ func next_level():
 		finish_game()
 		return
 	current = 0
+	var transition = get_parent().get_node_or_null("SceneTransition")
+	if transition:
+		await transition.fade_to_black(0.42)
 	load_level()
+	await get_tree().process_frame
+	if transition:
+		await transition.fade_from_black(0.58)
 	start_wave(true)
 
 var running = false
@@ -98,7 +108,10 @@ func start_wave(with_line):
 func spawn_enemy(enemy_name):
 	var enemy = ENEMIES[enemy_name].instantiate()
 	get_parent().add_child(enemy)
-	enemy.global_position = spawn_point()
+	if enemy_name == "boss" and map and map.has_node("Spawn"):
+		enemy.global_position = map.get_node("Spawn").global_position + Vector2(210, 0)
+	else:
+		enemy.global_position = spawn_point()
 
 func say(text):
 	if ResourceLoader.exists(Message_box):

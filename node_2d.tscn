@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://bhighbkp4puh1" path="res://waves.gd" id="2_0e48y"]
 [ext_resource type="PackedScene" uid="uid://c7sbfhief7vbo" path="res://HUD.tscn" id="4_0hol4"]
 [ext_resource type="Script" uid="uid://4e7x35k5osx1" path="res://camera.gd" id="4_cam"]
+[ext_resource type="PackedScene" path="res://scene_transition.tscn" id="5_transition"]
 
 [sub_resource type="Gradient" id="VignetteGradient"]
 offsets = PackedFloat32Array(0.6, 1)
@@ -46,3 +47,5 @@ texture = SubResource("VignetteTexture")
 expand_mode = 1
 
 [node name="HUD" parent="." unique_id=464677551 instance=ExtResource("4_0hol4")]
+
+[node name="SceneTransition" parent="." instance=ExtResource("5_transition")]

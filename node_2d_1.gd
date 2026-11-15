@@ -11,6 +11,7 @@ var attack_timer: = 0.0
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var hitbox: Area2D = $Area2D
+@onready var health_bar: ProgressBar = $HealthBar
 
 
 func _ready() -> void:
@@ -19,6 +20,8 @@ func _ready() -> void:
 	add_to_group("enemies")
 	player = get_tree().get_first_node_in_group("player")
 	print("Enemy found player: ", player)
+	health_bar.max_value = max_health
+	health_bar.value = health
 	sprite.play()
 
 
@@ -56,7 +59,8 @@ func _physics_process(delta: float) -> void:
 
 func take_damage(amount: int) -> void:
 	# Public function; the player's weapon will call enemy.take_damage(1).
-	health -= amount
+	health = maxi(health - amount, 0)
+	health_bar.value = health
 	if health <= 0:
 		Sfx.hit_stop()
 		get_tree().call_group("camera", "shake", 4)

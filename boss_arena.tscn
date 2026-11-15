@@ -1,0 +1,64 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://control_deck.tscn" id="1_deck"]
+[ext_resource type="Script" path="res://boss_arena.gd" id="2_script"]
+[ext_resource type="PackedScene" path="res://pinball_pad.tscn" id="3_pad"]
+
+[node name="BounceBackArena" instance=ExtResource("1_deck")]
+script = ExtResource("2_script")
+metadata/tint = Color(0.78, 0.91, 1, 1)
+
+[node name="ArenaMarkings" type="Node2D" parent="."]
+
+[node name="CenterGlow" type="Polygon2D" parent="ArenaMarkings"]
+position = Vector2(576, 324)
+color = Color(0.03, 0.58, 0.72, 0.12)
+polygon = PackedVector2Array(0, -218, 84, -201, 154, -154, 201, -84, 218, 0, 201, 84, 154, 154, 84, 201, 0, 218, -84, 201, -154, 154, -201, 84, -218, 0, -201, -84, -154, -154, -84, -201, 0, -218)
+
+[node name="OuterRing" type="Line2D" parent="ArenaMarkings"]
+points = PackedVector2Array(576, 84, 696, 116, 784, 204, 816, 324, 784, 444, 696, 532, 576, 564, 456, 532, 368, 444, 336, 324, 368, 204, 456, 116, 576, 84)
+width = 5.0
+default_color = Color(0.18, 0.86, 0.96, 0.68)
+
+[node name="InnerRing" type="Line2D" parent="ArenaMarkings"]
+points = PackedVector2Array(576, 178, 648, 198, 702, 252, 722, 324, 702, 396, 648, 450, 576, 470, 504, 450, 450, 396, 430, 324, 450, 252, 504, 198, 576, 178)
+width = 2.0
+default_color = Color(0.18, 0.86, 0.96, 0.35)
+
+[node name="BounceLaneLeft" type="Line2D" parent="ArenaMarkings"]
+points = PackedVector2Array(118, 260, 164, 288, 118, 316, 164, 344, 118, 372)
+width = 5.0
+default_color = Color(1, 0.72, 0.28, 0.78)
+
+[node name="BounceLaneRight" type="Line2D" parent="ArenaMarkings"]
+points = PackedVector2Array(1034, 260, 988, 288, 1034, 316, 988, 344, 1034, 372)
+width = 5.0
+default_color = Color(1, 0.72, 0.28, 0.78)
+
+[node name="NorthBumper" parent="." instance=ExtResource("3_pad")]
+position = Vector2(532, 74)
+
+[node name="EastBumper" parent="." instance=ExtResource("3_pad")]
+position = Vector2(1058, 280)
+rotation = 1.570796
+
+[node name="SouthBumper" parent="." instance=ExtResource("3_pad")]
+position = Vector2(532, 534)
+rotation = 3.141593
+
+[node name="WestBumper" parent="." instance=ExtResource("3_pad")]
+position = Vector2(54, 280)
+rotation = 4.712389
+
+[node name="ReboundLabel" type="Label" parent="."]
+z_index = 2
+offset_left = 430.0
+offset_top = 46.0
+offset_right = 722.0
+offset_bottom = 76.0
+theme_override_colors/font_color = Color(0.48, 0.94, 1, 1)
+theme_override_colors/font_outline_color = Color(0.01, 0.07, 0.12, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 17
+text = "REBOUND CHAMBER  //  KEEP IT LIVE"
+horizontal_alignment = 1
