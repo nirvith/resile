@@ -27,4 +27,15 @@ func _physics_process(delta):
 
 
 func _on_hitbox_body_entered(body: Node2D) -> void:
-	pass # Replace with function body.
+	if not live:
+		return
+	if body.is_in_group("enemies"):
+		body.take_damage(1)
+		queue_free()
+	elif body.is_in_group("player"):
+		body.take_damage(1)
+	
+	
+	
+	
+	
