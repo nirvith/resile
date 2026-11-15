@@ -206,6 +206,12 @@ What's in it:
 Known risk: enemies walk straight at the blob and slide along walls. An enemy directly behind an island can get stuck for a moment. If playtesting shows it's a problem, the cheap fix is to make flying Crawlers ignore the islands (a separate collision layer).
 Considered: furniture-only obstacles (like level 1's crates). Rejected: furniture collision is only the lower part of each prop, so bank shots feel inconsistent. Islands are whole solid rectangles, so the angles are predictable.
 
+**D26. Chunks are spawned with `call_deferred`.** *(~7 am, Nik)*
+Bug: every hit printed `character_body_2d.gd:70 @ throw_chunk(): Can't change this state while flushing queries` (15 times in one playtest). A hit is reported during Godot's physics step; `throw_chunk` then added a chunk, which contains an Area2D, in the middle of that step. Godot refuses to add a collision area while it is checking collisions, so some chunks could end up with their pickup zone not working (you couldn't re-absorb them).
+Fix: in `take_damage` and `shatter`, `throw_chunk.call_deferred()` / `throw_chunk.call_deferred(900)` instead of calling `throw_chunk()` directly. `throw_chunk` (no brackets) is the function itself; `.call_deferred()` runs it at the end of the frame, after physics. The delay is under 1/60 s.
+Lesson (a typo we made on the way): `throw_chunk().call_deferred()` is wrong. The brackets run the function immediately (the original bug) and then try to call `.call_deferred()` on its empty result (`null`), which is a new error.
+Rule from now on: anything that adds or removes physics objects (bodies, areas) from inside a collision signal or `take_damage` uses `call_deferred`.
+
 ---
 
 ## 4. How each system works (reference)
