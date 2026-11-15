@@ -1,14 +1,11 @@
 extends Control
 
-var start_button: TextureButton
+@onready var start_button: TextureButton = $TextureButton
+@onready var tutorial_button: TextureButton = $tutorial
 
 func _ready() -> void:
-	var buttons := find_children("*", "TextureButton")
-	if buttons.is_empty():
-		push_error("Main menu: no TextureButton found under " + name)
-		return
-	start_button = buttons[0]
 	start_button.pressed.connect(_on_start_pressed)
+	tutorial_button.pressed.connect(_on_tutorial_pressed)
 	await get_tree().process_frame  # let the layout settle first
 	button_jump()
 
@@ -23,3 +20,6 @@ func button_jump() -> void:
 
 func _on_start_pressed() -> void:
 	get_tree().change_scene_to_file("res://node_2d.tscn")
+
+func _on_tutorial_pressed() -> void:
+	get_tree().change_scene_to_file("res://tutorial.tscn")
