@@ -1,0 +1,181 @@
+[gd_scene format=3 uid="uid://b55bhkx1n4yml"]
+
+[ext_resource type="Script" uid="uid://bfh70ayi4u811" path="res://title.gd" id="1_3xoar"]
+[ext_resource type="PackedScene" uid="uid://bky21smgqhccm" path="res://cargo_hold.tscn" id="1_oyqm6"]
+[ext_resource type="Texture2D" uid="uid://m16f0jo5sstj" path="res://Blue Idle - no slime.png" id="2_kpexm"]
+[ext_resource type="Texture2D" uid="uid://bn1unsoueb6gb" path="res://art/bolt_orb.png" id="3_kpexm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0e48y"]
+atlas = ExtResource("2_kpexm")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_epypp"]
+atlas = ExtResource("2_kpexm")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0hol4"]
+atlas = ExtResource("2_kpexm")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q6r6c"]
+atlas = ExtResource("2_kpexm")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kdubu"]
+atlas = ExtResource("2_kpexm")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d21ai"]
+atlas = ExtResource("2_kpexm")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rj586"]
+atlas = ExtResource("2_kpexm")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3xoar"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0e48y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_epypp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0hol4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q6r6c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kdubu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d21ai")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rj586")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Curve" id="Curve_ibe4h"]
+_data = [Vector2(0.013461538, 0.014028072), 0.0, 0.0, 0, 0, Vector2(0.99807703, 0.9957806), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_nw1ws"]
+offsets = PackedFloat32Array(0.020361992, 1)
+colors = PackedColorArray(1, 0.7882353, 0.23529412, 0, 1, 0.9411765, 0.6666667, 1)
+
+[node name="title" type="Node2D" unique_id=1394069261]
+position = Vector2(3, 2)
+script = ExtResource("1_3xoar")
+
+[node name="CargoHold" parent="." unique_id=1846603805 instance=ExtResource("1_oyqm6")]
+
+[node name="Blob" type="AnimatedSprite2D" parent="." unique_id=1350615801]
+position = Vector2(576, 330)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_3xoar")
+autoplay = "default"
+
+[node name="Front" type="CanvasLayer" parent="." unique_id=260731298]
+
+[node name="Trail" type="Line2D" parent="Front" unique_id=993195961]
+width_curve = SubResource("Curve_ibe4h")
+gradient = SubResource("Gradient_nw1ws")
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="Orb" type="Sprite2D" parent="Front" unique_id=836124642]
+modulate = Color(1, 0.9411765, 0.6666667, 1)
+position = Vector2(300, 400)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("3_kpexm")
+
+[node name="Title" type="Node2D" parent="Front" unique_id=1276009929]
+
+[node name="R" type="Label" parent="Front/Title" unique_id=1283325870]
+offset_left = 327.0
+offset_top = 80.0
+offset_right = 381.0
+offset_bottom = 195.0
+theme_override_colors/font_color = Color(1, 0.7882353, 0.23529412, 1)
+theme_override_colors/font_shadow_color = Color(0.16862746, 0.22745098, 0.2901961, 1)
+theme_override_constants/shadow_offset_x = 6
+theme_override_constants/shadow_offset_y = 6
+theme_override_font_sizes/font_size = 84
+text = "R"
+
+[node name="E" type="Label" parent="Front/Title" unique_id=202431059]
+offset_left = 417.0
+offset_top = 80.0
+offset_right = 464.0
+offset_bottom = 195.0
+theme_override_colors/font_color = Color(1, 0.7882353, 0.23529412, 1)
+theme_override_colors/font_shadow_color = Color(0.16862746, 0.22745098, 0.2901961, 1)
+theme_override_constants/shadow_offset_x = 6
+theme_override_constants/shadow_offset_y = 6
+theme_override_font_sizes/font_size = 84
+text = "E"
+
+[node name="S" type="Label" parent="Front/Title" unique_id=1865705431]
+offset_left = 507.0
+offset_top = 80.0
+offset_right = 553.0
+offset_bottom = 195.0
+theme_override_colors/font_color = Color(1, 0.7882353, 0.23529412, 1)
+theme_override_colors/font_shadow_color = Color(0.16862746, 0.22745098, 0.2901961, 1)
+theme_override_constants/shadow_offset_x = 6
+theme_override_constants/shadow_offset_y = 6
+theme_override_font_sizes/font_size = 84
+text = "S"
+
+[node name="I" type="Label" parent="Front/Title" unique_id=66494491]
+offset_left = 597.0
+offset_top = 80.0
+offset_right = 637.0
+offset_bottom = 195.0
+theme_override_colors/font_color = Color(1, 0.7882353, 0.23529412, 1)
+theme_override_colors/font_shadow_color = Color(0.16862746, 0.22745098, 0.2901961, 1)
+theme_override_constants/shadow_offset_x = 6
+theme_override_constants/shadow_offset_y = 6
+theme_override_font_sizes/font_size = 84
+text = "I"
+
+[node name="L" type="Label" parent="Front/Title" unique_id=653569894]
+offset_left = 687.0
+offset_top = 80.0
+offset_right = 733.0
+offset_bottom = 195.0
+theme_override_colors/font_color = Color(1, 0.7882353, 0.23529412, 1)
+theme_override_colors/font_shadow_color = Color(0.16862746, 0.22745098, 0.2901961, 1)
+theme_override_constants/shadow_offset_x = 6
+theme_override_constants/shadow_offset_y = 6
+theme_override_font_sizes/font_size = 84
+text = "L"
+
+[node name="E2" type="Label" parent="Front/Title" unique_id=328756056]
+offset_left = 777.0
+offset_top = 80.0
+offset_right = 824.0
+offset_bottom = 195.0
+theme_override_colors/font_color = Color(1, 0.7882353, 0.23529412, 1)
+theme_override_colors/font_shadow_color = Color(0.16862746, 0.22745098, 0.2901961, 1)
+theme_override_constants/shadow_offset_x = 6
+theme_override_constants/shadow_offset_y = 6
+theme_override_font_sizes/font_size = 84
+text = "E"
+
+[node name="Prompt" type="Label" parent="Front" unique_id=1772777009]
+offset_top = 520.0
+offset_right = 1152.0
+offset_bottom = 550.0
+theme_override_colors/font_color = Color(0.9098039, 0.93333334, 0.9607843, 1)
+theme_override_font_sizes/font_size = 20
+text = "SPACE: CLOCK IN     H: HOW TO PLAY"
+horizontal_alignment = 1
