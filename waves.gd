@@ -13,6 +13,8 @@ const death_lines = [
 ]
 
 const Message_box = "res://message_box.tscn"
+const GAME_OVER = preload("res://game_over.tscn")
+const RESPAWNS = 3   # respawns per level; the next death is game over
 const ending = "res://ending.tscn"
 const SPAWN_GAP = 0.3   # seconds between each enemy appearing
 
@@ -35,6 +37,7 @@ var levels = [
 var level = 0
 var current = 0
 var map
+var deaths = 0   # deaths on this level
 
 func load_level():
 	for group in ["enemies", "bolts", "chunk"]:
@@ -58,6 +61,7 @@ func next_level():
 		finish_game()
 		return
 	current = 0
+	deaths = 0   # fresh respawns for every new level
 	var transition = get_parent().get_node_or_null("SceneTransition")
 	if transition:
 		await transition.fade_to_black(0.42)
@@ -146,6 +150,10 @@ func _on_player_died():
 	for group in ["enemies", "bolts", "chunk"]:
 		for node in get_tree().get_nodes_in_group(group):
 			node.queue_free()
+	deaths += 1
+	if deaths > RESPAWNS:
+		game_over()
+		return
 	player.cells = player.max_cells
 	player.update_look()
 	var spawn = map.get_node("Spawn").global_position
@@ -170,7 +178,25 @@ func _unhandled_input(event):
 		
 		
 func heckle():
+	var left = RESPAWNS - deaths
 	var box = load(Message_box).instantiate()
 	add_child(box)
-	box.show_line(death_lines.pick_random(), 2.5)
+	box.show_line("%s  (%d %s left)" % [death_lines.pick_random(), left, "respawn" if left == 1 else "respawns"], 2.5)
 	box.finished.connect(box.queue_free)
+
+# Out of respawns: freeze the game and show the incident report.
+func game_over():
+	var screen = GAME_OVER.instantiate()
+	add_child(screen)
+	screen.setup(level + 1, deaths)
+	screen.retry.connect(_on_retry)
+	get_tree().paused = true
+
+# "Bounce back": restart this level from wave 1 with fresh respawns.
+func _on_retry():
+	get_tree().paused = false
+	deaths = 0
+	current = 0
+	load_level()
+	player.invulnerable_left = 1.5
+	start_wave.call_deferred(true)
