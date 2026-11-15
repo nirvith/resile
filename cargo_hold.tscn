@@ -1,40 +1,193 @@
 [gd_scene format=4 uid="uid://bky21smgqhccm"]
 
-[ext_resource type="Texture2D" uid="uid://domc1f4d3cu4f" path="res://assets/Scifi_Facility_Buider_Pack_1_ver 2.0/Architecture/Floor/F1_Floor_Painted/F1.png" id="1_wipva"]
-[ext_resource type="Texture2D" uid="uid://bn6dcrulm2vfw" path="res://assets/Scifi_Facility_Buider_Pack_1_ver 2.0/Architecture/Walls/W1_Painted_Metal_Wall/W1_base/W1_T.png" id="2_top"]
-[ext_resource type="Texture2D" uid="uid://wfutf64thq0d" path="res://assets/Scifi_Facility_Buider_Pack_1_ver 2.0/Architecture/Walls/W1_Painted_Metal_Wall/W1_base/W1_F.png" id="3_bottom"]
-[ext_resource type="Texture2D" uid="uid://c1wjcekbk088" path="res://assets/Scifi_Facility_Buider_Pack_1_ver 2.0/Architecture/Walls/W1_Painted_Metal_Wall/W1_base/W1_L.png" id="4_left"]
-[ext_resource type="Texture2D" uid="uid://dntal4dlmasvp" path="res://assets/Scifi_Facility_Buider_Pack_1_ver 2.0/Architecture/Walls/W1_Painted_Metal_Wall/W1_base/W1_R.png" id="5_right"]
+[ext_resource type="Texture2D" uid="uid://domc1f4d3cu4f" path="res://assets/Scifi_Facility_Buider_Pack_1_ver 2.0/Architecture/Floor/F1_Floor_Painted/F1.png" id="1_tex"]
+[ext_resource type="Texture2D" uid="uid://sxtw7q30f0hq" path="res://assets/Scifi_Facility_Buider_Pack_1_ver 2.0/Architecture/Floor/F3_Floor_Grated/F3.png" id="2_tex"]
+[ext_resource type="Texture2D" uid="uid://c5k3274olxnf6" path="res://assets/Scifi_Facility_Buider_Pack_1_ver 2.0/Architecture/Floor/F1_Floor_Painted/F1_hatch.png" id="3_tex"]
+[ext_resource type="Texture2D" uid="uid://qh7a51va4j5f" path="res://assets/Scifi_Facility_Buider_Pack_1_ver 2.0/Architecture/Floor/F1_Floor_Painted/F1_drain.png" id="4_tex"]
+[ext_resource type="Texture2D" uid="uid://d2emn4anxk10p" path="res://assets/Scifi_Facility_Buider_Pack_1_ver 2.0/Overlay/Dirt/grime_small_v1.png" id="5_tex"]
+[ext_resource type="Texture2D" uid="uid://dg2jug6kmc0no" path="res://assets/Scifi_Facility_Buider_Pack_1_ver 2.0/Overlay/Dirt/grime_small_v2.png" id="6_tex"]
+[ext_resource type="Texture2D" uid="uid://cwd4yrgeoxgc5" path="res://assets/Scifi_Facility_Buider_Pack_1_ver 2.0/Overlay/Dirt/dirt_small_v1.png" id="7_tex"]
+[ext_resource type="Texture2D" uid="uid://cf1mjt4q5cc88" path="res://assets/Scifi_Facility_Buider_Pack_1_ver 2.0/Overlay/Dirt/dirt_small_v2.png" id="8_tex"]
+[ext_resource type="Texture2D" uid="uid://m08xdgs7xxu1" path="res://assets/Scifi_Facility_Buider_Pack_1_ver 2.0/Overlay/Rust/rust_small_corner.png" id="9_tex"]
+[ext_resource type="Texture2D" uid="uid://0u1xynamto0v" path="res://assets/Scifi_Facility_Buider_Pack_1_ver 2.0/Markings/door_floor_marking.png" id="10_tex"]
+[ext_resource type="Texture2D" uid="uid://dcu3fhnsdw8w7" path="res://assets/Scifi_Facility_Buider_Pack_1_ver 2.0/Markings/hazard_stripe_H.png" id="11_tex"]
+[ext_resource type="Texture2D" uid="uid://cq4u7b461fmrw" path="res://assets/Scifi_Facility_Buider_Pack_1_ver 2.0/Markings/hazard_stripe_V.png" id="12_tex"]
+[ext_resource type="Texture2D" uid="uid://bn6dcrulm2vfw" path="res://assets/Scifi_Facility_Buider_Pack_1_ver 2.0/Architecture/Walls/W1_Painted_Metal_Wall/W1_base/W1_T.png" id="13_tex"]
+[ext_resource type="Texture2D" uid="uid://wfutf64thq0d" path="res://assets/Scifi_Facility_Buider_Pack_1_ver 2.0/Architecture/Walls/W1_Painted_Metal_Wall/W1_base/W1_F.png" id="14_tex"]
+[ext_resource type="Texture2D" uid="uid://c1wjcekbk088" path="res://assets/Scifi_Facility_Buider_Pack_1_ver 2.0/Architecture/Walls/W1_Painted_Metal_Wall/W1_base/W1_L.png" id="15_tex"]
+[ext_resource type="Texture2D" uid="uid://dntal4dlmasvp" path="res://assets/Scifi_Facility_Buider_Pack_1_ver 2.0/Architecture/Walls/W1_Painted_Metal_Wall/W1_base/W1_R.png" id="16_tex"]
+[ext_resource type="Texture2D" uid="uid://d2mxai3rjgsns" path="res://assets/Scifi_Facility_Buider_Pack_1_ver 2.0/Props/Utility/Electrical Box/electrical_box_closed.png" id="17_tex"]
+[ext_resource type="Texture2D" uid="uid://c51ea33j5uq8j" path="res://assets/Scifi_Facility_Buider_Pack_1_ver 2.0/Props/Utility/Wall Modules/wall_vent_v2.png" id="18_tex"]
+[ext_resource type="Texture2D" uid="uid://eiw65r23vni4" path="res://assets/Scifi_Facility_Buider_Pack_1_ver 2.0/Props/Signs/Room_Label/room_label_storage.png" id="19_tex"]
+[ext_resource type="Texture2D" uid="uid://ok0e1ko31jqi" path="res://assets/Scifi_Facility_Buider_Pack_1_ver 2.0/Props/Signs/Warning_Sign/sign_caution.png" id="20_tex"]
+[ext_resource type="Texture2D" uid="uid://b4gk37a6pai5k" path="res://assets/Scifi_Facility_Buider_Pack_1_ver 2.0/Props/Utility/Alarm Light/alarm_light_on.png" id="21_tex"]
+[ext_resource type="Texture2D" uid="uid://6clfxnalm5cx" path="res://assets/Scifi_Facility_Buider_Pack_1_ver 2.0/Overlay/Light GLow/Alarm_light_on/alarm_light_on_l2.png" id="22_tex"]
+[ext_resource type="Texture2D" uid="uid://bfehvp00xbcit" path="res://assets/Scifi_Facility_Buider_Pack_1_ver 2.0/Props/Furniture/shelf_filled_v1.png" id="23_tex"]
+[ext_resource type="Texture2D" uid="uid://d3uct042fmjxa" path="res://assets/Scifi_Facility_Buider_Pack_1_ver 2.0/Props/Furniture/shelf_filled_v2.png" id="24_tex"]
+[ext_resource type="Texture2D" uid="uid://be4la7mbe846o" path="res://assets/Scifi_Facility_Buider_Pack_1_ver 2.0/Props/Furniture/bench_F_filled.png" id="25_tex"]
+[ext_resource type="Texture2D" uid="uid://d2r0h5oxd4fxu" path="res://assets/Scifi_Facility_Buider_Pack_1_ver 2.0/Props/Furniture/bench_F.png" id="26_tex"]
+[ext_resource type="Texture2D" uid="uid://chwo8m8vvyd0f" path="res://assets/Scifi_Facility_Buider_Pack_1_ver 2.0/Props/Furniture/bench_side.png" id="27_tex"]
+[ext_resource type="Texture2D" uid="uid://doej3boeepsm2" path="res://assets/Scifi_Facility_Buider_Pack_1_ver 2.0/Props/Small Props/plastic_crate_g1.png" id="28_tex"]
+[ext_resource type="Texture2D" uid="uid://br3mi8w08exhl" path="res://assets/Scifi_Facility_Buider_Pack_1_ver 2.0/Props/Small Props/plastic_crate_g2.png" id="29_tex"]
+[ext_resource type="Texture2D" uid="uid://2s2oivplonrw" path="res://assets/Scifi_Facility_Buider_Pack_1_ver 2.0/Props/Small Props/plastic_crate_g3.png" id="30_tex"]
+[ext_resource type="Texture2D" uid="uid://c2w2irgm1hm3i" path="res://assets/Scifi_Facility_Buider_Pack_1_ver 2.0/Props/Small Props/plastic_crate_g4.png" id="31_tex"]
+[ext_resource type="Texture2D" uid="uid://cvub0x7c3ich4" path="res://assets/Scifi_Facility_Buider_Pack_1_ver 2.0/Props/Small Props/plastic_crate_g5.png" id="32_tex"]
+[ext_resource type="PackedScene" path="res://pinball_pad.tscn" id="pad_scene"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_aojxy"]
-texture = ExtResource("1_wipva")
+[sub_resource type="TileSetAtlasSource" id="Atlas_3"]
+texture = ExtResource("1_tex")
 texture_region_size = Vector2i(256, 256)
 0:0/0 = 0
 
-[sub_resource type="TileSet" id="TileSet_ibe4h"]
-tile_size = Vector2i(256, 256)
-sources/3 = SubResource("TileSetAtlasSource_aojxy")
+[sub_resource type="TileSetAtlasSource" id="Atlas_4"]
+texture = ExtResource("2_tex")
+texture_region_size = Vector2i(256, 256)
+0:0/0 = 0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_top"]
+[sub_resource type="TileSetAtlasSource" id="Atlas_5"]
+texture = ExtResource("3_tex")
+texture_region_size = Vector2i(256, 256)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="Atlas_6"]
+texture = ExtResource("4_tex")
+texture_region_size = Vector2i(256, 256)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_floor"]
+tile_size = Vector2i(256, 256)
+sources/3 = SubResource("Atlas_3")
+sources/4 = SubResource("Atlas_4")
+sources/5 = SubResource("Atlas_5")
+sources/6 = SubResource("Atlas_6")
+
+[sub_resource type="RectangleShape2D" id="WallTop"]
 size = Vector2(1152, 48)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_bottom"]
+[sub_resource type="RectangleShape2D" id="WallBottom"]
 size = Vector2(1152, 11)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_side"]
+[sub_resource type="RectangleShape2D" id="WallSide"]
 size = Vector2(11, 648)
+
+[sub_resource type="RectangleShape2D" id="Box_ShelfLeft"]
+size = Vector2(73.7, 56.7)
+
+[sub_resource type="RectangleShape2D" id="Box_ShelfRight"]
+size = Vector2(73.7, 48)
+
+[sub_resource type="RectangleShape2D" id="Box_BenchLeft"]
+size = Vector2(113.4, 60.8)
+
+[sub_resource type="RectangleShape2D" id="Box_BenchRight"]
+size = Vector2(113.4, 60.8)
+
+[sub_resource type="RectangleShape2D" id="Box_BenchSide"]
+size = Vector2(64, 87.8)
+
+[sub_resource type="RectangleShape2D" id="Box_CratesLeft"]
+size = Vector2(86.7, 70.8)
+
+[sub_resource type="RectangleShape2D" id="Box_CratesRight"]
+size = Vector2(55.1, 41.5)
+
+[sub_resource type="RectangleShape2D" id="Box_CratesRight2"]
+size = Vector2(81, 28.1)
+
+[sub_resource type="RectangleShape2D" id="Box_CoverLeft"]
+size = Vector2(30.6, 39.6)
+
+[sub_resource type="RectangleShape2D" id="Box_CoverRight"]
+size = Vector2(28.7, 32.9)
 
 [node name="CargoHold" type="Node2D"]
 
 [node name="Tiles" type="TileMapLayer" parent="."]
 scale = Vector2(0.25, 0.25)
-tile_map_data = PackedByteArray("AAABAAAAAwAAAAAAAAAAAAAAAwAAAAAAAAABAAEAAwAAAAAAAAACAAEAAwAAAAAAAAADAAIAAwAAAAAAAAAEAAMAAwAAAAAAAAAFAAMAAwAAAAAAAAAFAAQAAwAAAAAAAAAGAAQAAwAAAAAAAAAHAAUAAwAAAAAAAAAIAAUAAwAAAAAAAAAIAAYAAwAAAAAAAAAJAAYAAwAAAAAAAAAKAAcAAwAAAAAAAAALAAcAAwAAAAAAAAALAAgAAwAAAAAAAAAMAAgAAwAAAAAAAAANAAgAAwAAAAAAAAANAAkAAwAAAAAAAAAOAAkAAwAAAAAAAAACAAAAAwAAAAAAAAADAAAAAwAAAAAAAAAEAAAAAwAAAAAAAAAFAAAAAwAAAAAAAAAGAAAAAwAAAAAAAAAHAAAAAwAAAAAAAAAIAAAAAwAAAAAAAAAJAAAAAwAAAAAAAAAKAAEAAwAAAAAAAAALAAEAAwAAAAAAAAAMAAEAAwAAAAAAAAAMAAAAAwAAAAAAAAALAAAAAwAAAAAAAAAKAAAAAwAAAAAAAAANAAAAAwAAAAAAAAAOAAAAAwAAAAAAAAAPAAAAAwAAAAAAAAAQAAAAAwAAAAAAAAARAAAAAwAAAAAAAAARAAEAAwAAAAAAAAARAAIAAwAAAAAAAAAQAAEAAwAAAAAAAAAPAAEAAwAAAAAAAAAOAAEAAwAAAAAAAAANAAEAAwAAAAAAAAAJAAEAAwAAAAAAAAAIAAEAAwAAAAAAAAAHAAEAAwAAAAAAAAAEAAEAAwAAAAAAAAADAAEAAwAAAAAAAAAFAAEAAwAAAAAAAAAGAAEAAwAAAAAAAAAGAAIAAwAAAAAAAAAFAAIAAwAAAAAAAAAEAAIAAwAAAAAAAAAHAAIAAwAAAAAAAAAIAAIAAwAAAAAAAAAJAAIAAwAAAAAAAAAKAAIAAwAAAAAAAAALAAIAAwAAAAAAAAAMAAIAAwAAAAAAAAANAAIAAwAAAAAAAAAOAAIAAwAAAAAAAAAPAAIAAwAAAAAAAAAQAAIAAwAAAAAAAAARAAMAAwAAAAAAAAAQAAMAAwAAAAAAAAAPAAMAAwAAAAAAAAAOAAMAAwAAAAAAAAANAAMAAwAAAAAAAAAMAAMAAwAAAAAAAAALAAMAAwAAAAAAAAAKAAMAAwAAAAAAAAAJAAMAAwAAAAAAAAAIAAMAAwAAAAAAAAAHAAMAAwAAAAAAAAAGAAMAAwAAAAAAAAAHAAQAAwAAAAAAAAAIAAQAAwAAAAAAAAAJAAQAAwAAAAAAAAAKAAQAAwAAAAAAAAALAAQAAwAAAAAAAAAMAAQAAwAAAAAAAAANAAQAAwAAAAAAAAAOAAQAAwAAAAAAAAAPAAQAAwAAAAAAAAAQAAQAAwAAAAAAAAARAAQAAwAAAAAAAAARAAUAAwAAAAAAAAAQAAUAAwAAAAAAAAAPAAUAAwAAAAAAAAAOAAUAAwAAAAAAAAANAAUAAwAAAAAAAAAMAAUAAwAAAAAAAAALAAUAAwAAAAAAAAAKAAUAAwAAAAAAAAAJAAUAAwAAAAAAAAAKAAYAAwAAAAAAAAALAAYAAwAAAAAAAAAMAAYAAwAAAAAAAAANAAYAAwAAAAAAAAAOAAYAAwAAAAAAAAAPAAYAAwAAAAAAAAAQAAYAAwAAAAAAAAARAAYAAwAAAAAAAAARAAcAAwAAAAAAAAAQAAcAAwAAAAAAAAAPAAcAAwAAAAAAAAAOAAcAAwAAAAAAAAANAAcAAwAAAAAAAAAMAAcAAwAAAAAAAAAOAAgAAwAAAAAAAAAPAAgAAwAAAAAAAAAQAAgAAwAAAAAAAAARAAgAAwAAAAAAAAARAAkAAwAAAAAAAAAQAAkAAwAAAAAAAAAPAAkAAwAAAAAAAAAMAAkAAwAAAAAAAAALAAkAAwAAAAAAAAAKAAkAAwAAAAAAAAAJAAkAAwAAAAAAAAAIAAkAAwAAAAAAAAAHAAkAAwAAAAAAAAAGAAkAAwAAAAAAAAAFAAkAAwAAAAAAAAAEAAkAAwAAAAAAAAADAAkAAwAAAAAAAAACAAkAAwAAAAAAAAABAAkAAwAAAAAAAAAAAAkAAwAAAAAAAAAAAAgAAwAAAAAAAAAAAAcAAwAAAAAAAAAAAAYAAwAAAAAAAAAAAAUAAwAAAAAAAAAAAAQAAwAAAAAAAAAAAAMAAwAAAAAAAAAAAAIAAwAAAAAAAAAAAAEAAwAAAAAAAAABAAIAAwAAAAAAAAACAAIAAwAAAAAAAAADAAMAAwAAAAAAAAACAAMAAwAAAAAAAAABAAMAAwAAAAAAAAABAAQAAwAAAAAAAAACAAQAAwAAAAAAAAADAAQAAwAAAAAAAAAEAAQAAwAAAAAAAAAFAAUAAwAAAAAAAAAGAAUAAwAAAAAAAAAEAAUAAwAAAAAAAAADAAUAAwAAAAAAAAACAAUAAwAAAAAAAAABAAUAAwAAAAAAAAABAAYAAwAAAAAAAAACAAYAAwAAAAAAAAADAAYAAwAAAAAAAAAEAAYAAwAAAAAAAAAGAAYAAwAAAAAAAAAHAAYAAwAAAAAAAAAJAAcAAwAAAAAAAAAIAAcAAwAAAAAAAAAHAAcAAwAAAAAAAAAGAAcAAwAAAAAAAAAFAAcAAwAAAAAAAAAEAAcAAwAAAAAAAAADAAcAAwAAAAAAAAACAAcAAwAAAAAAAAABAAcAAwAAAAAAAAABAAgAAwAAAAAAAAACAAgAAwAAAAAAAAADAAgAAwAAAAAAAAAEAAgAAwAAAAAAAAAFAAgAAwAAAAAAAAAGAAgAAwAAAAAAAAAHAAgAAwAAAAAAAAAIAAgAAwAAAAAAAAAJAAgAAwAAAAAAAAAKAAgAAwAAAAAAAAAFAAYAAwAAAAAAAAA=")
-tile_set = SubResource("TileSet_ibe4h")
+tile_map_data = PackedByteArray("AAAAAAAABAAAAAAAAAABAAAABAAAAAAAAAACAAAABAAAAAAAAAADAAAABAAAAAAAAAAEAAAABAAAAAAAAAAFAAAABAAAAAAAAAAGAAAABAAAAAAAAAAHAAAABAAAAAAAAAAIAAAABAAAAAAAAAAJAAAABAAAAAAAAAAKAAAABAAAAAAAAAALAAAABAAAAAAAAAAMAAAABAAAAAAAAAANAAAABAAAAAAAAAAOAAAABAAAAAAAAAAPAAAABAAAAAAAAAAQAAAABAAAAAAAAAARAAAABAAAAAAAAAAAAAEABAAAAAAAAAABAAEAAwAAAAAAAAACAAEAAwAAAAAAAAADAAEAAwAAAAAAAAAEAAEAAwAAAAAAAAAFAAEAAwAAAAAAAAAGAAEAAwAAAAAAAAAHAAEAAwAAAAAAAAAIAAEAAwAAAAAAAAAJAAEAAwAAAAAAAAAKAAEAAwAAAAAAAAALAAEAAwAAAAAAAAAMAAEAAwAAAAAAAAANAAEAAwAAAAAAAAAOAAEAAwAAAAAAAAAPAAEAAwAAAAAAAAAQAAEAAwAAAAAAAAARAAEABAAAAAAAAAAAAAIABAAAAAAAAAABAAIAAwAAAAAAAAACAAIAAwAAAAAAAAADAAIAAwAAAAAAAAAEAAIABQAAAAAAAAAFAAIAAwAAAAAAAAAGAAIAAwAAAAAAAAAHAAIAAwAAAAAAAAAIAAIAAwAAAAAAAAAJAAIAAwAAAAAAAAAKAAIAAwAAAAAAAAALAAIAAwAAAAAAAAAMAAIAAwAAAAAAAAANAAIABgAAAAAAAAAOAAIAAwAAAAAAAAAPAAIAAwAAAAAAAAAQAAIAAwAAAAAAAAARAAIABAAAAAAAAAAAAAMABAAAAAAAAAABAAMAAwAAAAAAAAACAAMAAwAAAAAAAAADAAMAAwAAAAAAAAAEAAMAAwAAAAAAAAAFAAMAAwAAAAAAAAAGAAMAAwAAAAAAAAAHAAMAAwAAAAAAAAAIAAMAAwAAAAAAAAAJAAMAAwAAAAAAAAAKAAMAAwAAAAAAAAALAAMAAwAAAAAAAAAMAAMAAwAAAAAAAAANAAMAAwAAAAAAAAAOAAMAAwAAAAAAAAAPAAMAAwAAAAAAAAAQAAMAAwAAAAAAAAARAAMABAAAAAAAAAAAAAQABAAAAAAAAAABAAQAAwAAAAAAAAACAAQAAwAAAAAAAAADAAQAAwAAAAAAAAAEAAQAAwAAAAAAAAAFAAQAAwAAAAAAAAAGAAQAAwAAAAAAAAAHAAQAAwAAAAAAAAAIAAQAAwAAAAAAAAAJAAQAAwAAAAAAAAAKAAQAAwAAAAAAAAALAAQAAwAAAAAAAAAMAAQAAwAAAAAAAAANAAQAAwAAAAAAAAAOAAQAAwAAAAAAAAAPAAQAAwAAAAAAAAAQAAQAAwAAAAAAAAARAAQABAAAAAAAAAAAAAUABAAAAAAAAAABAAUAAwAAAAAAAAACAAUAAwAAAAAAAAADAAUAAwAAAAAAAAAEAAUAAwAAAAAAAAAFAAUAAwAAAAAAAAAGAAUAAwAAAAAAAAAHAAUAAwAAAAAAAAAIAAUAAwAAAAAAAAAJAAUAAwAAAAAAAAAKAAUAAwAAAAAAAAALAAUAAwAAAAAAAAAMAAUAAwAAAAAAAAANAAUAAwAAAAAAAAAOAAUAAwAAAAAAAAAPAAUAAwAAAAAAAAAQAAUAAwAAAAAAAAARAAUABAAAAAAAAAAAAAYABAAAAAAAAAABAAYAAwAAAAAAAAACAAYAAwAAAAAAAAADAAYAAwAAAAAAAAAEAAYAAwAAAAAAAAAFAAYAAwAAAAAAAAAGAAYAAwAAAAAAAAAHAAYAAwAAAAAAAAAIAAYAAwAAAAAAAAAJAAYAAwAAAAAAAAAKAAYAAwAAAAAAAAALAAYAAwAAAAAAAAAMAAYAAwAAAAAAAAANAAYAAwAAAAAAAAAOAAYAAwAAAAAAAAAPAAYAAwAAAAAAAAAQAAYAAwAAAAAAAAARAAYABAAAAAAAAAAAAAcABAAAAAAAAAABAAcAAwAAAAAAAAACAAcAAwAAAAAAAAADAAcAAwAAAAAAAAAEAAcABgAAAAAAAAAFAAcAAwAAAAAAAAAGAAcAAwAAAAAAAAAHAAcAAwAAAAAAAAAIAAcAAwAAAAAAAAAJAAcAAwAAAAAAAAAKAAcAAwAAAAAAAAALAAcAAwAAAAAAAAAMAAcAAwAAAAAAAAANAAcABQAAAAAAAAAOAAcAAwAAAAAAAAAPAAcAAwAAAAAAAAAQAAcAAwAAAAAAAAARAAcABAAAAAAAAAAAAAgABAAAAAAAAAABAAgAAwAAAAAAAAACAAgAAwAAAAAAAAADAAgAAwAAAAAAAAAEAAgAAwAAAAAAAAAFAAgAAwAAAAAAAAAGAAgAAwAAAAAAAAAHAAgAAwAAAAAAAAAIAAgAAwAAAAAAAAAJAAgAAwAAAAAAAAAKAAgAAwAAAAAAAAALAAgAAwAAAAAAAAAMAAgAAwAAAAAAAAANAAgAAwAAAAAAAAAOAAgAAwAAAAAAAAAPAAgAAwAAAAAAAAAQAAgAAwAAAAAAAAARAAgABAAAAAAAAAAAAAkABAAAAAAAAAABAAkABAAAAAAAAAACAAkABAAAAAAAAAADAAkABAAAAAAAAAAEAAkABAAAAAAAAAAFAAkABAAAAAAAAAAGAAkABAAAAAAAAAAHAAkABAAAAAAAAAAIAAkABAAAAAAAAAAJAAkABAAAAAAAAAAKAAkABAAAAAAAAAALAAkABAAAAAAAAAAMAAkABAAAAAAAAAANAAkABAAAAAAAAAAOAAkABAAAAAAAAAAPAAkABAAAAAAAAAAQAAkABAAAAAAAAAARAAkABAAAAAAAAAAAAAoABAAAAAAAAAABAAoAAwAAAAAAAAACAAoAAwAAAAAAAAADAAoAAwAAAAAAAAAEAAoAAwAAAAAAAAAFAAoAAwAAAAAAAAAGAAoAAwAAAAAAAAAHAAoAAwAAAAAAAAAIAAoAAwAAAAAAAAAJAAoAAwAAAAAAAAAKAAoAAwAAAAAAAAALAAoAAwAAAAAAAAAMAAoAAwAAAAAAAAANAAoAAwAAAAAAAAAOAAoAAwAAAAAAAAAPAAoAAwAAAAAAAAAQAAoAAwAAAAAAAAARAAoABAAAAAAAAAA=")
+tile_set = SubResource("TileSet_floor")
+
+[node name="FloorDecor" type="Node2D" parent="."]
+
+[node name="Grime1" type="Sprite2D" parent="FloorDecor"]
+modulate = Color(1, 1, 1, 0.8)
+position = Vector2(205, 385)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("5_tex")
+
+[node name="Grime2" type="Sprite2D" parent="FloorDecor"]
+modulate = Color(1, 1, 1, 0.8)
+position = Vector2(705, 525)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("6_tex")
+
+[node name="Dirt1" type="Sprite2D" parent="FloorDecor"]
+modulate = Color(1, 1, 1, 0.8)
+position = Vector2(930, 300)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("7_tex")
+
+[node name="Dirt2" type="Sprite2D" parent="FloorDecor"]
+modulate = Color(1, 1, 1, 0.8)
+position = Vector2(380, 165)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("8_tex")
+
+[node name="Rust1" type="Sprite2D" parent="FloorDecor"]
+modulate = Color(1, 1, 1, 0.8)
+position = Vector2(1010, 505)
+scale = Vector2(1, 1)
+texture = ExtResource("9_tex")
+
+[node name="DoorMarking" type="Sprite2D" parent="FloorDecor"]
+position = Vector2(576, 622)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("10_tex")
+
+[node name="HazardTop" type="Sprite2D" parent="FloorDecor"]
+texture_repeat = 2
+position = Vector2(426, 230)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("11_tex")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 600, 8)
+
+[node name="HazardBottom" type="Sprite2D" parent="FloorDecor"]
+texture_repeat = 2
+position = Vector2(426, 416)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("11_tex")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 600, 8)
+
+[node name="HazardLeft" type="Sprite2D" parent="FloorDecor"]
+texture_repeat = 2
+position = Vector2(426, 230)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("12_tex")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 8, 380)
+
+[node name="HazardRight" type="Sprite2D" parent="FloorDecor"]
+texture_repeat = 2
+position = Vector2(722, 230)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("12_tex")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 8, 380)
+
+[node name="TopWallShadow" type="Polygon2D" parent="."]
+color = Color(0, 0, 0, 0.27)
+polygon = PackedVector2Array(0, 48, 1152, 48, 1152, 64, 0, 64)
 
 [node name="TopWall" type="Sprite2D" parent="."]
 texture_repeat = 2
 scale = Vector2(0.25, 0.25)
-texture = ExtResource("2_top")
+texture = ExtResource("13_tex")
 centered = false
 region_enabled = true
 region_rect = Rect2(0, 0, 4608, 192)
@@ -43,7 +196,7 @@ region_rect = Rect2(0, 0, 4608, 192)
 texture_repeat = 2
 position = Vector2(0, 637)
 scale = Vector2(0.25, 0.25)
-texture = ExtResource("3_bottom")
+texture = ExtResource("14_tex")
 centered = false
 region_enabled = true
 region_rect = Rect2(0, 0, 4608, 43)
@@ -51,7 +204,7 @@ region_rect = Rect2(0, 0, 4608, 43)
 [node name="LeftWall" type="Sprite2D" parent="."]
 texture_repeat = 2
 scale = Vector2(0.25, 0.25)
-texture = ExtResource("4_left")
+texture = ExtResource("15_tex")
 centered = false
 region_enabled = true
 region_rect = Rect2(0, 0, 43, 2592)
@@ -60,28 +213,206 @@ region_rect = Rect2(0, 0, 43, 2592)
 texture_repeat = 2
 position = Vector2(1141, 0)
 scale = Vector2(0.25, 0.25)
-texture = ExtResource("5_right")
+texture = ExtResource("16_tex")
 centered = false
 region_enabled = true
 region_rect = Rect2(0, 0, 43, 2592)
+
+[node name="WallDecor" type="Node2D" parent="."]
+
+[node name="ElectricalBox" type="Sprite2D" parent="WallDecor"]
+position = Vector2(140, 24)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("17_tex")
+
+[node name="Vent1" type="Sprite2D" parent="WallDecor"]
+position = Vector2(440, 24)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("18_tex")
+
+[node name="StorageLabel" type="Sprite2D" parent="WallDecor"]
+position = Vector2(576, 22)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("19_tex")
+
+[node name="Vent2" type="Sprite2D" parent="WallDecor"]
+position = Vector2(1000, 24)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("18_tex")
+
+[node name="CautionSign" type="Sprite2D" parent="WallDecor"]
+position = Vector2(1075, 22)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("20_tex")
+
+[node name="AlarmLeft" type="Sprite2D" parent="WallDecor"]
+position = Vector2(330, 10)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("21_tex")
+
+[node name="AlarmLeftGlow" type="Sprite2D" parent="WallDecor"]
+modulate = Color(1, 1, 1, 0.75)
+position = Vector2(330, 14)
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("22_tex")
+
+[node name="AlarmRight" type="Sprite2D" parent="WallDecor"]
+position = Vector2(800, 10)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("21_tex")
+
+[node name="AlarmRightGlow" type="Sprite2D" parent="WallDecor"]
+modulate = Color(1, 1, 1, 0.75)
+position = Vector2(800, 14)
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("22_tex")
 
 [node name="Walls" type="StaticBody2D" parent="."]
 
 [node name="Top" type="CollisionShape2D" parent="Walls"]
 position = Vector2(576, 24)
-shape = SubResource("RectangleShape2D_top")
+shape = SubResource("WallTop")
 
 [node name="Bottom" type="CollisionShape2D" parent="Walls"]
 position = Vector2(576, 642.5)
-shape = SubResource("RectangleShape2D_bottom")
+shape = SubResource("WallBottom")
 
 [node name="Left" type="CollisionShape2D" parent="Walls"]
 position = Vector2(5.5, 324)
-shape = SubResource("RectangleShape2D_side")
+shape = SubResource("WallSide")
 
 [node name="Right" type="CollisionShape2D" parent="Walls"]
 position = Vector2(1146.5, 324)
-shape = SubResource("RectangleShape2D_side")
+shape = SubResource("WallSide")
+
+[node name="Furniture" type="Node2D" parent="."]
+
+[node name="ShelfLeft" type="StaticBody2D" parent="Furniture"]
+position = Vector2(262, 95)
+
+[node name="Sprite2D" type="Sprite2D" parent="Furniture/ShelfLeft"]
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("23_tex")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Furniture/ShelfLeft"]
+position = Vector2(0, 13.1)
+shape = SubResource("Box_ShelfLeft")
+
+[node name="ShelfRight" type="StaticBody2D" parent="Furniture"]
+position = Vector2(880, 90)
+
+[node name="Sprite2D" type="Sprite2D" parent="Furniture/ShelfRight"]
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("24_tex")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Furniture/ShelfRight"]
+position = Vector2(0, 11.1)
+shape = SubResource("Box_ShelfRight")
+
+[node name="BenchLeft" type="StaticBody2D" parent="Furniture"]
+position = Vector2(330, 588)
+
+[node name="Sprite2D" type="Sprite2D" parent="Furniture/BenchLeft"]
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("25_tex")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Furniture/BenchLeft"]
+position = Vector2(0, 14)
+shape = SubResource("Box_BenchLeft")
+
+[node name="BenchRight" type="StaticBody2D" parent="Furniture"]
+position = Vector2(840, 588)
+
+[node name="Sprite2D" type="Sprite2D" parent="Furniture/BenchRight"]
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("26_tex")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Furniture/BenchRight"]
+position = Vector2(0, 14)
+shape = SubResource("Box_BenchRight")
+
+[node name="BenchSide" type="StaticBody2D" parent="Furniture"]
+position = Vector2(50, 452)
+
+[node name="Sprite2D" type="Sprite2D" parent="Furniture/BenchSide"]
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("27_tex")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Furniture/BenchSide"]
+position = Vector2(0, 20.2)
+shape = SubResource("Box_BenchSide")
+
+[node name="CratesLeft" type="StaticBody2D" parent="Furniture"]
+position = Vector2(60, 205)
+
+[node name="Sprite2D" type="Sprite2D" parent="Furniture/CratesLeft"]
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("28_tex")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Furniture/CratesLeft"]
+position = Vector2(0, 16.3)
+shape = SubResource("Box_CratesLeft")
+
+[node name="CratesRight" type="StaticBody2D" parent="Furniture"]
+position = Vector2(1108, 440)
+
+[node name="Sprite2D" type="Sprite2D" parent="Furniture/CratesRight"]
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("29_tex")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Furniture/CratesRight"]
+position = Vector2(0, 9.6)
+shape = SubResource("Box_CratesRight")
+
+[node name="CratesRight2" type="StaticBody2D" parent="Furniture"]
+position = Vector2(1092, 225)
+
+[node name="Sprite2D" type="Sprite2D" parent="Furniture/CratesRight2"]
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("30_tex")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Furniture/CratesRight2"]
+position = Vector2(0, 6.5)
+shape = SubResource("Box_CratesRight2")
+
+[node name="CoverLeft" type="StaticBody2D" parent="Furniture"]
+position = Vector2(330, 330)
+
+[node name="Sprite2D" type="Sprite2D" parent="Furniture/CoverLeft"]
+scale = Vector2(1, 1)
+texture = ExtResource("31_tex")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Furniture/CoverLeft"]
+position = Vector2(0, 9.2)
+shape = SubResource("Box_CoverLeft")
+
+[node name="CoverRight" type="StaticBody2D" parent="Furniture"]
+position = Vector2(822, 330)
+
+[node name="Sprite2D" type="Sprite2D" parent="Furniture/CoverRight"]
+scale = Vector2(1.1, 1.1)
+texture = ExtResource("32_tex")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Furniture/CoverRight"]
+position = Vector2(0, 7.6)
+shape = SubResource("Box_CoverRight")
+
+[node name="PinballPads" type="Node2D" parent="."]
+
+[node name="PadTopLeft" parent="PinballPads" instance=ExtResource("pad_scene")]
+position = Vector2(11, 48)
+
+[node name="PadTopRight" parent="PinballPads" instance=ExtResource("pad_scene")]
+position = Vector2(1141, 48)
+rotation = 1.570796
+
+[node name="PadBottomRight" parent="PinballPads" instance=ExtResource("pad_scene")]
+position = Vector2(1141, 637)
+rotation = 3.141593
+
+[node name="PadBottomLeft" parent="PinballPads" instance=ExtResource("pad_scene")]
+position = Vector2(11, 637)
+rotation = 4.712389
 
 [node name="Spawn" type="Marker2D" parent="."]
 position = Vector2(576, 324)
@@ -89,25 +420,25 @@ position = Vector2(576, 324)
 [node name="SpawnPoints" type="Node2D" parent="."]
 
 [node name="Enemy1" type="Marker2D" parent="SpawnPoints" groups=["enemy_spawn"]]
-position = Vector2(150, 120)
+position = Vector2(170, 135)
 
 [node name="Enemy2" type="Marker2D" parent="SpawnPoints" groups=["enemy_spawn"]]
 position = Vector2(576, 110)
 
 [node name="Enemy3" type="Marker2D" parent="SpawnPoints" groups=["enemy_spawn"]]
-position = Vector2(1000, 120)
+position = Vector2(980, 135)
 
 [node name="Enemy4" type="Marker2D" parent="SpawnPoints" groups=["enemy_spawn"]]
-position = Vector2(1060, 324)
+position = Vector2(1060, 330)
 
 [node name="Enemy5" type="Marker2D" parent="SpawnPoints" groups=["enemy_spawn"]]
-position = Vector2(1000, 560)
+position = Vector2(980, 540)
 
 [node name="Enemy6" type="Marker2D" parent="SpawnPoints" groups=["enemy_spawn"]]
-position = Vector2(576, 575)
+position = Vector2(576, 560)
 
 [node name="Enemy7" type="Marker2D" parent="SpawnPoints" groups=["enemy_spawn"]]
-position = Vector2(150, 560)
+position = Vector2(170, 540)
 
 [node name="Enemy8" type="Marker2D" parent="SpawnPoints" groups=["enemy_spawn"]]
-position = Vector2(95, 324)
+position = Vector2(110, 330)
