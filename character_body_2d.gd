@@ -1,6 +1,10 @@
 extends CharacterBody2D
 signal died
 
+const Low_cells = 2
+const beat_speed = 2.0
+var beat_time  = 0.0
+var base_scale = Vector2.ONE
 const Bolt = preload("res://bolt.tscn")
 const Chunk = preload("res://chunk.tscn")
 const SHOOT_SOUND = preload("res://sounds/shoot.wav")
@@ -28,6 +32,7 @@ func _physics_process(delta):
 	cooldown_left -= delta
 	invulnerable_left -= delta
 	$Sprite.modulate.a = 0.5 if invulnerable_left > 0 else 1.0
+	heartbeat(delta)
 	var direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	velocity = speed * direction
 	move_and_slide()
@@ -81,4 +86,16 @@ func shatter(keep):
 	update_look()
 
 func update_look():
-	$Sprite.scale = Vector2.ONE * lerp(0.6, 1.0, (cells - 1) / 7.0)
+	base_scale = Vector2.ONE * lerp(0.6, 1.0, (cells - 1) / 7.0)
+	$Sprite.scale = base_scale
+	
+func heartbeat(delta):
+	if cells > Low_cells:
+		$Sprite.modulate = Color(1, 1, 1, $Sprite.modulate.a)
+		$Sprite.scale = base_scale
+		return
+	beat_time += delta * beat_speed
+	var beat = pow(max(sin(beat_time * TAU), 0.0), 4)
+	$Sprite.modulate = Color(1 + 2.5 * beat, 1 - 0.6 * beat, 1 - 0.6 * beat, $Sprite.modulate.a)
+	$Sprite.scale = base_scale * (1.0 + 0.12 * beat)
+	
