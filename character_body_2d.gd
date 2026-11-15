@@ -82,4 +82,3 @@ func shatter(keep):
 
 func update_look():
 	$Sprite.scale = Vector2.ONE * lerp(0.6, 1.0, (cells - 1) / 7.0)
-	$CellLabel.text = str(cells)

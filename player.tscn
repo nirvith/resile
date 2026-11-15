@@ -74,10 +74,3 @@ sprite_frames = SubResource("SpriteFrames_ualut")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2110325946]
 position = Vector2(-1, 7)
 shape = SubResource("CircleShape2D_ibe4h")
-
-[node name="CellLabel" type="Label" parent="." unique_id=725450629]
-offset_left = -4.0
-offset_top = -37.0
-offset_right = 36.0
-offset_bottom = -14.0
-text = "8"
